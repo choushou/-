@@ -83,6 +83,7 @@ private extension RadarView {
         font = UIFont.systemFont(ofSize: 14)
         lineWidth = 1
         dotRadius = 5
+        dotRadiusTwo = 5
         nightNodeArray = [CGPoint]()
         
         let angle: CGFloat = CGFloat(Double.pi * 2 / Double(8))
@@ -165,21 +166,7 @@ private extension RadarView {
             shapeLayer.path = path
         }
         
-        if reginLayer == nil {
-            reginLayer = CAShapeLayer()
-            reginLayer.fillColor = drawAreaColor.cgColor
-            reginLayer.backgroundColor = UIColor.clear.cgColor
-            reginLayer.path = percentPath
-            reginLayer.lineWidth = lineWidth
-            reginLayer.strokeColor = dotColor.cgColor
-            reginLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-            
-            layer.insertSublayer(reginLayer, above: shapeLayer)
-            
-            
-        } else {
-            reginLayer.path = percentPath
-        }
+ 
         
         if reginLayerTwo == nil {
             reginLayerTwo = CAShapeLayer()
@@ -190,13 +177,27 @@ private extension RadarView {
             reginLayerTwo.strokeColor = dotColorTwo.cgColor
             reginLayerTwo.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
             
-            layer.insertSublayer(reginLayerTwo, above: reginLayer)
+            layer.insertSublayer(reginLayerTwo, above: shapeLayer)
             
             
         } else {
             reginLayerTwo.path = percentPathTwo
         }
-        
+        if reginLayer == nil {
+             reginLayer = CAShapeLayer()
+             reginLayer.fillColor = drawAreaColor.cgColor
+             reginLayer.backgroundColor = UIColor.clear.cgColor
+             reginLayer.path = percentPath
+             reginLayer.lineWidth = lineWidth
+             reginLayer.strokeColor = dotColor.cgColor
+             reginLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+             
+             layer.insertSublayer(reginLayer, above: shapeLayer)
+             
+             
+         } else {
+             reginLayer.path = percentPath
+         }
         
         if dotsShapeLayer != nil {
             dotsShapeLayer.removeFromSuperlayer()
@@ -204,7 +205,7 @@ private extension RadarView {
         
         dotsShapeLayer = CAShapeLayer()
         dotsShapeLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        layer.insertSublayer(dotsShapeLayer, above: reginLayer)
+        layer.insertSublayer(dotsShapeLayer, above: reginLayerTwo)
         
         for item in array {
             let dotLayer = CATextLayer()
@@ -214,9 +215,8 @@ private extension RadarView {
             
             dotsShapeLayer.addSublayer(dotLayer)
         }
-        for item in array {
+        for item in arrayTwo {
                let dotLayer = CATextLayer()
-            dotRadiusTwo = 9
                dotLayer.cornerRadius = dotRadiusTwo
                dotLayer.frame = CGRect(x: item.x - dotRadiusTwo, y: item.y - dotRadiusTwo, width: dotRadiusTwo * 2, height: dotRadiusTwo * 2)
                dotLayer.backgroundColor = dotColorTwo.cgColor
@@ -237,7 +237,7 @@ private extension RadarView {
 //        layer.insertSublayer(textShapeLayer, above: reginLayer)
 //                }
         
-        for node in 0..<side - 1 {
+        for node in 0..<side {
             let size = getViewHeight(content: data[node].title)
             var x: CGFloat = (radius + size.height * 0) * sin(angle + angle * CGFloat(node)) + centerX
             var y: CGFloat = (radius + size.height * 0) * cos(angle + angle * CGFloat(node)) + centerY
@@ -252,37 +252,31 @@ private extension RadarView {
             //优化字体与网状结构之间的距离和位置调整
             if x >= nightNodeArray[4].x && x <= nightNodeArray[3].x && y < frame.size.height / 2 {
                 x = x - size.width / 2
-                y = y - size.height - space
+                y = y + size.height / 5 ///333
             } else if x > nightNodeArray[5].x && x < nightNodeArray[4].x &&
                 y > nightNodeArray[4].y && y < nightNodeArray[5].y {
-                x = x - size.width / 3 * 2
-                y = y - size.height - space
+                x = x - size.width / 2
+                y = y - size.height / 5 * 3 ///444
             } else if y >= nightNodeArray[5].y && y <= nightNodeArray[6].y && x < frame.size.width / 2 {
                 if y > frame.size.height / 2 {
-                    x = x - size.width - space
-                    y = y - size.height / 3
+                    x = x - size.width / 2
+                    y = y - size.height / 5 * 3  ///555
                 } else {
                     x = x - size.width - space
                     y = y - size.height / 3 * 2
                 }
-            } else if x > nightNodeArray[6].x && x < nightNodeArray[7].x &&
-                y > nightNodeArray[6].y && y < nightNodeArray[7].y {
-                x = x - size.width / 2
-                y = y + space
-            } else if x >= nightNodeArray[7].x && x <= nightNodeArray[0].x && y > frame.size.height / 2 {
-                x = x - size.width / 2
-                y = y + space
             } else if x > nightNodeArray[0].x && x < nightNodeArray[1].x &&
                 y > nightNodeArray[1].y && y < nightNodeArray[0].y {
-                x = x - size.width / 5 * 2
-                y = y + space
+                x = x - size.width / 5 * 3
+                y = y - size.height / 5 * 3 ///111
             } else if y >= nightNodeArray[2].y && y <= nightNodeArray[1].y && x > frame.size.width / 2 {
-                x = x + space
-                y = y - size.width / 3
-            } else if x > nightNodeArray[3].x && x < nightNodeArray[2].x &&
-                y > nightNodeArray[3].y && y < nightNodeArray[2].y {
-                x = x + space
-                y = y - size.height
+                x = x - size.width / 5 * 3 ///222
+                y = y - size.height / 5 * 3
+                
+            } else {
+                ///666
+                x = x - size.width / 2
+                y = y - size.height * 5 / 4
             }
             
             textLayer.frame = CGRect(x: x, y: y, width: size.width, height: size.height)
@@ -372,6 +366,13 @@ extension RadarView {
         self.dotColor = color
     }
     
+    func setDotColorTwo(colorTwo: UIColor) {
+        if colorTwo == nil {
+            return
+        }
+        self.dotColorTwo = colorTwo
+    }
+    
     /// 设置端点的实心点半径
     ///
     /// - Parameter radius: 半径
@@ -382,6 +383,12 @@ extension RadarView {
         self.dotRadius = radius
     }
     
+    func setDotRadiusTwo(radiusTwo: CGFloat) {
+        if radius == nil {
+            return
+        }
+        self.dotRadiusTwo = radiusTwo
+    }
     /// 设置绘制着色部分的颜色
     ///
     /// - Parameter color: 颜色
