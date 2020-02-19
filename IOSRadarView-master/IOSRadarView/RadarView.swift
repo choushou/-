@@ -10,6 +10,12 @@ import UIKit
 
 class RadarView: UIView {
     
+    var pathTwo: CGMutablePath!
+    
+    var textLayerTwo: CATextLayer!
+    
+    var pointArray = [CGPoint]()
+    
     //数据
     private var data: [RadarModel]!
     //数据2
@@ -48,16 +54,16 @@ class RadarView: UIView {
     //视图宽度、高度
     private var width: CGFloat!
     //中心点
-    private var centerX: CGFloat!
-    private var centerY: CGFloat!
+     var centerX: CGFloat!
+     var centerY: CGFloat!
     //网状半径
-    private var radius: CGFloat!
+    var radius: CGFloat!
     
     //八边形的顶点坐标
     private var nightNodeArray: [CGPoint]!
     //间隙，微调
     private var space: CGFloat = 5
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initData(frame: frame)
@@ -69,8 +75,8 @@ class RadarView: UIView {
     
 }
 
-//MARK:- private methods
-private extension RadarView {
+//MARK:- methods
+ extension RadarView {
     
     /// 初始化数据
     ///
@@ -112,6 +118,9 @@ private extension RadarView {
         //        }
         //绘制的Path路径
         let path = CGMutablePath()
+        pathTwo = CGMutablePath()
+        textLayerTwo = CATextLayer()
+        
         //网状半径之间的间距
         let radiuSpace: CGFloat = radius / CGFloat((side - 1))
         //角度
@@ -127,7 +136,9 @@ private extension RadarView {
                 let currentPoint = CGPoint(x: x, y: y)
                 array.append(currentPoint)
                 path.addLines(between: [currentPoint, centerPoint])
+                pathTwo.addLines(between: [currentPoint, centerPoint])
             }
+            
             array.append(array[0])
             path.addLines(between: array)
         }
@@ -215,12 +226,16 @@ private extension RadarView {
             
             dotsShapeLayer.addSublayer(dotLayer)
         }
+    
         for item in arrayTwo {
                let dotLayer = CATextLayer()
                dotLayer.cornerRadius = dotRadiusTwo
                dotLayer.frame = CGRect(x: item.x - dotRadiusTwo, y: item.y - dotRadiusTwo, width: dotRadiusTwo * 2, height: dotRadiusTwo * 2)
                dotLayer.backgroundColor = dotColorTwo.cgColor
-               
+            textLayerTwo = dotLayer
+            //print(dotLayer.position)
+            pointArray.append(dotLayer.position)
+            
                dotsShapeLayer.addSublayer(dotLayer)
            }
         
