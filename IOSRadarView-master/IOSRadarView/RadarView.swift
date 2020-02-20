@@ -9,39 +9,35 @@
 import UIKit
 
 class RadarView: UIView {
+    // 六個の頂点
+    // var pointArray = [CGPoint]()
     
-    var pathTwo: CGMutablePath!
-    
-    var textLayerTwo: CATextLayer!
-    
-    var pointArray = [CGPoint]()
-    
-    //数据
+    //1番目のデータ
     private var data: [RadarModel]!
-    //数据2
+    //2番目のデータ
     private var dataTwo: [RadarModel]!
     
-    //边数
+    //サイト数
     private var side: Int!
-    //线层
+    //layer
     private var shapeLayer: CAShapeLayer!
-    //区域层
+    //領域のlayer
     private var reginLayer: CAShapeLayer!
     
     private var reginLayerTwo: CAShapeLayer!
-    //文本层
+    //text layer
     private var textShapeLayer: CAShapeLayer!
-    //端点的实心点
+    //頂点の部分
     private var dotsShapeLayer: CAShapeLayer!
-    //文本字体
+    //font
     private var font: UIFont!
-    //线的颜色
+    //いとの色
     private var lineColor: UIColor!
-    //文本颜色
+    //text color
     private var titleTextColor: CGColor!
-    //线的宽度
+    //line width
     private var lineWidth: CGFloat!
-    //绘制区域的颜色
+    //area color
     private var drawAreaColor: UIColor!
     private var dotRadius: CGFloat!
     private var dotColor: UIColor!
@@ -51,19 +47,19 @@ class RadarView: UIView {
     private var dotColorTwo: UIColor!
     
     
-    //视图宽度、高度
+    //view width
     private var width: CGFloat!
-    //中心点
-     var centerX: CGFloat!
-     var centerY: CGFloat!
-    //网状半径
+    //center x y
+    var centerX: CGFloat!
+    var centerY: CGFloat!
+    //半径
     var radius: CGFloat!
     
-    //八边形的顶点坐标
+    //８サイトの頂点の座標
     private var nightNodeArray: [CGPoint]!
-    //间隙，微调
+    //隙間
     private var space: CGFloat = 5
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initData(frame: frame)
@@ -76,9 +72,9 @@ class RadarView: UIView {
 }
 
 //MARK:- methods
- extension RadarView {
+extension RadarView {
     
-    /// 初始化数据
+    /// init data
     ///
     /// - Parameter frame: frame
     func initData(frame: CGRect) {
@@ -97,7 +93,6 @@ class RadarView: UIView {
         for node in 0..<8 {
             let x: CGFloat = radius * sin(angle / 1 + angle * CGFloat(node)) + centerX
             let y: CGFloat = radius * cos(angle / 1 + angle * CGFloat(node)) + centerY
-//            print("\(node)  x: \(x), y: \(y)")
             nightNodeArray.append(CGPoint(x: x, y: y))
         }
         
@@ -111,17 +106,14 @@ class RadarView: UIView {
         dotColorTwo = drawAreaColorTwo
     }
     
-    /// 更新视图
+    /// view update
     func updateLayer() {
         //        if data.count == 0 {
         //            return
         //        }
-        //绘制的Path路径
+        //path
         let path = CGMutablePath()
-        pathTwo = CGMutablePath()
-        textLayerTwo = CATextLayer()
-        
-        //网状半径之间的间距
+        //サイトとサイト間の距離
         let radiuSpace: CGFloat = radius / CGFloat((side - 1))
         //角度
         let angle: CGFloat = CGFloat(Double.pi * 2 / Double(side))
@@ -136,7 +128,6 @@ class RadarView: UIView {
                 let currentPoint = CGPoint(x: x, y: y)
                 array.append(currentPoint)
                 path.addLines(between: [currentPoint, centerPoint])
-                pathTwo.addLines(between: [currentPoint, centerPoint])
             }
             
             array.append(array[0])
@@ -177,7 +168,7 @@ class RadarView: UIView {
             shapeLayer.path = path
         }
         
- 
+        
         
         if reginLayerTwo == nil {
             reginLayerTwo = CAShapeLayer()
@@ -195,20 +186,20 @@ class RadarView: UIView {
             reginLayerTwo.path = percentPathTwo
         }
         if reginLayer == nil {
-             reginLayer = CAShapeLayer()
-             reginLayer.fillColor = drawAreaColor.cgColor
-             reginLayer.backgroundColor = UIColor.clear.cgColor
-             reginLayer.path = percentPath
-             reginLayer.lineWidth = lineWidth
-             reginLayer.strokeColor = dotColor.cgColor
-             reginLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-             
-             layer.insertSublayer(reginLayer, above: shapeLayer)
-             
-             
-         } else {
-             reginLayer.path = percentPath
-         }
+            reginLayer = CAShapeLayer()
+            reginLayer.fillColor = drawAreaColor.cgColor
+            reginLayer.backgroundColor = UIColor.clear.cgColor
+            reginLayer.path = percentPath
+            reginLayer.lineWidth = lineWidth
+            reginLayer.strokeColor = dotColor.cgColor
+            reginLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+            
+            layer.insertSublayer(reginLayer, above: shapeLayer)
+            
+            
+        } else {
+            reginLayer.path = percentPath
+        }
         
         if dotsShapeLayer != nil {
             dotsShapeLayer.removeFromSuperlayer()
@@ -226,31 +217,28 @@ class RadarView: UIView {
             
             dotsShapeLayer.addSublayer(dotLayer)
         }
-    
+        
         for item in arrayTwo {
-               let dotLayer = CATextLayer()
-               dotLayer.cornerRadius = dotRadiusTwo
-               dotLayer.frame = CGRect(x: item.x - dotRadiusTwo, y: item.y - dotRadiusTwo, width: dotRadiusTwo * 2, height: dotRadiusTwo * 2)
-               dotLayer.backgroundColor = dotColorTwo.cgColor
-            textLayerTwo = dotLayer
-            //print(dotLayer.position)
-            pointArray.append(dotLayer.position)
-            
-               dotsShapeLayer.addSublayer(dotLayer)
-           }
+            let dotLayer = CATextLayer()
+            dotLayer.cornerRadius = dotRadiusTwo
+            dotLayer.frame = CGRect(x: item.x - dotRadiusTwo, y: item.y - dotRadiusTwo, width: dotRadiusTwo * 2, height: dotRadiusTwo * 2)
+            dotLayer.backgroundColor = dotColorTwo.cgColor
+            //pointArray.append(dotLayer.position)
+            dotsShapeLayer.addSublayer(dotLayer)
+        }
         
         if textShapeLayer != nil {
             textShapeLayer.removeFromSuperlayer()
         }
         
-        //TODO 优化
-//                if textShapeLayer == nil {
+        //TODO
+        //                if textShapeLayer == nil {
         textShapeLayer = CAShapeLayer()
         textShapeLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         layer.insertSublayer(textShapeLayer, above: reginLayer)
-//                } else {
-//        layer.insertSublayer(textShapeLayer, above: reginLayer)
-//                }
+        //                } else {
+        //        layer.insertSublayer(textShapeLayer, above: reginLayer)
+        //                }
         
         for node in 0..<side {
             let size = getViewHeight(content: data[node].title)
@@ -264,7 +252,7 @@ class RadarView: UIView {
             textLayer.backgroundColor = UIColor.clear.cgColor
             textLayer.string = data[node].title //"\(node)\(data[node].title)"
             
-            //优化字体与网状结构之间的距离和位置调整
+            //文字とサイト間の距離の調整
             if x >= nightNodeArray[4].x && x <= nightNodeArray[3].x && y < frame.size.height / 2 {
                 x = x - size.width / 2
                 y = y + size.height / 5 ///333
@@ -302,10 +290,10 @@ class RadarView: UIView {
         
     }
     
-    /// 获取文本的宽高
+    /// text height width
     ///
-    /// - Parameter content: 文本内容
-    /// - Returns: 文本的宽高
+    /// - Parameter content: 内容
+    /// - Returns: width height
     func getViewHeight(content: String) -> CGRect {
         let size = content.boundingRect(with: CGSize(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.height), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         return size
@@ -315,14 +303,14 @@ class RadarView: UIView {
 //MARK:- public methods
 extension RadarView {
     
-    /// 设置数据
+    /// data setting
     ///
-    /// - Parameter data: 数据列表
+    /// - Parameter data:
     func setData(data: [RadarModel]) {
         //        print("setData:\(data)")
         self.data = data
         self.side = self.data.count
-       // self.updateLayer()
+        // self.updateLayer()
     }
     
     func setDataTwo(dataTwo: [RadarModel]) {
@@ -331,9 +319,9 @@ extension RadarView {
         self.updateLayer()
     }
     
-    /// 设置字体颜色
+    /// set text color
     ///
-    /// - Parameter color: 颜色
+    /// - Parameter color: color
     func setTextColor(color: UIColor) {
         if color == nil {
             return
@@ -341,9 +329,9 @@ extension RadarView {
         self.titleTextColor = color.cgColor
     }
     
-    /// 设置文本字体
+    /// set font
     ///
-    /// - Parameter font: 字体
+    /// - Parameter font: font
     func setTextFont(font: UIFont) {
         if font == nil {
             return
@@ -351,9 +339,9 @@ extension RadarView {
         self.font = font
     }
     
-    /// 设置线的颜色
+    /// set line color
     ///
-    /// - Parameter font: 颜色
+    /// - Parameter font: color
     func setLineColor(color: UIColor) {
         if color == nil {
             return
@@ -361,9 +349,9 @@ extension RadarView {
         self.lineColor = color
     }
     
-    /// 设置线的宽度(粗细)
+    /// set line width
     ///
-    /// - Parameter width: 宽度
+    /// - Parameter width: width
     func setLineWidth(width: CGFloat) {
         if width == nil {
             return
@@ -371,9 +359,9 @@ extension RadarView {
         self.lineWidth = width
     }
     
-    /// 设置端点的实心点颜色
+    /// 頂点の色
     ///
-    /// - Parameter color: 颜色
+    /// - Parameter color: 色
     func setDotColor(color: UIColor) {
         if color == nil {
             return
@@ -388,7 +376,7 @@ extension RadarView {
         self.dotColorTwo = colorTwo
     }
     
-    /// 设置端点的实心点半径
+    /// 頂点の半径
     ///
     /// - Parameter radius: 半径
     func setDotRadius(radius: CGFloat) {
@@ -404,9 +392,9 @@ extension RadarView {
         }
         self.dotRadiusTwo = radiusTwo
     }
-    /// 设置绘制着色部分的颜色
+    /// area color
     ///
-    /// - Parameter color: 颜色
+    /// - Parameter color: color
     func setDrawAreaColor(color: UIColor) {
         if color == nil {
             return
@@ -414,17 +402,15 @@ extension RadarView {
         self.drawAreaColor = color
     }
     
-       func setDrawAreaColorTwo(color: UIColor) {
+    func setDrawAreaColorTwo(color: UIColor) {
         if color == nil {
             return
         }
         self.drawAreaColorTwo = color
     }
     
-    /// 手动加载一次
+    /// load
     func load() {
         self.updateLayer()
     }
-    
-    
 }

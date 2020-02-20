@@ -18,14 +18,31 @@ enum PointType {
     case winey
 }
 
+class WineKind: NSObject {
+    var body: Float = 0.0
+    var smoky: Float = 0.0
+    var woody: Float = 0.0
+    var floral: Float = 0.0
+    var fruity: Float = 0.0
+    var windy: Float = 0.0
+}
+
 class RadarViewController: UIViewController {
     
     var radarView: RadarView!
     var radarViewTwo: RadarView!
     var pointType: PointType!
+    var wineKind: WineKind = WineKind()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wineKind.body = 0.5
+        wineKind.smoky = 0.75
+        wineKind.woody = 0.25
+        wineKind.floral = 0.5
+        wineKind.fruity = 0.25
+        wineKind.windy = 0.75
         
         initSubviews()
     }
@@ -51,8 +68,9 @@ class RadarViewController: UIViewController {
                         print(distance / (radarView.radius / 5 * 4))
                         let scalePosition = distance / (radarView.radius / 5 * 4)
                         let percent = getPercentData(percent: scalePosition)
+                        wineKind.woody = Float(percent)
                         
-                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: 0.5)])
+                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                     }
                 }
                 
@@ -73,8 +91,9 @@ class RadarViewController: UIViewController {
                                  print(distance / (radarView.radius / 5 * 4))
                                  let scalePosition = distance / (radarView.radius / 5 * 4)
                                  let percent = getPercentData(percent: scalePosition)
-                                 
-                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: 0.5)])
+                                wineKind.smoky = Float(percent)
+                                
+                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                              }
                          }
                 
@@ -87,7 +106,9 @@ class RadarViewController: UIViewController {
                         let scalePosition = difHeight / (radarView.radius / 5 * 4)
                         let percent = getPercentData(percent: scalePosition)
                                                                   
-                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: 0.5)])
+                        wineKind.body = Float(percent)
+                        
+                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                     }
                 
             } else if (point.x - radarView.centerX > -3 && point.x - radarView.centerX < 3) && (point.y > radarView.centerY) {
@@ -99,8 +120,10 @@ class RadarViewController: UIViewController {
                 if difHeight > 0 && difHeight <= radarView.radius / 5 * 4 {
                              let scalePosition = difHeight / (radarView.radius / 5 * 4)
                              let percent = getPercentData(percent: scalePosition)
-                                                                       
-                    radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: percent)])
+                                                                   
+                    wineKind.floral = Float(percent)
+                    
+                    radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
                          }
                 
             } else if (point.x - radarView.centerX < -3) && (point.y > radarView.centerY) {
@@ -122,7 +145,8 @@ class RadarViewController: UIViewController {
                                             let scalePosition = distance / (radarView.radius / 5 * 4)
                                             let percent = getPercentData(percent: scalePosition)
                                             
-                                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: 0.5)])
+                                            wineKind.fruity = Float(percent)
+                                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent:CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                                         }
                                     }
                 
@@ -145,8 +169,8 @@ class RadarViewController: UIViewController {
                                  print(distance / (radarView.radius / 5 * 4))
                                  let scalePosition = distance / (radarView.radius / 5 * 4)
                                  let percent = getPercentData(percent: scalePosition)
-                                 
-                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: 0.5)])
+                                wineKind.windy = Float(percent)
+                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                              }
                          }
                 
@@ -219,7 +243,7 @@ private extension RadarViewController {
         
         radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
         
-        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: 0.25), RadarModel(title: "Smoky", percent: 0.75), RadarModel(title: "Body", percent: 0.5), RadarModel(title: "Winey", percent: 0.75), RadarModel(title: "Fruity", percent: 0.25), RadarModel(title: "Floral", percent: 0.5)])
+        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
         
         view.addSubview(radarView)
         
