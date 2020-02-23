@@ -12,6 +12,8 @@ class RadarView: UIView {
     // 六個の頂点
     // var pointArray = [CGPoint]()
     
+    //一番外側の頂点
+    var arraySixPoint = [CGPoint]()
     //1番目のデータ
     private var data: [RadarModel]!
     //2番目のデータ
@@ -120,23 +122,31 @@ extension RadarView {
         let centerPoint = CGPoint(x: centerX, y: centerY)
         
         for ring in 0..<side - 1 {
-            let currentRadius: CGFloat = CGFloat(ring) * radiuSpace
+            var currentRadius: CGFloat = CGFloat(ring) * radiuSpace
+//
+//            if (side == 4) {
+//                currentRadius =  0
+//            }
+           // let currentRadius: CGFloat = CGFloat(ring) * radiuSpace
             var array = [CGPoint]()
             for node in 0..<side {
+//                let x: CGFloat = (currentRadius * 0.5) * CGFloat(sin(angle + angle * CGFloat(node))) + centerX
                 let x: CGFloat = (currentRadius) * CGFloat(sin(angle + angle * CGFloat(node))) + centerX
                 let y: CGFloat = (currentRadius) * CGFloat(cos(angle + angle * CGFloat(node))) + centerY
                 let currentPoint = CGPoint(x: x, y: y)
                 array.append(currentPoint)
+                arraySixPoint = array
                 path.addLines(between: [currentPoint, centerPoint])
             }
             
             array.append(array[0])
-            path.addLines(between: array)
+           path.addLines(between: array)
         }
         
         let percentPath = CGMutablePath()
         var array = [CGPoint]()
         for node in 0..<side {
+           // let x: CGFloat = (radius - radiuSpace) * 0.5 * sin(angle + angle * CGFloat(node)) * (data[node].percent) + centerX
             let x: CGFloat = (radius - radiuSpace) * sin(angle + angle * CGFloat(node)) * (data[node].percent) + centerX
             let y: CGFloat = (radius - radiuSpace) * cos(angle + angle * CGFloat(node)) * (data[node].percent) + centerY
             array.append(CGPoint(x: x, y: y))
@@ -146,6 +156,7 @@ extension RadarView {
         let percentPathTwo = CGMutablePath()
         var arrayTwo = [CGPoint]()
         for node in 0..<side {
+            //let x: CGFloat = (radius - radiuSpace)  * 0.5 * sin(angle  + angle * CGFloat(node)) * dataTwo[node].percent + centerX
             let x: CGFloat = (radius - radiuSpace) * sin(angle  + angle * CGFloat(node)) * dataTwo[node].percent + centerX
             let y: CGFloat = (radius - radiuSpace) * cos(angle + angle * CGFloat(node)) * dataTwo[node].percent + centerY
             arrayTwo.append(CGPoint(x: x, y: y))

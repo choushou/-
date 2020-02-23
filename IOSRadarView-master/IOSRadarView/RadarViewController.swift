@@ -53,176 +53,344 @@ class RadarViewController: UIViewController {
             
             let clickWidth = 6
             let difWidth = point.x - radarView.centerX
-            //radarView.centerX,radarView.centerY为原点
-            if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) > 0) {
-                //Woody
-                pointType = .woody
-                let difHeight = point.y - radarView.centerY
-                //两点之间的距离
-                let p1 = (x:point.x,y:point.y)
-                let p2 = (x:radarView.centerX,y:radarView.centerY)
-                let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
-                    if (radarView.radius / 5 * 4 >= distance) {
-                        print("click dian zhong")
-                        
-                        //计算所在的比例位置
-                        print(distance / (radarView.radius / 5 * 4))
-                        let scalePosition = distance / (radarView.radius / 5 * 4)
-                        let percent = getPercentData(percent: scalePosition)
-                        wineKind.woody = Float(percent)
-                        
-                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                        
-                        var soundID:SystemSoundID = 1157
-                        AudioServicesPlayAlertSound(soundID)
-                    }
-                }
-                
+            let difHeight = point.y - radarView.centerY
             
+            for pointSix: CGPoint in radarView.arraySixPoint {
                 
-            } else if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) < 0) {
-                //Smoky
-                pointType = .smoky
+                let pointSixWidthHeight = (pointSix.x - radarView.centerX) / (pointSix.y - radarView.centerY)
+                let pointWidthHeight = (point.x - radarView.centerX) / (point.y - radarView.centerY)
                 
-                let difHeight = radarView.centerY - point.y
-                         //两点之间的距离
-                         let p1 = (x:point.x,y:point.y)
-                         let p2 = (x:radarView.centerX,y:radarView.centerY)
-                         let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                         if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
-                             if (radarView.radius / 5 * 4 >= distance) {
-                                 print("click dian zhong")
-                                 
-                                 //计算所在的比例位置
-                                 print(distance / (radarView.radius / 5 * 4))
-                                 let scalePosition = distance / (radarView.radius / 5 * 4)
-                                 let percent = getPercentData(percent: scalePosition)
-                                wineKind.smoky = Float(percent)
-                                
-                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                                var soundID:SystemSoundID = 1157
-                                AudioServicesPlayAlertSound(soundID)
-                             }
-                         }
-            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y < radarView.centerY) {
-                //Body
-                pointType = .body
-                    //两点之间的距离
-                    let difHeight = radarView.centerY - point.y
-                    if difHeight > 0 && difHeight <= radarView.radius / 5 * 4 {
-                        let scalePosition = difHeight / (radarView.radius / 5 * 4)
-                        let percent = getPercentData(percent: scalePosition)
-                                                                  
-                        wineKind.body = Float(percent)
+                //タップする範囲は糸のところであるかどうかを判断する
+                if (pointSixWidthHeight - pointWidthHeight > -0.2) && (pointSixWidthHeight - pointWidthHeight < 0.2)  {
+                    //print("535353535353")
+                    
+                    //Woody
+                    if (Int(difWidth) > clickWidth) && (difHeight > 0) {
+                        //两点之间的距离
+                        let p1 = (x:point.x,y:point.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
                         
-                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                        var soundID:SystemSoundID = 1157
-                         AudioServicesPlayAlertSound(soundID)
-                    }
-                
-           
-                
-                
-            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y > radarView.centerY) {
-                //Floral
-                pointType = .floral
-                
-                //两点之间的距离
-                let difHeight = point.y - radarView.centerY
-                if difHeight > 0 && difHeight <= radarView.radius / 5 * 4 {
-                             let scalePosition = difHeight / (radarView.radius / 5 * 4)
-                             let percent = getPercentData(percent: scalePosition)
-                                                                   
-                    wineKind.floral = Float(percent)
-                    
-                    radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
-                    
+                        if (distanceAll >= distance) {
+                            print("click dian zhong")
+                            
+                            //计算所在的比例位置
+                            print(distance / (distanceAll))
+                            let scalePosition = distance / (distanceAll)
+                            let percent = getPercentData(percent: scalePosition)
+                            wineKind.woody = Float(percent)
+                            
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+                            
                             var soundID:SystemSoundID = 1157
-                             AudioServicesPlayAlertSound(soundID)
-                         }
-            } else if (Int(difWidth) < -clickWidth) && (point.y > radarView.centerY) {
-                //Fruity
-                pointType = .fruity
-                
-                
-                let difHeight = point.y - radarView.centerY
-                                    //两点之间的距离
-                                    let p1 = (x:point.x,y:point.y)
-                                    let p2 = (x:radarView.centerX,y:radarView.centerY)
-                                    let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
-                                        if (radarView.radius / 5 * 4 >= distance) {
-                                            print("click dian zhong")
-                                            
-                                            //计算所在的比例位置
-                                            print(distance / (radarView.radius / 5 * 4))
-                                            let scalePosition = distance / (radarView.radius / 5 * 4)
-                                            let percent = getPercentData(percent: scalePosition)
-                                            
-                                            wineKind.fruity = Float(percent)
-                                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent:CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                                            
-                                            var soundID:SystemSoundID = 1157
-                                            AudioServicesPlayAlertSound(soundID)
-                                        }
-                                    }
-                
-                
-    
-                
-            } else if (Int(difWidth) < -clickWidth) && (point.y < radarView.centerY) {
-                //Winey
-                pointType = .winey
-                
-                
-                let difHeight = radarView.centerY - point.y
-                         //两点之间的距离
-                         let p1 = (x:point.x,y:point.y)
-                         let p2 = (x:radarView.centerX,y:radarView.centerY)
-                         let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
-                             if (radarView.radius / 5 * 4 >= distance) {
-                                 print("click dian zhong")
-                                 
-                                 //计算所在的比例位置
-                                 print(distance / (radarView.radius / 5 * 4))
-                                 let scalePosition = distance / (radarView.radius / 5 * 4)
-                                 let percent = getPercentData(percent: scalePosition)
-                                wineKind.windy = Float(percent)
-                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                                var soundID:SystemSoundID = 1157
-                                AudioServicesPlayAlertSound(soundID)
-                             }
-                         }
-                
-         
-                
-                
-            } else {
-                pointType = .none
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                        //    }
+                        
+                    } else if (Int(difWidth) > clickWidth) && (difHeight < 0) {
+                        //Smoky
+                        
+                        //两点之间的距离
+                        let p1 = (x:point.x,y:point.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+                        //  if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
+                        
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
+                        
+                        if (distanceAll >= distance) {
+                            print("click dian zhong")
+                            
+                            //计算所在的比例位置
+                            print(distance / distanceAll)
+                            let scalePosition = distance / distanceAll
+                            let percent = getPercentData(percent: scalePosition)
+                            wineKind.smoky = Float(percent)
+                            
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+                            var soundID:SystemSoundID = 1157
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                   
+                    } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y < radarView.centerY){
+                       
+                        //Body
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
+                        //两点之间的距离
+                        let difHeight = radarView.centerY - point.y
+                        if difHeight > 0 && difHeight <= distanceAll {
+                            let scalePosition = difHeight / distanceAll
+                            let percent = getPercentData(percent: scalePosition)
+                            
+                            wineKind.body = Float(percent)
+                            
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+                            var soundID:SystemSoundID = 1157
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                        
+                    } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y > radarView.centerY) {
+                        
+                        //Floral
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
+                        //两点之间的距离
+                        let difHeight = point.y - radarView.centerY
+                        if difHeight > 0 && difHeight <= distanceAll {
+                            let scalePosition = difHeight / distanceAll
+                            let percent = getPercentData(percent: scalePosition)
+                            
+                            wineKind.floral = Float(percent)
+                            
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
+                            
+                            var soundID:SystemSoundID = 1157
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                        
+                    } else if (Int(difWidth) < -clickWidth) && (point.y > radarView.centerY) {
+                       
+                        //Fruity
+                        
+                        //两点之间的距离
+                        let p1 = (x:point.x,y:point.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+                       
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
+                        
+                        if (distanceAll >= distance) {
+                            print("click dian zhong")
+                            
+                            //计算所在的比例位置
+                            print(distance / distanceAll)
+                            let scalePosition = distance / distanceAll
+                            let percent = getPercentData(percent: scalePosition)
+                            
+                            wineKind.fruity = Float(percent)
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent:CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+                            
+                            var soundID:SystemSoundID = 1157
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                     
+                    } else if (Int(difWidth) < -clickWidth) && (point.y < radarView.centerY) {
+                       
+                        //Winey
+                        
+                        //两点之间的距离
+                        let p1 = (x:point.x,y:point.y)
+                        let p2 = (x:radarView.centerX,y:radarView.centerY)
+                        let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+                       
+                        //顶点到中心的距离
+                        let p3 = (x:pointSix.x,y:pointSix.y)
+                        let distanceAll = sqrt(pow((p3.x - (p2.x!)), 2) + pow((p3.y - (p2.y!)), 2))
+                        
+                        if (distanceAll >= distance) {
+                            print("click dian zhong")
+                            
+                            //计算所在的比例位置
+                            print(distance / (distanceAll))
+                            let scalePosition = distance / distanceAll
+                            let percent = getPercentData(percent: scalePosition)
+                            wineKind.windy = Float(percent)
+                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+                            var soundID:SystemSoundID = 1157
+                            AudioServicesPlayAlertSound(soundID)
+                        }
+                      
+                        
+                    } else {
+                        //
+                    }
+                    
+                }
             }
+            
+            //            //radarView.centerX,radarView.centerY为原点
+            //            if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) > 0) {
+            //                //Woody
+            //                pointType = .woody
+            //                let difHeight = point.y - radarView.centerY
+            //                //两点之间的距离
+            //                let p1 = (x:point.x,y:point.y)
+            //                let p2 = (x:radarView.centerX,y:radarView.centerY)
+            //                let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+            //                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
+            //                    if (radarView.radius / 5 * 4 >= distance) {
+            //                        print("click dian zhong")
+            //
+            //                        //计算所在的比例位置
+            //                        print(distance / (radarView.radius / 5 * 4))
+            //                        let scalePosition = distance / (radarView.radius / 5 * 4)
+            //                        let percent = getPercentData(percent: scalePosition)
+            //                        wineKind.woody = Float(percent)
+            //
+            //                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+            //
+            //                        var soundID:SystemSoundID = 1157
+            //                        AudioServicesPlayAlertSound(soundID)
+            //                    }
+            //                }
+            //
+            //
+            //
+            //            } else if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) < 0) {
+            //                //Smoky
+            //                pointType = .smoky
+            //
+            //                let difHeight = radarView.centerY - point.y
+            //                         //两点之间的距离
+            //                         let p1 = (x:point.x,y:point.y)
+            //                         let p2 = (x:radarView.centerX,y:radarView.centerY)
+            //                         let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+            //                         if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
+            //                             if (radarView.radius / 5 * 4 >= distance) {
+            //                                 print("click dian zhong")
+            //
+            //                                 //计算所在的比例位置
+            //                                 print(distance / (radarView.radius / 5 * 4))
+            //                                 let scalePosition = distance / (radarView.radius / 5 * 4)
+            //                                 let percent = getPercentData(percent: scalePosition)
+            //                                wineKind.smoky = Float(percent)
+            //
+            //                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+            //                                var soundID:SystemSoundID = 1157
+            //                                AudioServicesPlayAlertSound(soundID)
+            //                             }
+            //                         }
+            //            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y < radarView.centerY) {
+            //                //Body
+            //                pointType = .body
+            //                    //两点之间的距离
+            //                    let difHeight = radarView.centerY - point.y
+            //                    if difHeight > 0 && difHeight <= radarView.radius / 5 * 4 {
+            //                        let scalePosition = difHeight / (radarView.radius / 5 * 4)
+            //                        let percent = getPercentData(percent: scalePosition)
+            //
+            //                        wineKind.body = Float(percent)
+            //
+            //                        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+            //                        var soundID:SystemSoundID = 1157
+            //                         AudioServicesPlayAlertSound(soundID)
+            //                    }
+            //
+            //
+            //
+            //
+            //            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y > radarView.centerY) {
+            //                //Floral
+            //                pointType = .floral
+            //
+            //                //两点之间的距离
+            //                let difHeight = point.y - radarView.centerY
+            //                if difHeight > 0 && difHeight <= radarView.radius / 5 * 4 {
+            //                             let scalePosition = difHeight / (radarView.radius / 5 * 4)
+            //                             let percent = getPercentData(percent: scalePosition)
+            //
+            //                    wineKind.floral = Float(percent)
+            //
+            //                    radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
+            //
+            //                            var soundID:SystemSoundID = 1157
+            //                             AudioServicesPlayAlertSound(soundID)
+            //                         }
+            //            } else if (Int(difWidth) < -clickWidth) && (point.y > radarView.centerY) {
+            //                //Fruity
+            //                pointType = .fruity
+            //
+            //
+            //                let difHeight = point.y - radarView.centerY
+            //                                    //两点之间的距离
+            //                                    let p1 = (x:point.x,y:point.y)
+            //                                    let p2 = (x:radarView.centerX,y:radarView.centerY)
+            //                                    let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+            //                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
+            //                                        if (radarView.radius / 5 * 4 >= distance) {
+            //                                            print("click dian zhong")
+            //
+            //                                            //计算所在的比例位置
+            //                                            print(distance / (radarView.radius / 5 * 4))
+            //                                            let scalePosition = distance / (radarView.radius / 5 * 4)
+            //                                            let percent = getPercentData(percent: scalePosition)
+            //
+            //                                            wineKind.fruity = Float(percent)
+            //                                            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent:CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+            //
+            //                                            var soundID:SystemSoundID = 1157
+            //                                            AudioServicesPlayAlertSound(soundID)
+            //                                        }
+            //                                    }
+            //
+            //
+            //
+            //
+            //            } else if (Int(difWidth) < -clickWidth) && (point.y < radarView.centerY) {
+            //                //Winey
+            //                pointType = .winey
+            //
+            //
+            //                let difHeight = radarView.centerY - point.y
+            //                         //两点之间的距离
+            //                         let p1 = (x:point.x,y:point.y)
+            //                         let p2 = (x:radarView.centerX,y:radarView.centerY)
+            //                         let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
+            //                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
+            //                             if (radarView.radius / 5 * 4 >= distance) {
+            //                                 print("click dian zhong")
+            //
+            //                                 //计算所在的比例位置
+            //                                 print(distance / (radarView.radius / 5 * 4))
+            //                                 let scalePosition = distance / (radarView.radius / 5 * 4)
+            //                                 let percent = getPercentData(percent: scalePosition)
+            //                                wineKind.windy = Float(percent)
+            //                                radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+            //                                var soundID:SystemSoundID = 1157
+            //                                AudioServicesPlayAlertSound(soundID)
+            //                             }
+            //                         }
+            //
+            //
+            //
+            //
+            //            } else {
+            //                pointType = .none
+            //            }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // var point = (touch as AnyObject).location(in: self.radarView)
         for touch:AnyObject in touches{
             var point = (touch as AnyObject).location(in: self.radarView)
-//            頂点をタップ時に反応する
-//            for item in radarView.pointArray {
-//                //print(item)
-//                //print(item.x)
-//
-//                if ((item.x + 3) > point.x) && (point.x > (item.x - 3)) && (point.y > (item.y - 3)) && ((item.y + 3) > point.y) {
-//                    //print("hidhfidhfudhfjdhfjd")
-//
-//                }
-//            }
+            //            頂点をタップ時に反応する
+            //            for item in radarView.pointArray {
+            //                //print(item)
+            //                //print(item.x)
+            //
+            //                if ((item.x + 3) > point.x) && (point.x > (item.x - 3)) && (point.y > (item.y - 3)) && ((item.y + 3) > point.y) {
+            //                    //print("hidhfidhfudhfjdhfjd")
+            //
+            //                }
+            //            }
         }
     }
     
