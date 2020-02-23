@@ -105,9 +105,6 @@ class RadarViewController: UIViewController {
                                 AudioServicesPlayAlertSound(soundID)
                              }
                          }
-                
-               
-                
             } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y < radarView.centerY) {
                 //Body
                 pointType = .body
@@ -140,11 +137,10 @@ class RadarViewController: UIViewController {
                     wineKind.floral = Float(percent)
                     
                     radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
+                    
+                            var soundID:SystemSoundID = 1157
+                             AudioServicesPlayAlertSound(soundID)
                          }
-                
-                var soundID:SystemSoundID = 1157
-                 AudioServicesPlayAlertSound(soundID)
-                
             } else if (Int(difWidth) < -clickWidth) && (point.y > radarView.centerY) {
                 //Fruity
                 pointType = .fruity
