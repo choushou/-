@@ -51,8 +51,10 @@ class RadarViewController: UIViewController {
         for touch: AnyObject in touches{
             let point = (touch as AnyObject).location(in: self.radarView)
             
+            let clickWidth = 6
+            let difWidth = point.x - radarView.centerX
             //radarView.centerX,radarView.centerY为原点
-            if ((point.x - radarView.centerX) > 3) && ((point.y - radarView.centerY) > 0) {
+            if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) > 0) {
                 //Woody
                 pointType = .woody
                 let difHeight = point.y - radarView.centerY
@@ -60,7 +62,7 @@ class RadarViewController: UIViewController {
                 let p1 = (x:point.x,y:point.y)
                 let p2 = (x:radarView.centerX,y:radarView.centerY)
                 let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
+                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
                     if (radarView.radius / 5 * 4 >= distance) {
                         print("click dian zhong")
                         
@@ -79,7 +81,7 @@ class RadarViewController: UIViewController {
                 
             
                 
-            } else if ((point.x - radarView.centerX) > 3) && ((point.y - radarView.centerY) < 0) {
+            } else if (Int(difWidth) > clickWidth) && ((point.y - radarView.centerY) < 0) {
                 //Smoky
                 pointType = .smoky
                 
@@ -106,7 +108,7 @@ class RadarViewController: UIViewController {
                 
                
                 
-            } else if (point.x - radarView.centerX > -3 && point.x - radarView.centerX < 3) && (point.y < radarView.centerY) {
+            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y < radarView.centerY) {
                 //Body
                 pointType = .body
                     //两点之间的距离
@@ -125,7 +127,7 @@ class RadarViewController: UIViewController {
            
                 
                 
-            } else if (point.x - radarView.centerX > -3 && point.x - radarView.centerX < 3) && (point.y > radarView.centerY) {
+            } else if (Int(difWidth) > -clickWidth && Int(difWidth) < clickWidth) && (point.y > radarView.centerY) {
                 //Floral
                 pointType = .floral
                 
@@ -143,7 +145,7 @@ class RadarViewController: UIViewController {
                 var soundID:SystemSoundID = 1157
                  AudioServicesPlayAlertSound(soundID)
                 
-            } else if (point.x - radarView.centerX < -3) && (point.y > radarView.centerY) {
+            } else if (Int(difWidth) < -clickWidth) && (point.y > radarView.centerY) {
                 //Fruity
                 pointType = .fruity
                 
@@ -153,7 +155,7 @@ class RadarViewController: UIViewController {
                                     let p1 = (x:point.x,y:point.y)
                                     let p2 = (x:radarView.centerX,y:radarView.centerY)
                                     let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                                    if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
+                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
                                         if (radarView.radius / 5 * 4 >= distance) {
                                             print("click dian zhong")
                                             
@@ -173,7 +175,7 @@ class RadarViewController: UIViewController {
                 
     
                 
-            } else if (point.x - radarView.centerX < -3) && (point.y < radarView.centerY) {
+            } else if (Int(difWidth) < -clickWidth) && (point.y < radarView.centerY) {
                 //Winey
                 pointType = .winey
                 
@@ -183,7 +185,7 @@ class RadarViewController: UIViewController {
                          let p1 = (x:point.x,y:point.y)
                          let p2 = (x:radarView.centerX,y:radarView.centerY)
                          let distance = sqrt(pow((p1.x - (p2.x!)), 2) + pow((p1.y - (p2.y!)), 2))
-                         if ((distance / 2 - difHeight) > -3) && ((distance / 2 - difHeight) < 3) {
+                if (Int((distance / 2 - difHeight)) > -clickWidth) && (Int((distance / 2 - difHeight)) < clickWidth) {
                              if (radarView.radius / 5 * 4 >= distance) {
                                  print("click dian zhong")
                                  
