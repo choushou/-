@@ -33,6 +33,8 @@ class RadarViewController: UIViewController {
     var radarViewTwo: RadarView!
     var pointType: PointType!
     var wineKind: WineKind = WineKind()
+    var beginPoint = CGPoint()
+    var endPoint = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,7 @@ class RadarViewController: UIViewController {
         initSubviews()
     }
     
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{
             let point = (touch as AnyObject).location(in: self.radarView)
@@ -55,6 +58,56 @@ class RadarViewController: UIViewController {
             let difWidth = point.x - radarView.centerX
             let difHeight = point.y - radarView.centerY
             
+            radarView.setRadiusScaleWidth(radiusScaleWidth: 1)
+            radarView.setRadiusScaleHeight(radiusScaleHeight: 1)
+            
+//            endPoint = CGPoint()
+//
+//
+//            if (self.radarView.layer.contains(point)) {
+//                       print("9999999999999")
+//                } else {
+//                   //タプする範囲はradarViewの以外のところ
+//                   print("888888888888")
+//                   endPoint = point
+//                }
+//
+//            let beginPoingTrue: Bool
+//            let pointZero = CGPoint(x: 0.0, y: 0.0)
+//            beginPoingTrue = beginPoint.equalTo(pointZero)
+//
+//            if (beginPoint != nil && endPoint != nil && !beginPoingTrue && !endPoint.equalTo(pointZero)) {
+//                print(beginPoint)
+//                print(endPoint)
+//
+//                var scaleWidth:CGFloat
+//                scaleWidth = abs((endPoint.x - beginPoint.x) / 300)
+//                var scaleHeight: CGFloat
+//                scaleHeight = abs((endPoint.y - beginPoint.y) / 300)
+//
+//
+//                if scaleWidth > 1 {
+//                    scaleWidth = 1
+//                }
+//                if scaleHeight > 1 {
+//                    scaleHeight = 1
+//                }
+//              scaleWidth = 1 - scaleWidth
+//              scaleHeight = 1 - scaleHeight
+//
+//
+//                                if scaleWidth < 0.5 {
+//                                    scaleWidth = 0.5
+//                                }
+//                                if scaleHeight < 0.5 {
+//                                    scaleHeight = 0.5
+//                                }
+//
+//                radarView.setRadiusScaleWidth(radiusScaleWidth: scaleWidth)
+//                radarView.setRadiusScaleHeight(radiusScaleHeight: scaleHeight)
+//
+//            }
+//
             for pointSix: CGPoint in radarView.arraySixPoint {
                 
                 let pointSixWidthHeight = (pointSix.x - radarView.centerX) / (pointSix.y - radarView.centerY)
@@ -375,22 +428,104 @@ class RadarViewController: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+          for touch:AnyObject in touches{
+            var point = (touch as AnyObject).location(in: self.radarView)
+        
+       
+            
+        
+        endPoint = CGPoint()
+              
+              
+              if (self.radarView.layer.contains(point)) {
+                         print("9999999999999")
+                  } else {
+                     //タプする範囲はradarViewの以外のところ
+                     print("888888888888")
+                     endPoint = point
+                  }
+              
+              let beginPoingTrue: Bool
+              let pointZero = CGPoint(x: 0.0, y: 0.0)
+              beginPoingTrue = beginPoint.equalTo(pointZero)
+              
+              if (beginPoint != nil && endPoint != nil && !beginPoingTrue && !endPoint.equalTo(pointZero)) {
+                  print(beginPoint)
+                  print(endPoint)
+                  
+                  var scaleWidth:CGFloat
+                  scaleWidth = abs((endPoint.x - beginPoint.x) / 300)
+                  var scaleHeight: CGFloat
+                  scaleHeight = abs((endPoint.y - beginPoint.y) / 300)
+                  
+
+                  if scaleWidth > 1 {
+                      scaleWidth = 1
+                  }
+                  if scaleHeight > 1 {
+                      scaleHeight = 1
+                  }
+                scaleWidth = 1 - scaleWidth
+                scaleHeight = 1 - scaleHeight
+              
+                  
+                                  if scaleWidth < 0.5 {
+                                      scaleWidth = 0.5
+                                  }
+                                  if scaleHeight < 0.5 {
+                                      scaleHeight = 0.5
+                                  }
+                  
+                  radarView.setRadiusScaleWidth(radiusScaleWidth: scaleWidth)
+                  radarView.setRadiusScaleHeight(radiusScaleHeight: scaleHeight)
+                  
+              }
+        }
     }
     
+    
+
+    //touch的响应方法
+//    -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//    {
+//        CGPoint point = [[touches anyObject] locationInView:self.view];
+//        //convert point to the white layer's coordinates拿到在self.view上但同时在whiteView上的点，下面的同这里一样，不一一解释了
+//        point = [whiteView.layer convertPoint:point fromLayer:self.view.layer]; //get layer using containsPoint:
+//        if ([whiteView.layer containsPoint:point]) {
+//            //convert point to blueLayer’s coordinates
+//            point = [blueLayer convertPoint:point fromLayer:whiteView.layer];
+//            if ([blueLayer containsPoint:point])
+//            {
+//                [[[UIAlertView alloc] initWithTitle:@"Inside Blue Layer"
+//                                            message:nil
+//                                           delegate:nil
+//                                  cancelButtonTitle:@"OK"
+//                                  otherButtonTitles:nil] show];
+//            }
+//            else
+//            {
+//                [[[UIAlertView alloc] initWithTitle:@"Inside White Layer"
+//                                            message:nil
+//                                           delegate:nil
+//                                  cancelButtonTitle:@"OK"
+//                                  otherButtonTitles: nil]show];
+//            }
+//
+//        }
+     
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // var point = (touch as AnyObject).location(in: self.radarView)
         for touch:AnyObject in touches{
-            var point = (touch as AnyObject).location(in: self.radarView)
-            //            頂点をタップ時に反応する
-            //            for item in radarView.pointArray {
-            //                //print(item)
-            //                //print(item.x)
-            //
-            //                if ((item.x + 3) > point.x) && (point.x > (item.x - 3)) && (point.y > (item.y - 3)) && ((item.y + 3) > point.y) {
-            //                    //print("hidhfidhfudhfjdhfjd")
-            //
-            //                }
-            //            }
+        var point = (touch as AnyObject).location(in: self.radarView)
+    
+        beginPoint = CGPoint()
+         if (self.radarView.layer.contains(point)) {
+                print("666666666666666666")
+         } else {
+            //タプする範囲はradarViewの以外のところ
+            print("7777777777777")
+            beginPoint = point
+            }
         }
     }
     

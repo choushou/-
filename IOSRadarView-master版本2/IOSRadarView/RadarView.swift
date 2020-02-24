@@ -48,7 +48,8 @@ class RadarView: UIView {
     private var dotRadiusTwo: CGFloat!
     private var dotColorTwo: UIColor!
     
-    
+    private var radiusScaleWidth: CGFloat!
+    private var radiusScaleHeight: CGFloat!
     //view width
     private var width: CGFloat!
     //center x y
@@ -88,6 +89,8 @@ extension RadarView {
         lineWidth = 1
         dotRadius = 5
         dotRadiusTwo = 5
+        radiusScaleWidth = 1
+        radiusScaleHeight = 1
         nightNodeArray = [CGPoint]()
         
         let angle: CGFloat = CGFloat(Double.pi * 2 / Double(8))
@@ -131,8 +134,8 @@ extension RadarView {
             var array = [CGPoint]()
             for node in 0..<side {
 //                let x: CGFloat = (currentRadius * 0.5) * CGFloat(sin(angle + angle * CGFloat(node))) + centerX
-                let x: CGFloat = (currentRadius) * CGFloat(sin(angle + angle * CGFloat(node))) + centerX
-                let y: CGFloat = (currentRadius) * CGFloat(cos(angle + angle * CGFloat(node))) + centerY
+                let x: CGFloat = (currentRadius * radiusScaleWidth) * CGFloat(sin(angle + angle * CGFloat(node))) + centerX
+                let y: CGFloat = (currentRadius * radiusScaleHeight) * CGFloat(cos(angle + angle * CGFloat(node))) + centerY
                 let currentPoint = CGPoint(x: x, y: y)
                 array.append(currentPoint)
                 arraySixPoint = array
@@ -147,8 +150,8 @@ extension RadarView {
         var array = [CGPoint]()
         for node in 0..<side {
            // let x: CGFloat = (radius - radiuSpace) * 0.5 * sin(angle + angle * CGFloat(node)) * (data[node].percent) + centerX
-            let x: CGFloat = (radius - radiuSpace) * sin(angle + angle * CGFloat(node)) * (data[node].percent) + centerX
-            let y: CGFloat = (radius - radiuSpace) * cos(angle + angle * CGFloat(node)) * (data[node].percent) + centerY
+            let x: CGFloat = (radius - radiuSpace) * radiusScaleWidth * sin(angle + angle * CGFloat(node)) * (data[node].percent) + centerX
+            let y: CGFloat = (radius - radiuSpace) * radiusScaleHeight * cos(angle + angle * CGFloat(node)) * (data[node].percent) + centerY
             array.append(CGPoint(x: x, y: y))
         }
         percentPath.addLines(between: array)
@@ -157,8 +160,8 @@ extension RadarView {
         var arrayTwo = [CGPoint]()
         for node in 0..<side {
             //let x: CGFloat = (radius - radiuSpace)  * 0.5 * sin(angle  + angle * CGFloat(node)) * dataTwo[node].percent + centerX
-            let x: CGFloat = (radius - radiuSpace) * sin(angle  + angle * CGFloat(node)) * dataTwo[node].percent + centerX
-            let y: CGFloat = (radius - radiuSpace) * cos(angle + angle * CGFloat(node)) * dataTwo[node].percent + centerY
+            let x: CGFloat = (radius - radiuSpace) * radiusScaleWidth * sin(angle  + angle * CGFloat(node)) * dataTwo[node].percent + centerX
+            let y: CGFloat = (radius - radiuSpace) * radiusScaleHeight * cos(angle + angle * CGFloat(node)) * dataTwo[node].percent + centerY
             arrayTwo.append(CGPoint(x: x, y: y))
         }
         percentPathTwo.addLines(between: arrayTwo)
@@ -403,6 +406,25 @@ extension RadarView {
         }
         self.dotRadiusTwo = radiusTwo
     }
+    
+    func setRadiusScaleWidth(radiusScaleWidth: CGFloat) {
+        if radiusScaleWidth == nil {
+            return
+        }
+        self.radiusScaleWidth = radiusScaleWidth
+        
+        self.updateLayer()
+    }
+    
+    func setRadiusScaleHeight(radiusScaleHeight: CGFloat) {
+        if radiusScaleHeight == nil {
+            return
+        }
+        self.radiusScaleHeight = radiusScaleHeight
+        
+        self.updateLayer()
+    }
+    
     /// area color
     ///
     /// - Parameter color: color
