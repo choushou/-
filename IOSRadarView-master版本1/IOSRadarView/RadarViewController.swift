@@ -51,7 +51,7 @@ class RadarViewController: UIViewController {
         for touch: AnyObject in touches{
             let point = (touch as AnyObject).location(in: self.radarView)
             
-            let clickWidth = 6
+            let clickWidth = 20
             let difWidth = point.x - radarView.centerX
             let difHeight = point.y - radarView.centerY
             
@@ -61,7 +61,7 @@ class RadarViewController: UIViewController {
                 let pointWidthHeight = (point.x - radarView.centerX) / (point.y - radarView.centerY)
                 
                 //タップする範囲は糸のところであるかどうかを判断する
-                if (pointSixWidthHeight - pointWidthHeight > -0.2) && (pointSixWidthHeight - pointWidthHeight < 0.2)  {
+                if (pointSixWidthHeight - pointWidthHeight > -0.3) && (pointSixWidthHeight - pointWidthHeight < 0.3)  {
                     //print("535353535353")
                     
                     //Woody

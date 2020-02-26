@@ -83,7 +83,7 @@ extension RadarView {
         width = min(frame.size.width, frame.size.height)
         centerX = frame.size.width / 2
         centerY = frame.size.height / 2
-        radius = width / 2 * 0.8
+        radius = width / 2  * 1.2//* 0.8
         font = UIFont.systemFont(ofSize: 14)
         lineWidth = 1
         dotRadius = 5
