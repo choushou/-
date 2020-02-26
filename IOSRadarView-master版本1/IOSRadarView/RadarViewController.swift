@@ -48,6 +48,7 @@ class RadarViewController: UIViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
         for touch: AnyObject in touches{
             let point = (touch as AnyObject).location(in: self.radarView)
             
@@ -86,7 +87,7 @@ class RadarViewController: UIViewController {
                             
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: percent), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                             
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                         //    }
@@ -114,7 +115,7 @@ class RadarViewController: UIViewController {
                             wineKind.smoky = Float(percent)
                             
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: percent), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                    
@@ -134,7 +135,7 @@ class RadarViewController: UIViewController {
                             wineKind.body = Float(percent)
                             
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: percent), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                         
@@ -155,7 +156,7 @@ class RadarViewController: UIViewController {
                             
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: percent)])
                             
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                         
@@ -183,7 +184,7 @@ class RadarViewController: UIViewController {
                             wineKind.fruity = Float(percent)
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent:CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: percent), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
                             
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                      
@@ -209,7 +210,7 @@ class RadarViewController: UIViewController {
                             let percent = getPercentData(percent: scalePosition)
                             wineKind.windy = Float(percent)
                             radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: percent), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-                            var soundID:SystemSoundID = 1157
+                            var soundID:SystemSoundID = 1000
                             AudioServicesPlayAlertSound(soundID)
                         }
                       
