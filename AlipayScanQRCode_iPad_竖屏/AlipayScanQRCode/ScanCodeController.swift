@@ -150,9 +150,15 @@ extension ScanCodeController:AVCaptureMetadataOutputObjectsDelegate {
             let string: String = (object as AnyObject).stringValue
             
             print(string)
-            let vc = ViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = TestViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
+//            
             
+            let testVC:UIStoryboard = UIStoryboard(name: "TestViewController", bundle: nil)
+
+            let vc = testVC.instantiateViewController(withIdentifier: "testview") as! TestViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+     
 //                        if let url = URL(string: "https://www.google.co.jp/?client=safari") {
 //                        if UIApplication.shared.canOpenURL(url) {
 //                            _ = self.navigationController?.popViewController(animated: true)

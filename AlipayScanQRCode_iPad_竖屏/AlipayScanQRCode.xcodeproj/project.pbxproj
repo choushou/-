@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212FCF852406864C00380361 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212FCF842406864C00380361 /* TestViewController.swift */; };
+		212FCF892406866F00380361 /* TestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 212FCF882406866F00380361 /* TestViewController.storyboard */; };
 		9AD82F151E56E62300BA4401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD82F141E56E62300BA4401 /* AppDelegate.swift */; };
 		9AD82F171E56E62300BA4401 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD82F161E56E62300BA4401 /* ViewController.swift */; };
 		9AD82F1A1E56E62300BA4401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD82F181E56E62300BA4401 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212FCF842406864C00380361 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		212FCF882406866F00380361 /* TestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestViewController.storyboard; sourceTree = "<group>"; };
 		9AD82F111E56E62300BA4401 /* AlipayScanQRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlipayScanQRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD82F141E56E62300BA4401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD82F161E56E62300BA4401 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				9AD82F1B1E56E62300BA4401 /* Assets.xcassets */,
 				9AD82F1D1E56E62300BA4401 /* LaunchScreen.storyboard */,
 				9AD82F201E56E62300BA4401 /* Info.plist */,
+				212FCF842406864C00380361 /* TestViewController.swift */,
+				212FCF882406866F00380361 /* TestViewController.storyboard */,
 			);
 			path = AlipayScanQRCode;
 			sourceTree = "<group>";
@@ -154,6 +160,7 @@
 			files = (
 				9AD82F2E1E56EA3B00BA4401 /* sweep_bg_line@2x.png in Resources */,
 				9AD82F301E56EA3B00BA4401 /* sweep_kuangdownright@2x.png in Resources */,
+				212FCF892406866F00380361 /* TestViewController.storyboard in Resources */,
 				9AD82F311E56EA3B00BA4401 /* sweep_kuangupperleft@2x.png in Resources */,
 				9AD82F1F1E56E62300BA4401 /* LaunchScreen.storyboard in Resources */,
 				9AD82F321E56EA3B00BA4401 /* sweep_kuangupperright@2x.png in Resources */,
@@ -172,6 +179,7 @@
 			files = (
 				9AD82F171E56E62300BA4401 /* ViewController.swift in Sources */,
 				9AD82F151E56E62300BA4401 /* AppDelegate.swift in Sources */,
+				212FCF852406864C00380361 /* TestViewController.swift in Sources */,
 				9AD82F271E56E6A300BA4401 /* ScanCodeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +315,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NNK8CEKPVJ;
 				INFOPLIST_FILE = AlipayScanQRCode/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = duwei1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NNK8CEKPVJ;
 				INFOPLIST_FILE = AlipayScanQRCode/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = duwei1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
