@@ -8,8 +8,8 @@
 
 let kMargin = 185
 let kBorderW = 140
-let scanViewW = UIScreen.main.bounds.width - CGFloat(kMargin * 2)
-let scanViewH = UIScreen.main.bounds.width - CGFloat(kMargin * 2)
+let scanViewW = UIScreen.main.bounds.height - CGFloat(kMargin * 2)
+let scanViewH = UIScreen.main.bounds.height - CGFloat(kMargin * 2)
 
 import UIKit
 import AVFoundation
@@ -41,10 +41,12 @@ class ScanCodeController: UIViewController {
     /// 整体遮罩设置
     fileprivate func setupMaskView() {
         let maskView = UIView(frame: CGRect(x: -(view.bounds.height - view.bounds.width) / 2, y: 0, width: view.bounds.height, height: view.bounds.height))
-        
-        //let maskView = UIView(frame: CGRect(x:0,y:0,width: view.bounds.width,height: view.bounds.height))
-        maskView.layer.borderWidth = (view.bounds.height - scanViewW) / 2
+      
+        maskView.layer.borderWidth =  (view.bounds.height - scanViewW) / 2
     
+        //////66666666666
+        maskView.layer.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        
         maskView.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor
     
         view.addSubview(maskView)
@@ -52,8 +54,8 @@ class ScanCodeController: UIViewController {
     
     /// 扫描区域设置
     fileprivate func setupScanView() {
-        
-        scanView = UIView(frame: CGRect(x: CGFloat(kMargin), y: CGFloat((view.bounds.height - scanViewW) / 2), width: scanViewW, height: scanViewH))
+        //(view.frame.width - (scanViewW)) / 2
+        scanView = UIView(frame: CGRect(x: CGFloat(kMargin), y: CGFloat((view.bounds.height - scanViewW) / 2), width: (view.frame.width-CGFloat(kMargin * 2)), height: scanViewH))
         scanView?.backgroundColor = UIColor.clear
         scanView?.clipsToBounds = true
         view.addSubview(scanView!)
@@ -65,7 +67,9 @@ class ScanCodeController: UIViewController {
         topLeft.setImage(UIImage.init(named: "sweep_kuangupperleft.png"), for: .normal)
         scanView?.addSubview(topLeft)
         
-        let topRight = UIButton(frame: CGRect(x: scanViewW - widthOrHeight, y: 0, width: widthOrHeight, height: widthOrHeight))
+        let marginTwoX = CGFloat(kMargin * 2) + CGFloat(scanViewW)
+        
+        let topRight = UIButton(frame: CGRect(x: (view.frame.width - CGFloat(kMargin * 2)) - widthOrHeight, y: 0, width: widthOrHeight, height: widthOrHeight))
         topRight.setImage(UIImage.init(named: "sweep_kuangupperright.png"), for: .normal)
         scanView?.addSubview(topRight)
 
@@ -73,7 +77,7 @@ class ScanCodeController: UIViewController {
         bottomLeft.setImage(UIImage.init(named: "sweep_kuangdownleft.png"), for: .normal)
         scanView?.addSubview(bottomLeft)
         
-        let bottomRight = UIButton(frame: CGRect(x: scanViewH - widthOrHeight, y: scanViewH - widthOrHeight, width: widthOrHeight, height: widthOrHeight))
+        let bottomRight = UIButton(frame: CGRect(x: (view.frame.width - CGFloat(kMargin * 2)) - widthOrHeight, y: scanViewH - widthOrHeight, width: widthOrHeight, height: widthOrHeight))
         bottomRight.setImage(UIImage.init(named: "sweep_kuangdownright.png"), for: .normal)
         scanView?.addSubview(bottomRight)
     }
@@ -130,7 +134,7 @@ class ScanCodeController: UIViewController {
         } else {
             
             let scanImageViewH = 241
-            let scanViewH = view.bounds.width - CGFloat(kMargin) * 2
+            let scanViewH = view.bounds.height - CGFloat(kMargin) * 2
             let scanImageViewW = scanView?.bounds.width
             
             scanImageView?.frame = CGRect(x: 0, y: -scanImageViewH, width: Int(scanImageViewW!), height: scanImageViewH)
