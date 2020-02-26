@@ -6,7 +6,7 @@
 //  Copyright © 2017年 ShaoFeng. All rights reserved.
 //
 
-let kMargin = 35
+let kMargin = 185
 let kBorderW = 140
 let scanViewW = UIScreen.main.bounds.width - CGFloat(kMargin * 2)
 let scanViewH = UIScreen.main.bounds.width - CGFloat(kMargin * 2)
