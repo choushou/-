@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
+    @IBOutlet weak var testLanguage: UILabel!
     var actionSheet: UIAlertController!
     
     let availableLanguages = Localize.availableLanguages()
@@ -44,6 +45,10 @@ class ViewController: UIViewController {
         textLabel.text = "Hello world".localized();
 	changeButton.setTitle("Change".localized(using: "ButtonTitles"), for: UIControl.State.normal)
         resetButton.setTitle("Reset".localized(using: "ButtonTitles"), for: UIControl.State.normal)
+        
+        let stringText = "日本語にします"
+        
+        testLanguage.text = "world".localized();
     }
     
     // MARK: IBActions
@@ -51,18 +56,28 @@ class ViewController: UIViewController {
     @IBAction func doChangeLanguage(_ sender: AnyObject) {
         actionSheet = UIAlertController(title: nil, message: "Switch Language", preferredStyle: UIAlertController.Style.actionSheet)
         for language in availableLanguages {
-            let displayName = Localize.displayNameForLanguage(language)
-            let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                    Localize.setCurrentLanguage(language)
-            })
-            actionSheet.addAction(languageAction)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {
-            (alert: UIAlertAction) -> Void in
-        })
-        actionSheet.addAction(cancelAction)
-        self.present(actionSheet, animated: true, completion: nil)
+            
+            /*de
+            he
+            ja
+            en
+            zh-Hant
+            es
+            Base
+            zh-Hans
+            it
+            fr*/
+            
+            
+            print(language)
+                 let displayName = Localize.displayNameForLanguage(language)
+            
+            if (language == "en") {
+                Localize.setCurrentLanguage(language)
+            }
+
+             }
+        
     }
 
     @IBAction func doResetLanguage(_ sender: AnyObject) {
