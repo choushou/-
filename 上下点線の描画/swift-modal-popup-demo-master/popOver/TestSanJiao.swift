@@ -24,9 +24,9 @@ var dotColor: UIColor = UIColor.gray
            path.lineCapStyle = .butt
 
            // 起点
-           path.move(to: CGPoint(x: 0, y: rect.midY))
+        path.move(to: CGPoint(x: rect.midX, y: 0))
            // 帰着点
-           path.addLine(to: CGPoint(x: rect.width, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.width))
 
            let dashes = [path.lineWidth, path.lineWidth]
 
