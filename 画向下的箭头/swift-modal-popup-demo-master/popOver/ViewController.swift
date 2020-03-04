@@ -10,13 +10,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let sanjiao = TestSanJiao()
-        sanjiao.frame = CGRect(x: 150, y: 200, width: 30, height: 30)
-        self.view.backgroundColor = UIColor.white
-        sanjiao.backgroundColor = UIColor.white
+//        let sanjiao = TestSanJiao()
+//        sanjiao.frame = CGRect(x: 250, y: 400, width: 30, height: 30)
+//        self.view.backgroundColor = UIColor.white
+//        sanjiao.backgroundColor = UIColor.white
+//
+//        self.view.addSubview(sanjiao)
         
-        self.view.addSubview(sanjiao)
         
+                let sanjiao = TestSanJiao()
+                sanjiao.frame = CGRect(x: 250, y: 300, width: 30, height: 30)
+                self.view.backgroundColor = UIColor.white
+                sanjiao.backgroundColor = UIColor.white
+        
+                self.view.addSubview(sanjiao)
     }
 
   
