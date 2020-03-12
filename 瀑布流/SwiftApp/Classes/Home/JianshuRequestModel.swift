@@ -15,7 +15,7 @@ typealias HeadBlock = (_ str: Yuanzu) -> Void
 //列表数据
 typealias DataListBack = (_ str: [JianshuModel]) -> Void
 
-class JianshuRequestModel: NSObject {
+class JianshuRequestModel: NSObject  {
     
     static func jianshuRequestDataWithPage(_ page:Int, _ itemWith:Float, _ headBlock:HeadBlock, _ dataListBack:DataListBack){
         var dataArr = [JianshuModel]()
@@ -100,25 +100,31 @@ class JianshuRequestModel: NSObject {
                     let model = JianshuModel()
                     
                     //封面(可能有文章没有封面) 获取的图片URL最后面类似"w/300/h/240"代表长宽，修改长宽如"w/600/h/480"可得到2倍尺寸的图片，清晰度相应提高，反之亦然。假如超过原图长或宽的尺寸就会显示原图
-                    model.wrap = self.regexGetSub(wrapRegex, item)[0]
+                    model.wrap = "testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据"
                     model.imgW = itemWith - 16
-                    //如果长度大于0个字符
-                    if model.wrap!.count > 0  {
-                        //此步是为了按比例缩放图片，但是发现所有的图片都是 宽 * 120 / 150 ，所以可不写这步直接通过宽计算高即可
-                        let temp1 = self.matchingStr(str: model.wrap!)
-                        var temp2 = temp1.replacingOccurrences(of: "w/", with: "")
-                        temp2 = temp2.replacingOccurrences(of: "/h/", with: " ")
-                        let tempArr = temp2.components(separatedBy: " ")
-                        model.imgH = model.imgW! * Float(tempArr[1])! / Float(tempArr[0])!
-                        let temp3 = String(format: "w/%.f/h/%.f", model.imgW!, model.imgH!)
-                        model.wrap = model.wrap!.replacingOccurrences(of: temp1, with: temp3)
-                    }
+//                    //如果长度大于0个字符
+//                    if model.wrap!.count > 0  {
+//                        //此步是为了按比例缩放图片，但是发现所有的图片都是 宽 * 120 / 150 ，所以可不写这步直接通过宽计算高即可
+//                        let temp1 = self.matchingStr(str: model.wrap!)
+//                        var temp2 = temp1.replacingOccurrences(of: "w/", with: "")
+//                        temp2 = temp2.replacingOccurrences(of: "/h/", with: " ")
+//                        let tempArr = temp2.components(separatedBy: " ")
+//                        model.imgH = model.imgW! * Float(tempArr[1])! / Float(tempArr[0])!
+//                        let temp3 = String(format: "w/%.f/h/%.f", model.imgW!, model.imgH!)
+//                        model.wrap = model.wrap!.replacingOccurrences(of: temp1, with: temp3)
+//                    }
+                    
+                    
+                 model.imgH = 240
+                 model.abstract = "abstractTexdt文摘"
+                 
+                 
                     //文章url
                     model.articleUrl = self.regexGetSub(articleUrlRegex, item)[0]
                     //文章title
-                    model.title = self.regexGetSub(titleRegex, item)[0]
+                    model.title = "testTitle文章title文章"
                     //文摘
-                    model.abstract = self.regexGetSub(abstractRegex, item)[0]
+//                    model.abstract = "abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘"
                     
                     //此方法可以只写一个正则表达式，返回一个（两个元素的数组）
                     //                    let redComments = self.regexGetSub(readCommentsRegex, item)
@@ -126,7 +132,7 @@ class JianshuRequestModel: NSObject {
                     //                    let comments = redComments[1]       //评论人数
                     
                     //查看人数
-                    model.read = self.regexGetSub(readRegex, item)[0]
+                    model.read = "readTest查看人数fuzhi"
                     //评论人数
                     model.comments = self.regexGetSub(commentsRegex, item)[0]
                     //喜欢
