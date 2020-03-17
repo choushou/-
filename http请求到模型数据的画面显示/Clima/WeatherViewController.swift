@@ -19,6 +19,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     let APP_ID = "c1ff749227888065667749be306df862"
     let URL_KEY = "http://ec2-52-193-104-190.ap-northeast-1.compute.amazonaws.com/api/signin?login_id=shop1&password=test1234"
     
+    let URL_TEXT = "http://ec2-52-193-104-190.ap-northeast-1.compute.amazonaws.com/api/whiskies/1?api_key=2C1f7DC76dsjcIqo6671"
+    
     @IBAction func `switch`(_ sender: UISwitch) {
         
         if sender.isOn {
@@ -50,7 +52,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        getWeatherDataTest(url: URL_KEY)
+        getWeatherDataTestKey(url: URL_KEY)
         
     }
        
@@ -86,7 +88,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    func getWeatherDataTest(url: String) {
+    func getWeatherDataTestKey(url: String) {
         
         Alamofire.request(url, method: .post).responseJSON {
             response in
@@ -96,9 +98,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 let weatherJSON : JSON = JSON(response.result.value!)
                 
                 
-                print(weatherJSON)
+                //print(weatherJSON)
                 
                 self.updateWeatherData(json: weatherJSON)
+                
+                let key = weatherJSON["api_key"].stringValue
+                print(key)
+              // let key="2C1f7DC76dsjcIqo6671"
+           
+                let reURL = "http://ec2-52-193-104-190.ap-northeast-1.compute.amazonaws.com/api/whiskies/1?api_key=\(key)"
+                self.getWeatherDataTestData(url: reURL)
                 
             }
             else {
@@ -110,6 +119,48 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
+    func getWeatherDataTestData(url: String) {
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: configHeaders()).responseJSON {
+            response in
+            if response.result.isSuccess {
+                
+                print("Success! Got the weather data")
+                let weatherJSON : JSON = JSON(response.result.value!)
+                
+                
+                print(weatherJSON)
+                
+               // self.updateWeatherData(json: weatherJSON)
+                
+            }
+            else {
+                print(response)
+                print("Error \(String(describing: response.result.error))")
+                self.cityLabel.text = "Connection Issues"
+            }
+        }
+        
+    }
+    
+    func configHeaders() -> HTTPHeaders {
+            
+            var headers:HTTPHeaders = ["Content-type":"application/json;charset=utf-8",
+                                       "Accept":"application/json",
+                                       "systemtype":"ios",
+                                       "channel":"00",
+                                       "Authorization":""]
+            
+//            headers["auid"] = auid
+//            headers["appcode"] = getAppVersion()
+//            headers["systemversion"] = getSystemVersion()
+//            headers["deviceid"] = getDeviceId()
+//            headers["devicemodel"] = UIDevice.current.modelName
+//            headers["timestamp"] = getNowTimeStamp()
+//            headers["validtime"] = "600"
+            
+            return headers
+    }
     
     //MARK: - JSON Parsing
     //Write the updateWeatherData method here:
