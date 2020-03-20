@@ -98,7 +98,7 @@ class CBGroupAndStreamView: UIView {
     private let scrollView : UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        scrollview.backgroundColor = UIColor.white
+        scrollview.backgroundColor = UIColor.lightGray
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
         return scrollview
@@ -113,6 +113,7 @@ class CBGroupAndStreamView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.addSubview(scrollView)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -395,7 +396,7 @@ class CBGroupAndStreamView: UIView {
             value.removeFromSuperview()
         }
         
-            let contentArrText = [["恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他"],["玫","百合"],["情人节","母亲节","圣诞节","元旦节","春节","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他"],["9枝","100000000枝","11枝","21枝","33枝","99枝","99999999枝以上","恋人","其他"]]
+              let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","caramelsix","Nutty-cocountserven","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
         
 //        setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
          setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
