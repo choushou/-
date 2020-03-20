@@ -54,6 +54,11 @@ class ViewController: UIViewController {
         labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
         labGroup.setDataSource(contetnArr: contentArr, titleArr: titleArr)
         labGroup.delegate = self
+        
+        
+        
+        
+        
         self.view.addSubview(labGroup)
         labGroup.confirmReturnValueClosure = {
             (selArr,groupIdArr) in
@@ -105,15 +110,7 @@ extension ViewController : CBGroupAndStreamViewDelegate{
             }
         
         var contentArrayTest : [[String]] = [[]]
-//        
-//        contentArrayTest.append(contentArTest)
-//       
-//        contentArrayTest.append(contentArray[1])
-//        contentArrayTest.append(contentArray[2])
-//        contentArrayTest.append(contentArray[3])
-//        contentArrayTest.append(contentArray[4])
-//        contentArrayTest.append(contentArray[5])
-        
+
         for indexAppend in 0..<6 {
              
             if indexAppend == groupId {
@@ -125,11 +122,7 @@ extension ViewController : CBGroupAndStreamViewDelegate{
         
         print(contentArrayTest)
         contentArrayTest.remove(at: 0)
-       // contentArrayTest.remove(at: 0)
-print(contentArrayTest)
-        //contentArrayTest = contentArray
         
-
         if text == "test" {
             if contentArrayTest[groupId][index] == "もっとを見る" {
                      print("343434343")

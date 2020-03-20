@@ -134,7 +134,6 @@ class CBGroupAndStreamView: UIView {
         frameRect = .zero
         dataSourceArr.removeAll()
         dataSourceArr.append(contentsOf: tempContentArr)
-//        print(dataSourceArr)
 
         for (index,title) in titleArr.enumerated() {
             saveSelButValueArr.append("")
@@ -148,12 +147,20 @@ class CBGroupAndStreamView: UIView {
     func setupGroupAndStream(content : Array<Any>, titleStr : String, currFrame : CGRect, groupId : Int) -> CGRect{
 
         //组标题
-        let groupTitleLab = UILabel.init(frame: CGRect(x: 15, y: currFrame.size.height + currFrame.origin.y + 10, width: 0, height: CGFloat(titleLabHeight)))
+        let groupTitleLab = UILabel.init(frame: CGRect(x: 30, y: currFrame.size.height + currFrame.origin.y + 10, width: 0, height: CGFloat(titleLabHeight)))
+        
         groupTitleLab.text = titleStr
         groupTitleLab.font = titleTextFont
         groupTitleLab.textColor = titleTextColor
         groupTitleLab.frame.size.width = calcuateLabSizeWidth(str: titleStr, font: titleTextFont, maxHeight: CGFloat(titleLabHeight))
+        
+        let viewGroup =  UIView()
+        viewGroup.backgroundColor = UIColor.red
+        viewGroup.frame = CGRect(x: 15, y: currFrame.size.height + currFrame.origin.y + 20, width: 10, height: 10)
+        
         scrollView.addSubview(groupTitleLab)
+        scrollView.addSubview(viewGroup)
+        
         //内容
         let margian_y = 5 + groupTitleLab.frame.origin.y + groupTitleLab.frame.size.height
         var content_totalHeight = CGFloat(margian_y)
@@ -165,15 +172,12 @@ class CBGroupAndStreamView: UIView {
 
         for (index,value) in content.enumerated() {
             
-         
-            
-            let senderTwo = UIButton.init(type: .custom)
-            senderTwo.backgroundColor = UIColor.red
-            
-            
             
             let sender = UIButton.init(type: .custom)
-            scrollView.addSubview(sender)
+            let viewButton =  UIView()
+         
+            //scrollView.addSubview(viewButton)
+//            scrollView.addSubview(sender)
             
             if (content.count == index + 1) {
                          print("最后一个了")
@@ -186,18 +190,25 @@ class CBGroupAndStreamView: UIView {
                             sender.setTitleColor(content_selTitleColor, for: .selected)
                             sender.layer.cornerRadius = CGFloat(content_radius)
             } else {
+                
+            
+                viewGroup.backgroundColor = UIColor.red
+              
+                
                      sender.setTitle(value as? String, for: .normal)
+                sender.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
                             sender.tag = index + groupId * 100 + 1
                             sender.titleLabel?.font = content_titleFont
                             sender.backgroundColor = content_backNorColor
                             sender.setTitleColor(content_norTitleColor, for: .normal)
                             sender.setTitleColor(content_selTitleColor, for: .selected)
                             sender.layer.cornerRadius = CGFloat(content_radius)
+                
             }
 
             sender.addTarget(self, action: #selector(senderEvent), for: .touchUpInside)
             //标签流
-            let but_width = calcuateLabSizeWidth(str: value as! String, font:content_titleFont, maxHeight: CGFloat(content_height)) + 20
+            let but_width = calcuateLabSizeWidth(str: value as! String, font:content_titleFont, maxHeight: CGFloat(content_height)) + 20 + 20
             //计算每个button的 X
             margin_x = CGFloat(alineButWidth) + CGFloat(content_x)
             //计算一行的宽度
@@ -211,9 +222,21 @@ class CBGroupAndStreamView: UIView {
 //            print("margin_x = \(margin_x)")
             sender.frame = CGRect(x: margin_x, y: content_totalHeight, width: but_width, height: CGFloat(content_height))
             
+            viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+            
+            
+            let subview = UIView()
+            subview.backgroundColor = UIColor.red
+            subview.frame = CGRect(x: 10, y: 10, width: 10, height: 10)
+            sender.addSubview(subview)
+            
+            //[btn addSubview:subView];
+            scrollView.addSubview(sender)
             
             //临时保存frame，以进行下一次坐标计算
             current_rect = sender.frame
+            
+            
             if isDefaultChoice{
                 //设置默认选中
                 if defaultSelIndexArr.isEmpty{//单选
