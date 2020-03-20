@@ -165,6 +165,7 @@ class CBGroupAndStreamView: UIView {
 
         for (index,value) in content.enumerated() {
             
+         
             
             let senderTwo = UIButton.init(type: .custom)
             senderTwo.backgroundColor = UIColor.red
@@ -173,13 +174,27 @@ class CBGroupAndStreamView: UIView {
             
             let sender = UIButton.init(type: .custom)
             scrollView.addSubview(sender)
-            sender.setTitle(value as? String, for: .normal)
-            sender.tag = index + groupId * 100 + 1
-            sender.titleLabel?.font = content_titleFont
-            sender.backgroundColor = content_backNorColor
-            sender.setTitleColor(content_norTitleColor, for: .normal)
-            sender.setTitleColor(content_selTitleColor, for: .selected)
-            sender.layer.cornerRadius = CGFloat(content_radius)
+            
+            if (content.count == index + 1) {
+                         print("最后一个了")
+                
+                     sender.setTitle(value as? String, for: .normal)
+                            sender.tag = index + groupId * 100 + 1
+                            sender.titleLabel?.font = content_titleFont
+                sender.backgroundColor = UIColor.blue
+                            sender.setTitleColor(content_norTitleColor, for: .normal)
+                            sender.setTitleColor(content_selTitleColor, for: .selected)
+                            sender.layer.cornerRadius = CGFloat(content_radius)
+            } else {
+                     sender.setTitle(value as? String, for: .normal)
+                            sender.tag = index + groupId * 100 + 1
+                            sender.titleLabel?.font = content_titleFont
+                            sender.backgroundColor = content_backNorColor
+                            sender.setTitleColor(content_norTitleColor, for: .normal)
+                            sender.setTitleColor(content_selTitleColor, for: .selected)
+                            sender.layer.cornerRadius = CGFloat(content_radius)
+            }
+
             sender.addTarget(self, action: #selector(senderEvent), for: .touchUpInside)
             //标签流
             let but_width = calcuateLabSizeWidth(str: value as! String, font:content_titleFont, maxHeight: CGFloat(content_height)) + 20

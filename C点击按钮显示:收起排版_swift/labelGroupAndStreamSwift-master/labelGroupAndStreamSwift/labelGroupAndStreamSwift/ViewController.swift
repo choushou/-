@@ -36,9 +36,9 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: confirmBut)
         confirmBut.addTarget(self, action: #selector(confirmLabGroup), for: .touchUpInside)
 
-        let titleArr = ["关系","花","节日","枝数"]
+        let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
         titleArray = titleArr
-        let contentArr = [["恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他"],["玫","百合","康乃馨","郁金香","扶郎","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲","马蹄莲"],["情人节","母亲节","圣诞节","元旦节","春节","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他"],["9枝","100000000枝","11枝","21枝","33枝","99枝","99999999枝以上","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","其他","恋人","朋友朋友朋友朋友朋友朋友","亲人恩师恩师","恩师恩师","病人","収まる"]]
+        let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","caramelsix","Nutty-cocountserven","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
 
         contentArray = contentArr
          labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
@@ -49,9 +49,9 @@ class ViewController: UIViewController {
 //        labGroup.defaultSelIndex = 1
 //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
         //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
-        labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3]
+        labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
         //分别设置每个组的单选与多选
-        labGroup.defaultGroupSingleArr = [0,1,1,0]
+        labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
         labGroup.setDataSource(contetnArr: contentArr, titleArr: titleArr)
         labGroup.delegate = self
         self.view.addSubview(labGroup)
@@ -92,38 +92,48 @@ extension ViewController : CBGroupAndStreamViewDelegate{
      
         
         var contentArTest: [String] = []
-        var contentArrayTest : [[String]] = [[]]
-        contentArrayTest.append(contentArray[0])
-        contentArrayTest.append(contentArray[1])
-        contentArrayTest.append(contentArray[2])
-        //contentArrayTest.append(contentArray[3])
-        
-        contentArrayTest.remove(at: 0)
-        //contentArrayTest = contentArray
-        
-    
-        
-        //contentArTest = contentArray[3]
         
         for index in 0..<3 {
-            let item = contentArray[3][index]
-           // print(item)
-            contentArTest.append(item)
-            if index == 2 {
-                contentArTest.append("もっと見る")
+            //点击哪个就处理哪块的数据
+                let item = contentArray[groupId][index]
+               // print(item)
+                contentArTest.append(item)
+                if index == 2 {
+                    contentArTest.append("もっと見る")
+                }
+                
             }
-            
+        
+        var contentArrayTest : [[String]] = [[]]
+//        
+//        contentArrayTest.append(contentArTest)
+//       
+//        contentArrayTest.append(contentArray[1])
+//        contentArrayTest.append(contentArray[2])
+//        contentArrayTest.append(contentArray[3])
+//        contentArrayTest.append(contentArray[4])
+//        contentArrayTest.append(contentArray[5])
+        
+        for indexAppend in 0..<6 {
+             
+            if indexAppend == groupId {
+                contentArrayTest.append(contentArTest)
+            } else {
+                contentArrayTest.append(contentArray[indexAppend])
+            }
         }
         
-   
+        print(contentArrayTest)
+        contentArrayTest.remove(at: 0)
+       // contentArrayTest.remove(at: 0)
+print(contentArrayTest)
+        //contentArrayTest = contentArray
         
-       // print(contentArTest)
-        contentArrayTest.append(contentArTest)
-        
+
         if text == "test" {
             if contentArrayTest[groupId][index] == "もっとを見る" {
-                                  print("343434343")
-                              }
+                     print("343434343")
+           }
             text = ""
             labGroup.setDataSource(contetnArr: contentArray , titleArr: titleArray)
         } else {
@@ -133,8 +143,7 @@ extension ViewController : CBGroupAndStreamViewDelegate{
       
         
         print(contentArray)
-        //print(contentArrayTest)
-        
+ 
        // labGroup.setDataSource(contetnArr: contentArray , titleArr: titleArray)
         
         labGroup.reload()
