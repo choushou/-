@@ -14,8 +14,8 @@
             filePath = "labelGroupAndStreamSwift/CBGroupAndStreamView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "senderEvent(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "labelGroupAndStreamSwift/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "currentSelValueWithDelegate(valueStr:index:groupId:)"
             landmarkType = "7">
          </BreakpointContent>

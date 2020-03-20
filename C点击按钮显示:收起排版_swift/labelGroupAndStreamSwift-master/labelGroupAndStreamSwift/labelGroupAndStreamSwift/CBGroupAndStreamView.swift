@@ -43,13 +43,13 @@ class CBGroupAndStreamView: UIView {
     /// 左右按钮之间的间距
     public var content_x = 10
     /// title默认颜色
-    public var content_norTitleColor : UIColor = .white
+    public var content_norTitleColor : UIColor = .black
     /// title选中颜色
     public var content_selTitleColor : UIColor = .white
     /// 背景默认原色
-    public var content_backNorColor : UIColor = .gray
+    public var content_backNorColor : UIColor = .white
     /// 背景选中颜色
-    public var content_backSelColor : UIColor = .orange
+    public var content_backSelColor : UIColor = UIColor(red: 181/255, green: 21/255, blue: 8/255, alpha: 1)
     /// 字体大小
     public var content_titleFont : UIFont = .systemFont(ofSize: 12)
     /// 圆角
@@ -98,7 +98,7 @@ class CBGroupAndStreamView: UIView {
     private let scrollView : UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        scrollview.backgroundColor = UIColor.lightGray
+        scrollview.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
         return scrollview
@@ -177,16 +177,13 @@ class CBGroupAndStreamView: UIView {
             let sender = UIButton.init(type: .custom)
             let viewButton =  UIView()
          
-            //scrollView.addSubview(viewButton)
-//            scrollView.addSubview(sender)
-            
             if (content.count == index + 1) {
-                         print("最后一个了")
+                        // print("最后一个了")
                 
                      sender.setTitle(value as? String, for: .normal)
                             sender.tag = index + groupId * 100 + 1
                             sender.titleLabel?.font = content_titleFont
-                sender.backgroundColor = UIColor.blue
+                            sender.backgroundColor = UIColor(red: 201/255, green: 201/255, blue: 201/255, alpha: 1)
                             sender.setTitleColor(content_norTitleColor, for: .normal)
                             sender.setTitleColor(content_selTitleColor, for: .selected)
                             sender.layer.cornerRadius = CGFloat(content_radius)
@@ -204,7 +201,10 @@ class CBGroupAndStreamView: UIView {
                             sender.setTitleColor(content_norTitleColor, for: .normal)
                             sender.setTitleColor(content_selTitleColor, for: .selected)
                             sender.layer.cornerRadius = CGFloat(content_radius)
-                
+                let subview = UIView()
+                         subview.backgroundColor = UIColor.red
+                         subview.frame = CGRect(x: 10, y: 10, width: 10, height: 10)
+                         sender.addSubview(subview)
             }
 
             sender.addTarget(self, action: #selector(senderEvent), for: .touchUpInside)
@@ -226,10 +226,7 @@ class CBGroupAndStreamView: UIView {
             viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
             
             
-            let subview = UIView()
-            subview.backgroundColor = UIColor.red
-            subview.frame = CGRect(x: 10, y: 10, width: 10, height: 10)
-            sender.addSubview(subview)
+         
             
             //[btn addSubview:subView];
             scrollView.addSubview(sender)

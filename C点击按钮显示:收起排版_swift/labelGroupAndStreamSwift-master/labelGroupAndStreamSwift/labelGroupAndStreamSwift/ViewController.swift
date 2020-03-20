@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        self.view.backgroundColor = UIColor.lightGray
+        //self.view.backgroundColor =  UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         
         let resetBut = UIButton.init(type: .custom)
         resetBut.setTitle("重置", for: .normal)
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
                 }
             }
             
-            contentArFirst.append("もっとを見る")
+            contentArFirst.append("もっとを見る+")
             contentArrayDa.append(contentArFirst)
             contentArFirst.removeAll()
             
@@ -154,7 +154,7 @@ extension ViewController : CBGroupAndStreamViewDelegate{
                                }
                            }
                            
-                           conArr.append("もっとを見る")
+                           conArr.append("もっとを見る+")
                            
                            contentArrayDa.insert(conArr, at: groupId)
                            
