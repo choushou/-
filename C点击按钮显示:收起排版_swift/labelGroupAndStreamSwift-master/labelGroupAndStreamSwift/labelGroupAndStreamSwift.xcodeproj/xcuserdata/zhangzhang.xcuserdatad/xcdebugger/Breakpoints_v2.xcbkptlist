@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "D9154382-00EE-4CF7-B2B9-6ABD31B1ED0C"
-   type = "0"
+   uuid = "D0137DD9-DB4D-42C7-910C-105F1EC0D07A"
+   type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E4A5A3C-9582-428B-94EE-0C7BA3BBB45D"
+            uuid = "3C6E8B35-38F0-4B01-8FF2-9D2E65C6C43E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clima/WeatherViewController.swift"
+            filePath = "labelGroupAndStreamSwift/CBGroupAndStreamView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "getWeatherDataTestKey(url:)"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "senderEvent(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A246215A-139C-40CA-A788-2E47ACDC3FDA"
+            uuid = "73A11990-0926-4DFF-B54D-0299A47DB2B9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clima/WeatherViewController.swift"
+            filePath = "labelGroupAndStreamSwift/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "getWeatherDataTestKey(url:)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "currentSelValueWithDelegate(valueStr:index:groupId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "58F9F217-9E57-4850-A825-504495334E32"
+            uuid = "BDA29698-0C3C-4B7D-B7B8-EFED04332799"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clima/WeatherViewController.swift"
+            filePath = "labelGroupAndStreamSwift/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "getWeatherDataTestKey(url:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "currentSelValueWithDelegate(valueStr:index:groupId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "30AEE7F9-5D88-4EEA-BBAD-D1633F981391"
+            uuid = "41BDE5E1-493D-4DB5-BEEF-8A991F05BA7C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clima/WeatherViewController.swift"
+            filePath = "labelGroupAndStreamSwift/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "getWeatherData(url:parameters:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "currentSelValueWithDelegate(valueStr:index:groupId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
