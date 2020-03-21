@@ -16,7 +16,7 @@ class HomeFlowLayout: UICollectionViewFlowLayout {
     // 整个webview的高度
     private var maxH:Int?
     // 头部高度
-    var headerH:CGFloat = 100
+    var headerH:CGFloat = 0
     //所有item的属性
     fileprivate var layoutAttributesArray = [UICollectionViewLayoutAttributes]()
     
@@ -31,6 +31,8 @@ class HomeFlowLayout: UICollectionViewFlowLayout {
     func computeAttributesWithItemWidth(_ itemWidth:CGFloat){
         
         // 定义一个列高数组 记录每一列的总高度
+        print(self.sectionInset.top)
+        print(self.headerH)
         var columnHeight = [Int](repeating: Int(self.sectionInset.top + self.headerH), count: self.columnCount)
         // 定义一个记录每一列的总item个数的数组
         var columnItemCount = [Int](repeating: 0, count: self.columnCount)
@@ -51,6 +53,7 @@ class HomeFlowLayout: UICollectionViewFlowLayout {
             let attributes = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
             // 找出最短列号
             let minHeight:Int = columnHeight.sorted().first!
+            print(minHeight)
             let column = columnHeight.index(of: minHeight)
             // 数据追加在最短列
             columnItemCount[column!] += 1
@@ -59,6 +62,7 @@ class HomeFlowLayout: UICollectionViewFlowLayout {
             // 等比例缩放 计算item的高度
             let itemH = Int(Double(data.itemHeight!)!)
             // 设置frame
+            print(itemY)
             attributes.frame = CGRect(x: itemX, y: CGFloat(itemY), width: itemWidth, height: CGFloat(itemH))
             
             attributesArray.append(attributes)
