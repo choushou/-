@@ -33,6 +33,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         identifierTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
+        let homeVC = HomeVC()
+        self.navigationController?.pushViewController(homeVC, animated: true)
+//        //ログイン画面へ遷移する
+//        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
      }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {

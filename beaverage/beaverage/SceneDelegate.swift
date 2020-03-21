@@ -22,6 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let loginViewControllerStoryboard = UIStoryboard(name: "LoginViewController", bundle: nil)
         let loginVC = loginViewControllerStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         //loginVC.view.backgroundColor = UIColor.init(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
+        
+        
+        //let homeVC = HomeVC()
+        
         //ログイン画面へ遷移する
         self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
         self.window?.backgroundColor = UIColor.white
