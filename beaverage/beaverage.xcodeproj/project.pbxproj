@@ -31,9 +31,6 @@
 		21A748102426256B003C7677 /* HomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747BA2426256B003C7677 /* HomeHeadView.swift */; };
 		21A748112426256B003C7677 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747BB2426256B003C7677 /* Macro.swift */; };
 		21A748122426256B003C7677 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747BC2426256B003C7677 /* Tools.swift */; };
-		21A748132426256B003C7677 /* DIN-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 21A747BE2426256B003C7677 /* DIN-Medium.otf */; };
-		21A748142426256B003C7677 /* DINPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21A747BF2426256B003C7677 /* DINPro-Bold.ttf */; };
-		21A748152426256B003C7677 /* DINPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 21A747C02426256B003C7677 /* DINPro-Regular.otf */; };
 		21A748162426256B003C7677 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A747C32426256B003C7677 /* UIImage+WebP.m */; };
 		21A748172426256B003C7677 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A747C42426256B003C7677 /* MKAnnotationView+WebCache.m */; };
 		21A748182426256B003C7677 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A747CB2426256B003C7677 /* SDWebImageManager.m */; };
@@ -107,9 +104,6 @@
 		21A747BA2426256B003C7677 /* HomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeadView.swift; sourceTree = "<group>"; };
 		21A747BB2426256B003C7677 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		21A747BC2426256B003C7677 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		21A747BE2426256B003C7677 /* DIN-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Medium.otf"; sourceTree = "<group>"; };
-		21A747BF2426256B003C7677 /* DINPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Bold.ttf"; sourceTree = "<group>"; };
-		21A747C02426256B003C7677 /* DINPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Regular.otf"; sourceTree = "<group>"; };
 		21A747C22426256B003C7677 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAnimatedImageRep.h; sourceTree = "<group>"; };
 		21A747C32426256B003C7677 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		21A747C42426256B003C7677 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
@@ -267,7 +261,6 @@
 				21A747AD2426256B003C7677 /* Home */,
 				21A747BB2426256B003C7677 /* Macro.swift */,
 				21A747BC2426256B003C7677 /* Tools.swift */,
-				21A747BD2426256B003C7677 /* Fonts */,
 				21A747C12426256B003C7677 /* SDWebImage */,
 				21A748042426256B003C7677 /* Bridging-Header.h */,
 			);
@@ -299,16 +292,6 @@
 				21A747B12426256B003C7677 /* InjectionCode.js */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		21A747BD2426256B003C7677 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				21A747BE2426256B003C7677 /* DIN-Medium.otf */,
-				21A747BF2426256B003C7677 /* DINPro-Bold.ttf */,
-				21A747C02426256B003C7677 /* DINPro-Regular.otf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		21A747C12426256B003C7677 /* SDWebImage */ = {
@@ -484,16 +467,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A748072426256B003C7677 /* InjectionCode.js in Resources */,
-				21A748132426256B003C7677 /* DIN-Medium.otf in Resources */,
 				21A747092425D926003C7677 /* LaunchScreen.storyboard in Resources */,
 				21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */,
 				21A747062425D926003C7677 /* Assets.xcassets in Resources */,
-				21A748152426256B003C7677 /* DINPro-Regular.otf in Resources */,
 				21A7480D2426256B003C7677 /* HomeHeadView.xib in Resources */,
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
 				21A7480F2426256B003C7677 /* HomeCell.xib in Resources */,
 				21A748082426256B003C7677 /* HomeFootView.xib in Resources */,
-				21A748142426256B003C7677 /* DINPro-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,7 +52,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-eh-exq">
-                                        <rect key="frame" x="187" y="330" width="74" height="34"/>
+                                        <rect key="frame" x="164" y="330" width="120" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="CSE-SC-QFt"/>
+                                        </constraints>
                                         <state key="normal" title="ログイン">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="identifierTextField" destination="GU7-am-LF3" id="kl1-aX-xvp"/>
+                        <outlet property="loginButton" destination="uWh-eh-exq" id="BJp-L3-u4r"/>
                         <outlet property="passwordTextField" destination="g6A-og-bKB" id="mmY-GQ-LP3"/>
                         <outlet property="shopIdentifierTextField" destination="cYH-FC-Tyr" id="RD8-BI-TyR"/>
                     </connections>

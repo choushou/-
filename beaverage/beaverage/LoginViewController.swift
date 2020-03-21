@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var shopIdentifierTextField: UITextField!
     
     @IBOutlet weak var identifierTextField: UITextField!
@@ -20,6 +21,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderColor = UIColor.black.cgColor
+        loginButton.layer.cornerRadius = 5
         shopIdentifierTextField.delegate = self
         identifierTextField.delegate = self
         passwordTextField.delegate = self

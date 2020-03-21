@@ -34,6 +34,13 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     //MARK: - --- 视图已经加载
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
+        homeHeadView!.frame = CGRect(x: 0, y: 64, width: 600, height: 200)
+        homeHeadView!.backgroundColor = UIColor.red
+        
+        self.view.addSubview(homeHeadView!)
+        
         self.createUI()
         self.dataRefresh()
     }
@@ -47,7 +54,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     //MARK: - --- 创建UI
     func createUI(){
         self.flowLayout = HomeFlowLayout()
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        
+//        let homeHeadView = HomeHeadView()
+//        homeHeadView.frame = CGRect(x: 0, y: 64, width: 200, height: 200)
+//        homeHeadView.backgroundColor = UIColor.red
+        
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 264), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
