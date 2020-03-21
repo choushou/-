@@ -15,6 +15,8 @@
 		21A747062425D926003C7677 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A747052425D926003C7677 /* Assets.xcassets */; };
 		21A747092425D926003C7677 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A747072425D926003C7677 /* LaunchScreen.storyboard */; };
 		21A747142425D926003C7677 /* beaverageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747132425D926003C7677 /* beaverageTests.swift */; };
+		21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A7471E2425DE71003C7677 /* LoginViewController.storyboard */; };
+		21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747202425DEB2003C7677 /* LoginViewController.swift */; };
 		D34206D823FC6E7DACF3352A /* Pods_beaverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B46BC3A09F0D0A64269245 /* Pods_beaverage.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		21A7470F2425D926003C7677 /* beaverageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaverageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A747132425D926003C7677 /* beaverageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beaverageTests.swift; sourceTree = "<group>"; };
 		21A747152425D926003C7677 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21A7471E2425DE71003C7677 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		21A747202425DEB2003C7677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2E43B2C84D88997E347E8C2C /* Pods-beaverageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverageTests.release.xcconfig"; path = "Target Support Files/Pods-beaverageTests/Pods-beaverageTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AACC42C7EA6AA8B33D17A9A /* Pods-beaverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverage.debug.xcconfig"; path = "Target Support Files/Pods-beaverage/Pods-beaverage.debug.xcconfig"; sourceTree = "<group>"; };
 		ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beaverageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +80,6 @@
 				EDA4989957D2BE886BC269A2 /* Pods-beaverageTests.debug.xcconfig */,
 				2E43B2C84D88997E347E8C2C /* Pods-beaverageTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,6 +106,8 @@
 		21A746FB2425D924003C7677 /* beaverage */ = {
 			isa = PBXGroup;
 			children = (
+				21A747202425DEB2003C7677 /* LoginViewController.swift */,
+				21A7471E2425DE71003C7677 /* LoginViewController.storyboard */,
 				21A746FC2425D924003C7677 /* AppDelegate.swift */,
 				21A746FE2425D924003C7677 /* SceneDelegate.swift */,
 				21A747002425D924003C7677 /* ViewController.swift */,
@@ -216,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A747092425D926003C7677 /* LaunchScreen.storyboard in Resources */,
+				21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */,
 				21A747062425D926003C7677 /* Assets.xcassets in Resources */,
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
 			);
@@ -282,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
 				21A747012425D924003C7677 /* ViewController.swift in Sources */,
 				21A746FD2425D924003C7677 /* AppDelegate.swift in Sources */,
 				21A746FF2425D924003C7677 /* SceneDelegate.swift in Sources */,
@@ -454,7 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sunasterisk.beaverage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -472,7 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sunasterisk.beaverage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

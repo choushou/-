@@ -9,17 +9,25 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let loginViewControllerStoryboard = UIStoryboard(name: "LoginViewController", bundle: nil)
+        let loginVC = loginViewControllerStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        //loginVC.view.backgroundColor = UIColor.init(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
+        //ログイン画面へ遷移する
+        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
+        self.window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
