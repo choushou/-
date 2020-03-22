@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ZHDropDownMenu
 
-class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,ZHDropDownMenuDelegate  {
     
     // 数据源
     var dataArr = [JianshuModel]()
@@ -27,6 +28,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     var collectionView: UICollectionView!
     var headerView: HomeHeadView?
+    var collectionHeaderView: CollectionHeaderView?
     var footerView: HomeFootView?
     
     private var topIndicator: UIActivityIndicatorView?
@@ -34,14 +36,43 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     //MARK: - --- 视图已经加载
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
-        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  400)
-        self.view.addSubview(homeHeadView!)
+        
+         
+            let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
+            homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  400)
+            homeHeadView!.sortMenu.options = ["2","1","3","4"]
+            homeHeadView!.sortMenu.menuHeight = 250
+            homeHeadView!.sortMenu.delegate = self
+
+            self.view.addSubview(homeHeadView!)
 
         self.createUI()
+
+
         self.dataRefresh()
     }
+    
+    func dorpClickMenu(isShow: Bool) {
+        if (isShow) {
+            print("true")
+        }else{
+            print("false")
+        }
+     }
+     
+     //选择完后回调
+    func dropDownMenu(_ menu: ZHDropDownMenu, didSelect index: Int) {
+        print("\(menu) choosed at index \(index)")
+    }
+    
+    //编辑完成后回调
+    func dropDownMenu(_ menu: ZHDropDownMenu, didEdit text: String) {
+        print("\(menu) input text \(text)")
+    }
+    
+    
     
     //MARK: - --- 视图即将出现
     override func viewWillAppear(_ animated: Bool) {
@@ -51,19 +82,36 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     //MARK: - --- 创建UI
     func createUI(){
+        
+   
+        
+        
+//        let layout = HeadersFlowLayout()
+//        let frame = CGRect(x: 0, y: 64, width: view.bounds.width, height:view.bounds.height - 64)
+//        let collectionViewT = UICollectionView(frame: frame, collectionViewLayout: layout)
+//
+//        self.view.addSubview(collectionViewT)
+        
         self.flowLayout = HomeFlowLayout()
-        
-        
+        //let layout = UICollectionViewFlowLayout()
+   
         let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 400 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = RGB16(value: 0xffffff)
+        
+       // self.collectionView.insertSubview(self.view, aboveSubview: homeHeadView)
+       // self.view.insertSubview(self.collectionView, belowSubview: homeHeadView!)
+       // self.view.insertSubview(homeHeadView!, aboveSubview: self.collectionView)
         self.view.addSubview(self.collectionView)
+        //self.view.insertSubview(homeHeadView!.sortMenu, aboveSubview: collectionView)
+        
         //注册xib
         self.collectionView.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
         self.collectionView.register(UINib.init(nibName: "HomeFootView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "HomeFootView")
-        self.collectionView.register(UINib.init(nibName: "HomeHeadView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HomeHeadView")
+         self.collectionView.register(UINib.init(nibName: "HomeHeadView", bundle: nil), forCellWithReuseIdentifier: "HomeHeadView")
+         self.collectionView.register(UINib.init(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
         
         //顶部加载“菊花”
         self.topIndicator = UIActivityIndicatorView.init(frame: CGRect(x: (SCREEN_WIDTH - 50) / 2.0, y: 90, width: 50, height: 50))
@@ -133,13 +181,18 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    
+        
         let cell:HomeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
         let  model = self.dataArr[indexPath.row]
         cell.setModel(model)
         if self.headInfo != nil {
             cell.setHeadInfo(self.headInfo!)
         }
+        
         return cell
+        
     }
     
     //MARK: - --- 点击事件
@@ -154,48 +207,60 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.navigationController?.pushViewController(webVC, animated: true)
     }
     
-//    //MARK: - --- HeaderView  FooterView
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        var reusableView: UICollectionReusableView?
-//        if kind == UICollectionView.elementKindSectionFooter {
-//            self.footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeFootView", for: indexPath) as? HomeFootView
-//            reusableView = self.footerView
-//            return self.footerView!
-//        }
-//        else if kind == UICollectionView.elementKindSectionHeader {
-//            self.headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeHeadView", for: indexPath) as? HomeHeadView
-//            reusableView = self.headerView
-//            self.headerView?.setHearderInfo(self.headInfo!)
-//            //点击切换布局
-//            self.headerView?.switchBack = { (click) in
-//                print(click)
-//                self.columnCount = (click == true) ? 1 : 2
-//                self.setHomeFlowLayouts()
-//                //遍历数组 重新计算高度
-//                var num = 0
-//                for model in self.dataArr {
-//                    //计算标题和摘要的高度
-//                    model.imgW = Float(self.itemWidth - 16)
-//                    model.imgH = model.wrap!.count > 0 ? model.imgW! * 120 / 150 : nil
-//                    model.titleH = GETSTRHEIGHT(fontSize: 20, width: CGFloat(model.imgW!) , words: model.title!) + 1
-//                    model.abstractH = GETSTRHEIGHT(fontSize: 14, width: CGFloat(model.imgW!) , words: model.abstract!) + 1
+    //MARK: - --- HeaderView  FooterView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reusableView: UICollectionReusableView?
+        if kind == UICollectionView.elementKindSectionFooter {
+            self.footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeFootView", for: indexPath) as? HomeFootView
+            reusableView = self.footerView
+            return self.footerView!
+        }
+        else if kind == UICollectionView.elementKindSectionHeader {
+            self.collectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CollectionHeaderView
+            
+            
+//            self.collectionHeaderView?.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  50)
+//            self.collectionHeaderView?.sortMenu.options = ["2","1","3","4"]
+//            self.collectionHeaderView?.sortMenu.menuHeight = 250
+//            self.collectionHeaderView?.sortMenu.delegate = self
 //
-//                    //item高度
-//                    var computeH:CGFloat = 8 + 25 + 3 + 10 + 8 + (model.imgH != nil ? CGFloat(model.imgH!) : 0) + 8 + model.titleH! + 8 + model.abstractH! + 8 + 10 + 8
-//                    //如果没有图片减去一个间隙8
-//                    computeH = computeH - (model.wrap!.count > 0 ? 0 : 8)
-//                    model.itemHeight = String(format: "%.f", computeH)
-//                    self.dataArr[num] = model;
-//                    num += 1
-//                }
-//                self.flowLayout.findList = self.dataArr
-//                self.collectionView?.reloadData()
-//            }
-//            return self.headerView!
-//        }
-//        return reusableView!
-//    }
-    
+//
+            
+            //self.collectionHeaderView?.sortMenu.insertSubview(self.collectionView, belowSubview: )
+            //self.collectionHeaderView?.sortMenu.insertSubview(self.view, aboveSubview: self.collectionView)
+            
+            reusableView = self.collectionHeaderView
+            self.collectionHeaderView?.setHearderInfo(self.headInfo!)
+            //点击切换布局
+            self.collectionHeaderView?.switchBack = { (click) in
+                print(click)
+                self.columnCount = (click == true) ? 1 : 2
+                self.setHomeFlowLayouts()
+                //遍历数组 重新计算高度
+                var num = 0
+                for model in self.dataArr {
+                    //计算标题和摘要的高度
+                    model.imgW = Float(self.itemWidth - 16)
+                    model.imgH = model.wrap!.count > 0 ? model.imgW! * 120 / 150 : nil
+                    model.titleH = GETSTRHEIGHT(fontSize: 20, width: CGFloat(model.imgW!) , words: model.title!) + 1
+                    model.abstractH = GETSTRHEIGHT(fontSize: 14, width: CGFloat(model.imgW!) , words: model.abstract!) + 1
+
+                    //item高度
+                    var computeH:CGFloat = 8 + 25 + 3 + 10 + 8 + (model.imgH != nil ? CGFloat(model.imgH!) : 0) + 8 + model.titleH! + 8 + model.abstractH! + 8 + 10 + 8
+                    //如果没有图片减去一个间隙8
+                    computeH = computeH - (model.wrap!.count > 0 ? 0 : 8)
+                    model.itemHeight = String(format: "%.f", computeH)
+                    self.dataArr[num] = model;
+                    num += 1
+                }
+                self.flowLayout.findList = self.dataArr
+                self.collectionView?.reloadData()
+            }
+        return self.collectionHeaderView!
+        }
+        return reusableView!
+    }
+
     //MARK: - --- scrollViewDelegate 监听scrollView.contentOffset.y，用以刷新数据
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         

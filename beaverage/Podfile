@@ -7,6 +7,9 @@ target 'beaverage' do
 
   # Pods for beaverage
 
+  pod 'ZHDropDownMenu'
+  #ZHDropDownMenu (1.0.0)
+  
   target 'beaverageTests' do
     inherit! :search_paths
     # Pods for testing

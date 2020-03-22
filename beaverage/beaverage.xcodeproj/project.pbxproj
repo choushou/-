@@ -63,6 +63,8 @@
 		21A748332426256B003C7677 /* SDWebImageImageIOCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A747FD2426256B003C7677 /* SDWebImageImageIOCoder.m */; };
 		21A748342426256B003C7677 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A748012426256B003C7677 /* UIButton+WebCache.m */; };
 		21A748352426256B003C7677 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A748022426256B003C7677 /* SDWebImageWebPCoder.m */; };
+		21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A7483824276449003C7677 /* CollectionHeaderView.xib */; };
+		21A7483B24276486003C7677 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7483A24276486003C7677 /* CollectionHeaderView.swift */; };
 		D34206D823FC6E7DACF3352A /* Pods_beaverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B46BC3A09F0D0A64269245 /* Pods_beaverage.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,8 @@
 		21A748022426256B003C7677 /* SDWebImageWebPCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageWebPCoder.m; sourceTree = "<group>"; };
 		21A748032426256B003C7677 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		21A748042426256B003C7677 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		21A7483824276449003C7677 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
+		21A7483A24276486003C7677 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		2E43B2C84D88997E347E8C2C /* Pods-beaverageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverageTests.release.xcconfig"; path = "Target Support Files/Pods-beaverageTests/Pods-beaverageTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AACC42C7EA6AA8B33D17A9A /* Pods-beaverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverage.debug.xcconfig"; path = "Target Support Files/Pods-beaverage/Pods-beaverage.debug.xcconfig"; sourceTree = "<group>"; };
 		ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beaverageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +286,8 @@
 				21A747B82426256B003C7677 /* JianshuModel.swift */,
 				21A747B92426256B003C7677 /* HomeCell.xib */,
 				21A747BA2426256B003C7677 /* HomeHeadView.swift */,
+				21A7483824276449003C7677 /* CollectionHeaderView.xib */,
+				21A7483A24276486003C7677 /* CollectionHeaderView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				21A746F52425D924003C7677 /* Sources */,
 				21A746F62425D924003C7677 /* Frameworks */,
 				21A746F72425D924003C7677 /* Resources */,
+				E841D1C69321A4280FE6128E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -471,6 +478,7 @@
 				21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */,
 				21A747062425D926003C7677 /* Assets.xcassets in Resources */,
 				21A7480D2426256B003C7677 /* HomeHeadView.xib in Resources */,
+				21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */,
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
 				21A7480F2426256B003C7677 /* HomeCell.xib in Resources */,
 				21A748082426256B003C7677 /* HomeFootView.xib in Resources */,
@@ -531,6 +539,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E841D1C69321A4280FE6128E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -561,6 +586,7 @@
 				21A748102426256B003C7677 /* HomeHeadView.swift in Sources */,
 				21A7480B2426256B003C7677 /* HomeVC.swift in Sources */,
 				21A748052426256B003C7677 /* HomeFootView.swift in Sources */,
+				21A7483B24276486003C7677 /* CollectionHeaderView.swift in Sources */,
 				21A7481F2426256B003C7677 /* FLAnimatedImageView.m in Sources */,
 				21A746FD2425D924003C7677 /* AppDelegate.swift in Sources */,
 				21A748262426256B003C7677 /* SDWebImageCoder.m in Sources */,
