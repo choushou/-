@@ -35,12 +35,10 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
-//        homeHeadView!.frame = CGRect(x: 0, y: 64, width: 600, height: 400)
-//        homeHeadView!.backgroundColor = UIColor.red
-//
-//        self.view.addSubview(homeHeadView!)
-//
+        let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
+        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  400)
+        self.view.addSubview(homeHeadView!)
+
         self.createUI()
         self.dataRefresh()
     }
@@ -56,7 +54,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.flowLayout = HomeFlowLayout()
         
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 400 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -104,7 +102,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         //网络请求回调
         JianshuRequestModel.jianshuRequestDataWithPage(self.index, Float(self.itemWidth), { (headInfo) in
             self.headInfo = headInfo
-            self.flowLayout.headerH =  64 //headInfo.headerH
+            self.flowLayout.headerH = 0 //headInfo.headerH
             print(headInfo)
         }) { (dataArr) in
             self.topIndicator?.stopAnimating()
