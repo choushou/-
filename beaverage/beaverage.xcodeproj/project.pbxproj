@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -65,6 +65,9 @@
 		21A748352426256B003C7677 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A748022426256B003C7677 /* SDWebImageWebPCoder.m */; };
 		21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A7483824276449003C7677 /* CollectionHeaderView.xib */; };
 		21A7483B24276486003C7677 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7483A24276486003C7677 /* CollectionHeaderView.swift */; };
+		21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */; };
+		21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D12427D9EB0088C4B0 /* DarkView.xib */; };
+		21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6D32427DA2B0088C4B0 /* DarkView.swift */; };
 		D34206D823FC6E7DACF3352A /* Pods_beaverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B46BC3A09F0D0A64269245 /* Pods_beaverage.framework */; };
 /* End PBXBuildFile section */
 
@@ -174,6 +177,9 @@
 		21A748042426256B003C7677 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		21A7483824276449003C7677 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		21A7483A24276486003C7677 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		21FAE6D12427D9EB0088C4B0 /* DarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DarkView.xib; sourceTree = "<group>"; };
+		21FAE6D32427DA2B0088C4B0 /* DarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkView.swift; sourceTree = "<group>"; };
 		2E43B2C84D88997E347E8C2C /* Pods-beaverageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverageTests.release.xcconfig"; path = "Target Support Files/Pods-beaverageTests/Pods-beaverageTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AACC42C7EA6AA8B33D17A9A /* Pods-beaverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverage.debug.xcconfig"; path = "Target Support Files/Pods-beaverage/Pods-beaverage.debug.xcconfig"; sourceTree = "<group>"; };
 		ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beaverageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +294,9 @@
 				21A747BA2426256B003C7677 /* HomeHeadView.swift */,
 				21A7483824276449003C7677 /* CollectionHeaderView.xib */,
 				21A7483A24276486003C7677 /* CollectionHeaderView.swift */,
+				21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */,
+				21FAE6D12427D9EB0088C4B0 /* DarkView.xib */,
+				21FAE6D32427DA2B0088C4B0 /* DarkView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 				21A747092425D926003C7677 /* LaunchScreen.storyboard in Resources */,
 				21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */,
 				21A747062425D926003C7677 /* Assets.xcassets in Resources */,
+				21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */,
 				21A7480D2426256B003C7677 /* HomeHeadView.xib in Resources */,
 				21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */,
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
@@ -569,6 +579,7 @@
 				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
 				21A7481E2426256B003C7677 /* FLAnimatedImage.m in Sources */,
 				21A7482B2426256B003C7677 /* SDWebImageTransition.m in Sources */,
+				21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */,
 				21A7482E2426256B003C7677 /* NSImage+WebCache.m in Sources */,
 				21A748342426256B003C7677 /* UIButton+WebCache.m in Sources */,
 				21A748282426256B003C7677 /* SDAnimatedImageRep.m in Sources */,
@@ -599,6 +610,7 @@
 				21A7481D2426256B003C7677 /* FLAnimatedImageView+WebCache.m in Sources */,
 				21A748252426256B003C7677 /* SDWebImagePrefetcher.m in Sources */,
 				21A746FF2425D924003C7677 /* SceneDelegate.swift in Sources */,
+				21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */,
 				21A748242426256B003C7677 /* SDWebImageCompat.m in Sources */,
 				21A748122426256B003C7677 /* Tools.swift in Sources */,
 				21A7480C2426256B003C7677 /* HomeFlowLayout.swift in Sources */,

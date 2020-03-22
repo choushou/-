@@ -39,6 +39,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         let homeVC = HomeVC()
         self.navigationController?.pushViewController(homeVC, animated: true)
+        
 //        //ログイン画面へ遷移する
 //        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
      }
