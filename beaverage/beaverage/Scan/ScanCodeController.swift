@@ -23,7 +23,53 @@ class ScanCodeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetAnimatinon()
+        
+        let navBar = UINavigationBar(frame: CGRect(x:0, y:20, width:self.view.frame.size.width, height:44))
+               
+               navBar.backgroundColor = UIColor.white
+               
+               
+               let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
+               titleLabel.text = "メニューリスト"
+               titleLabel.textColor = UIColor.black
+               
+               let navItem = UINavigationItem()
+               
+               navItem.titleView = titleLabel
+               
+               
+               
+               let button =   UIButton(type: .system)
+               button.frame = CGRect(x:0, y:0, width:65, height:30)
+               button.setImage(UIImage(named:"left_back"), for: .normal)
+               button.setTitle("戻る", for: .normal)
+               button.addTarget(self, action: #selector(backBtnClick), for: .touchUpInside)
+               button.tintColor = UIColor.black
+               let leftBarBtn = UIBarButtonItem(customView: button)
+               
+               //スペースが必要です。じゃないと、前に置けない
+               let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil,
+                                            action: nil)
+               spacer.width = -10;
+               
+               
+               let rightButton = UIBarButtonItem(title: "rightButton", style: .plain, target: self, action: nil)
+               rightButton.tintColor = UIColor.black
+               
+               navItem.leftBarButtonItems = [spacer,leftBarBtn]
+               // navItem.setRightBarButton(rightButton, animated: false)
+               
+               navigationItem.setHidesBackButton(true, animated: false)
+               navBar.pushItem(navItem, animated: false)
+               
+               self.view.addSubview(navBar)
+               
     }
+    
+    @objc private func backBtnClick() {
+         dismiss(animated: true, completion: nil)
+         navigationController?.popViewController(animated: true)
+     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +87,13 @@ class ScanCodeController: UIViewController {
     
     /// スキャン以外の地域
     fileprivate func setupMaskView() {
-        let maskView = UIView(frame: CGRect(x: -(view.bounds.height - view.bounds.width) / 2, y: 0, width: view.bounds.height, height: view.bounds.height))
+        
+        let topView = UIView()
+        topView.backgroundColor = UIColor.white
+        topView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 64)
+        self.view.addSubview(topView)
+        
+        let maskView = UIView(frame: CGRect(x: -(view.bounds.height - view.bounds.width) / 2, y: 64, width: view.bounds.height, height: view.bounds.height))
         maskView.layer.borderWidth = (view.bounds.height - scanViewW) / 2
     
         maskView.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor
