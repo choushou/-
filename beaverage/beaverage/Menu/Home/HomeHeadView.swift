@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ZHDropDownMenu
+//import ZHDropDownMenu
 
 class HomeHeadView: UIView{
     
@@ -23,7 +23,7 @@ class HomeHeadView: UIView{
     
     typealias SwitchBtBlock = (_ click: Bool) -> Void
     
-    @IBOutlet weak var sortMenu: ZHDropDownMenu!
+    //@IBOutlet weak var sortMenu: ZHDropDownMenu!
     
     
     

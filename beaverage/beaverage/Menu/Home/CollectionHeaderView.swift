@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ZHDropDownMenu
+//import ZHDropDownMenu
 
 class CollectionHeaderView: UICollectionReusableView {
         
@@ -16,7 +16,7 @@ class CollectionHeaderView: UICollectionReusableView {
         
         var switchBack: SwitchBtBlock?
     
-    @IBOutlet weak var sortMenu: ZHDropDownMenu!
+   // @IBOutlet weak var sortMenu: ZHDropDownMenu!
     
        override func awakeFromNib() {
             super.awakeFromNib()

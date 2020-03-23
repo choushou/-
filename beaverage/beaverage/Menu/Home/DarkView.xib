@@ -118,6 +118,9 @@
                 <constraint firstItem="hoG-bl-3mK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="120" id="mOc-gR-glG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="showScanCodeBtn" destination="De7-1r-57L" id="TsJ-mX-9gB"/>
+            </connections>
             <point key="canvasLocation" x="138.28125" y="105.46875"/>
         </view>
     </objects>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,6 +68,12 @@
 		21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */; };
 		21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D12427D9EB0088C4B0 /* DarkView.xib */; };
 		21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6D32427DA2B0088C4B0 /* DarkView.swift */; };
+		21FAE6DD24290B1D0088C4B0 /* sweep_kuangdownright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D724290B1D0088C4B0 /* sweep_kuangdownright@2x.png */; };
+		21FAE6DE24290B1D0088C4B0 /* sweep_kuangupperright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D824290B1D0088C4B0 /* sweep_kuangupperright@2x.png */; };
+		21FAE6DF24290B1D0088C4B0 /* sweep_bg_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D924290B1D0088C4B0 /* sweep_bg_line@2x.png */; };
+		21FAE6E024290B1D0088C4B0 /* sweep_kuangdownleft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6DA24290B1D0088C4B0 /* sweep_kuangdownleft@2x.png */; };
+		21FAE6E124290B1D0088C4B0 /* sweep_kuangupperleft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6DB24290B1D0088C4B0 /* sweep_kuangupperleft@2x.png */; };
+		21FAE6E224290B1D0088C4B0 /* ScanCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6DC24290B1D0088C4B0 /* ScanCodeController.swift */; };
 		D34206D823FC6E7DACF3352A /* Pods_beaverage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B46BC3A09F0D0A64269245 /* Pods_beaverage.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +186,13 @@
 		21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		21FAE6D12427D9EB0088C4B0 /* DarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DarkView.xib; sourceTree = "<group>"; };
 		21FAE6D32427DA2B0088C4B0 /* DarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkView.swift; sourceTree = "<group>"; };
+		21FAE6D724290B1D0088C4B0 /* sweep_kuangdownright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_kuangdownright@2x.png"; sourceTree = "<group>"; };
+		21FAE6D824290B1D0088C4B0 /* sweep_kuangupperright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_kuangupperright@2x.png"; sourceTree = "<group>"; };
+		21FAE6D924290B1D0088C4B0 /* sweep_bg_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_bg_line@2x.png"; sourceTree = "<group>"; };
+		21FAE6DA24290B1D0088C4B0 /* sweep_kuangdownleft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_kuangdownleft@2x.png"; sourceTree = "<group>"; };
+		21FAE6DB24290B1D0088C4B0 /* sweep_kuangupperleft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweep_kuangupperleft@2x.png"; sourceTree = "<group>"; };
+		21FAE6DC24290B1D0088C4B0 /* ScanCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeController.swift; sourceTree = "<group>"; };
+		21FAE6E3242913260088C4B0 /* ZHDropDownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ZHDropDownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E43B2C84D88997E347E8C2C /* Pods-beaverageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverageTests.release.xcconfig"; path = "Target Support Files/Pods-beaverageTests/Pods-beaverageTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AACC42C7EA6AA8B33D17A9A /* Pods-beaverage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beaverage.debug.xcconfig"; path = "Target Support Files/Pods-beaverage/Pods-beaverage.debug.xcconfig"; sourceTree = "<group>"; };
 		ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beaverageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +255,7 @@
 		21A746FB2425D924003C7677 /* beaverage */ = {
 			isa = PBXGroup;
 			children = (
+				21FAE6D524290AD40088C4B0 /* Scan */,
 				21A747AC2426256B003C7677 /* Menu */,
 				21A747202425DEB2003C7677 /* LoginViewController.swift */,
 				21A7471E2425DE71003C7677 /* LoginViewController.storyboard */,
@@ -389,9 +403,31 @@
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
+		21FAE6D524290AD40088C4B0 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				21FAE6D624290B1D0088C4B0 /* Resources */,
+				21FAE6DC24290B1D0088C4B0 /* ScanCodeController.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		21FAE6D624290B1D0088C4B0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				21FAE6D724290B1D0088C4B0 /* sweep_kuangdownright@2x.png */,
+				21FAE6D824290B1D0088C4B0 /* sweep_kuangupperright@2x.png */,
+				21FAE6D924290B1D0088C4B0 /* sweep_bg_line@2x.png */,
+				21FAE6DA24290B1D0088C4B0 /* sweep_kuangdownleft@2x.png */,
+				21FAE6DB24290B1D0088C4B0 /* sweep_kuangupperleft@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		807D3A9B9393023881A82887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21FAE6E3242913260088C4B0 /* ZHDropDownMenu.framework */,
 				C6B46BC3A09F0D0A64269245 /* Pods_beaverage.framework */,
 				ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */,
 			);
@@ -409,7 +445,6 @@
 				21A746F52425D924003C7677 /* Sources */,
 				21A746F62425D924003C7677 /* Frameworks */,
 				21A746F72425D924003C7677 /* Resources */,
-				E841D1C69321A4280FE6128E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,16 +517,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21FAE6DE24290B1D0088C4B0 /* sweep_kuangupperright@2x.png in Resources */,
 				21A748072426256B003C7677 /* InjectionCode.js in Resources */,
 				21A747092425D926003C7677 /* LaunchScreen.storyboard in Resources */,
+				21FAE6DF24290B1D0088C4B0 /* sweep_bg_line@2x.png in Resources */,
 				21A7471F2425DE71003C7677 /* LoginViewController.storyboard in Resources */,
 				21A747062425D926003C7677 /* Assets.xcassets in Resources */,
 				21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */,
 				21A7480D2426256B003C7677 /* HomeHeadView.xib in Resources */,
+				21FAE6DD24290B1D0088C4B0 /* sweep_kuangdownright@2x.png in Resources */,
+				21FAE6E124290B1D0088C4B0 /* sweep_kuangupperleft@2x.png in Resources */,
 				21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */,
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
 				21A7480F2426256B003C7677 /* HomeCell.xib in Resources */,
 				21A748082426256B003C7677 /* HomeFootView.xib in Resources */,
+				21FAE6E024290B1D0088C4B0 /* sweep_kuangdownleft@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,23 +589,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E841D1C69321A4280FE6128E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beaverage/Pods-beaverage-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -574,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A748302426256B003C7677 /* SDImageCacheConfig.m in Sources */,
+				21FAE6E224290B1D0088C4B0 /* ScanCodeController.swift in Sources */,
 				21A748212426256B003C7677 /* UIImage+GIF.m in Sources */,
 				21A748192426256B003C7677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
@@ -783,7 +807,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NNK8CEKPVJ;
 				INFOPLIST_FILE = beaverage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -801,7 +827,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NNK8CEKPVJ;
 				INFOPLIST_FILE = beaverage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

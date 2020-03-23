@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import ZHDropDownMenu
+//import ZHDropDownMenu
 
-class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,ZHDropDownMenuDelegate  {
-    
+//class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,ZHDropDownMenuDelegate  {
+    class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     // 数据源
     var dataArr = [JianshuModel]()
     // 当前的数据索引
@@ -110,10 +110,10 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
         let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
         homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  400)
-        homeHeadView!.sortMenu.options = ["2","1","3","4"]
-        homeHeadView!.sortMenu.menuHeight = 250
-        homeHeadView!.sortMenu.delegate = self
-        
+//        homeHeadView!.sortMenu.options = ["2","1","3","4"]
+//        homeHeadView!.sortMenu.menuHeight = 250
+//        homeHeadView!.sortMenu.delegate = self
+//        
         self.view.addSubview(homeHeadView!)
         
         self.createUI()
@@ -127,30 +127,35 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
         
         
-        darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8) // 设置半透明颜色
+        darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
         
-        // self.view.insertSubview(darkView!, aboveSubview: self.view)
+        darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
         
         self.view.addSubview(darkView!)
     }
     
-    func dorpClickMenu(isShow: Bool) {
-        if (isShow) {
-            print("true")
-        }else{
-            print("false")
-        }
+    @objc func showScanCode() {
+        let scanCodeViewController = ScanCodeController()
+        self.navigationController?.pushViewController(scanCodeViewController, animated: true)
     }
     
-    //选择完后回调
-    func dropDownMenu(_ menu: ZHDropDownMenu, didSelect index: Int) {
-        print("\(menu) choosed at index \(index)")
-    }
+//    func dorpClickMenu(isShow: Bool) {
+//        if (isShow) {
+//            print("true")
+//        }else{
+//            print("false")
+//        }
+//    }
     
-    //编辑完成后回调
-    func dropDownMenu(_ menu: ZHDropDownMenu, didEdit text: String) {
-        print("\(menu) input text \(text)")
-    }
+//    //选择完后回调
+//    func dropDownMenu(_ menu: ZHDropDownMenu, didSelect index: Int) {
+//        print("\(menu) choosed at index \(index)")
+//    }
+//
+//    //编辑完成后回调
+//    func dropDownMenu(_ menu: ZHDropDownMenu, didEdit text: String) {
+//        print("\(menu) input text \(text)")
+//    }
     
     //MARK: - --- 视图即将出现
     override func viewWillAppear(_ animated: Bool) {
@@ -170,7 +175,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
     }
     
-    //MARK: - --- 创建UI
+ 
     func createUI(){
         
         
@@ -212,20 +217,20 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
     }
     
-    //MARK: - --- 设置item的布局
+    //MARK: - --- item layout
     func setHomeFlowLayouts(){
         //通过layout的一些参数设置item的宽度
         let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let minLine:CGFloat = 10.0
         self.itemWidth = (SCREEN_WIDTH - inset.left - inset.right - minLine * (CGFloat(self.columnCount - 1))) / CGFloat(self.columnCount)
         
-        //设置布局属性
+     
         self.flowLayout.columnCount = self.columnCount
         self.flowLayout.sectionInset = inset
         self.flowLayout.minimumLineSpacing = minLine
     }
     
-    //MARK: - --- 数据及布局
+    //MARK: - --- data layout
     func dataRefresh(){
         
         if self.headInfo != nil {

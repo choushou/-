@@ -10,8 +10,15 @@ import UIKit
 
 class DarkView: UIView {
 
+    @IBOutlet weak var showScanCodeBtn: UIButton!
     @IBAction func showMenu(_ sender: Any) {
         self.removeFromSuperview()
     }
+//
+//    @IBAction func showScanCode(_ sender: Any) {
+//
+//       let scanCodeController = ScanCodeController()
+//
+//    }
     
 }

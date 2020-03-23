@@ -7,7 +7,7 @@ target 'beaverage' do
 
   # Pods for beaverage
 
-  pod 'ZHDropDownMenu'
+ # pod 'ZHDropDownMenu'
   #ZHDropDownMenu (1.0.0)
   
   target 'beaverageTests' do

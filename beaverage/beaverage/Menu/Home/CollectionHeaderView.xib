@@ -43,13 +43,10 @@
                 <constraint firstAttribute="bottom" secondItem="s8H-2r-DTf" secondAttribute="bottom" id="wtR-Ze-lmE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="x7y-sb-5GK"/>
-            <connections>
-                <outlet property="sortMenu" destination="N53-M8-2os" id="gQA-KJ-7V4"/>
-            </connections>
             <point key="canvasLocation" x="-103" y="204"/>
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="default_down" width="72" height="72"/>
+        <image name="default_down" width="24" height="24"/>
     </resources>
 </document>
