@@ -1,9 +1,9 @@
 //
-//  jianshuModel.swift
-//  SwiftApp
+//  JianshuModel.swift
+//  beaverage
 //
-//  Created by leeson on 2018/7/16.
-//  Copyright © 2018年 李斯芃 ---> 512523045@qq.com. All rights reserved.
+//  Created by 張璋 on 2020/03/23.
+//  Copyright © 2020 sunasterisk. All rights reserved.
 //
 
 import UIKit
