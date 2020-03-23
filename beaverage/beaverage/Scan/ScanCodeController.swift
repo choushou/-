@@ -29,6 +29,7 @@ class ScanCodeController: UIViewController {
         super.viewDidLoad()
         view.clipsToBounds = true
         setupMaskView()
+        setLabelRemand()
         setupScanView()
         scaning()
         NotificationCenter.default.addObserver(self, selector: #selector(resetAnimatinon), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -48,9 +49,24 @@ class ScanCodeController: UIViewController {
         view.addSubview(maskView)
     }
     
+    fileprivate func setLabelRemand() {
+        
+         let textLabel = UILabel()
+         textLabel.text = "ボトルのバーコードに\nカメラをさかざしてください。"
+         textLabel.numberOfLines = 0
+         textLabel.textAlignment = .center
+         textLabel.font = UIFont .systemFont(ofSize: 16)
+         textLabel.textColor = UIColor.white
+         let x = self.view.bounds.width / 2 - 150
+         let y = CGFloat((self.view.bounds.height - scanViewW) / 2 - 100)
+         textLabel.frame = CGRect(x: x , y: y, width: 300, height: 100)
+         self.view.addSubview(textLabel)
+             
+    }
+    
     /// スキャンの地域
     fileprivate func setupScanView() {
-        
+ 
         scanView = UIView(frame: CGRect(x: CGFloat(kMargin), y: CGFloat((view.bounds.height - scanViewW) / 2), width: scanViewW, height: scanViewH))
         scanView?.backgroundColor = UIColor.clear
         scanView?.clipsToBounds = true
@@ -136,7 +152,7 @@ class ScanCodeController: UIViewController {
             scanAnim.duration = 1.8
             scanAnim.repeatCount = MAXFLOAT
             scanImageView?.layer.add(scanAnim, forKey: "translationAnimation")
-            scanView?.addSubview(scanImageView!)
+            //scanView?.addSubview(scanImageView!)
         }
     }
 }
