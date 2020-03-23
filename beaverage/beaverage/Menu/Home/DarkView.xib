@@ -13,25 +13,112 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjE-hx-ALp">
-                    <rect key="frame" x="162" y="211" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crc-qB-eNm">
+                    <rect key="frame" x="150" y="450" width="468" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="U8i-wA-8H9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <state key="normal" title="メニュ画面を表示する">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="showMenu:" destination="iN0-l3-epB" eventType="touchUpInside" id="abs-p3-grH"/>
+                    </connections>
                 </button>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLh-r0-Kca">
-                    <rect key="frame" x="471" y="585" width="49" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </switch>
-                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPf-kq-l3U">
-                    <rect key="frame" x="162" y="470" width="97" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De7-1r-57L">
+                    <rect key="frame" x="150" y="560" width="468" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="aaO-z3-J9K"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <state key="normal" title="ボトルのバーコードを読み取り詳細を見る">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="操作内容を選択する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayk-5R-pUu">
+                    <rect key="frame" x="150" y="390" width="250" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="BiD-QM-iW0"/>
+                        <constraint firstAttribute="height" constant="50" id="Npz-DX-Klq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoG-bl-3mK">
+                    <rect key="frame" x="648" y="120" width="80" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="BD6-8f-bin"/>
+                        <constraint firstAttribute="height" constant="40" id="jtT-yE-UW3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="繁体">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZ1-I7-NIF">
+                    <rect key="frame" x="548" y="120" width="80" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="0os-eb-HSB"/>
+                        <constraint firstAttribute="width" constant="80" id="3Cc-7u-PDQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="English">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljn-LN-hAb">
+                    <rect key="frame" x="448" y="120" width="80" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="MtN-eN-2Jg"/>
+                        <constraint firstAttribute="height" constant="40" id="y16-M0-yeV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="日本語">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="言語切り替え" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prE-Bo-6nS">
+                    <rect key="frame" x="523" y="70" width="130" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="J7i-wa-tDX"/>
+                        <constraint firstAttribute="height" constant="50" id="pD8-g3-Amr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="De7-1r-57L" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="150" id="0DR-gS-U5k"/>
+                <constraint firstItem="crc-qB-eNm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="450" id="5K3-Ua-t4H"/>
+                <constraint firstItem="JZ1-I7-NIF" firstAttribute="centerX" secondItem="prE-Bo-6nS" secondAttribute="centerX" id="6j5-vJ-9Gd"/>
+                <constraint firstItem="hoG-bl-3mK" firstAttribute="leading" secondItem="JZ1-I7-NIF" secondAttribute="trailing" constant="20" id="7Mj-xb-6xi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="De7-1r-57L" secondAttribute="trailing" constant="150" id="Dcz-x1-dAn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hoG-bl-3mK" secondAttribute="trailing" constant="40" id="Q69-ha-RuK"/>
+                <constraint firstItem="hoG-bl-3mK" firstAttribute="centerY" secondItem="Ljn-LN-hAb" secondAttribute="centerY" id="Tpw-rz-2Rj"/>
+                <constraint firstItem="crc-qB-eNm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="150" id="XRQ-qO-EbZ"/>
+                <constraint firstItem="hoG-bl-3mK" firstAttribute="top" secondItem="prE-Bo-6nS" secondAttribute="bottom" id="YIO-M3-kFo"/>
+                <constraint firstItem="JZ1-I7-NIF" firstAttribute="centerY" secondItem="Ljn-LN-hAb" secondAttribute="centerY" id="arx-zb-JLl"/>
+                <constraint firstItem="JZ1-I7-NIF" firstAttribute="leading" secondItem="Ljn-LN-hAb" secondAttribute="trailing" constant="20" id="eBU-yf-DpG"/>
+                <constraint firstItem="crc-qB-eNm" firstAttribute="top" secondItem="Ayk-5R-pUu" secondAttribute="bottom" constant="10" id="gXo-Wi-CGW"/>
+                <constraint firstItem="De7-1r-57L" firstAttribute="top" secondItem="crc-qB-eNm" secondAttribute="bottom" constant="30" id="iKE-Pz-KFo"/>
+                <constraint firstItem="Ayk-5R-pUu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="150" id="lFQ-Ze-QEl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="crc-qB-eNm" secondAttribute="trailing" constant="150" id="ljO-4l-JMS"/>
+                <constraint firstItem="hoG-bl-3mK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="120" id="mOc-gR-glG"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="106"/>
+            <point key="canvasLocation" x="138.28125" y="105.46875"/>
         </view>
     </objects>
 </document>
