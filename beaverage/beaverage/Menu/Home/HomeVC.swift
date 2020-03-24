@@ -7,21 +7,44 @@
 //
 
 import UIKit
-//import ZHDropDownMenu
+import AudioToolbox
 
-//class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,ZHDropDownMenuDelegate  {
-    class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    // 数据源
+enum PointType {
+    case body
+    case smoky
+    case woody
+    case floral
+    case fruity
+    case winey
+}
+
+class WineKind: NSObject {
+    var body: Float = 0.0
+    var smoky: Float = 0.0
+    var woody: Float = 0.0
+    var floral: Float = 0.0
+    var fruity: Float = 0.0
+    var windy: Float = 0.0
+}
+
+class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    var radarView: RadarView!
+    var radarViewTwo: RadarView!
+    var pointType: PointType!
+    var wineKind: WineKind = WineKind()
+    
+    // data source
     var dataArr = [JianshuModel]()
-    // 当前的数据索引
+    // data index
     var index:Int = 1
-    // 列数
+    // column count
     var columnCount:Int = 2;
-    // 瀑布流布局
+    // layout
     var flowLayout: HomeFlowLayout!
-    // 是否正在加载数据标记
+    // loading
     var loading = false
-    //头部信息
+    //head info
     var headInfo:Yuanzu?
     
     var itemWidth:CGFloat = 0
@@ -39,22 +62,6 @@ import UIKit
         
     }
     
-    public func setBackBtn(_ tintColor: UIColor = .black) {
-        let leftBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "返回白"), style: UIBarButtonItem.Style.done, target: self, action: #selector(backBtnClick))//
-        leftBarButtonItem.tintColor = tintColor
-        if #available(iOS 11.0, *){ // ios11 以上偏移
-            leftBarButtonItem.imageInsets = UIEdgeInsets(top: 0, left: -11, bottom: 0, right: 0)
-            navigationItem.leftBarButtonItem = leftBarButtonItem
-        } else {
-            let nagetiveSpacer = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
-            nagetiveSpacer.width = -11//这个值可以根据自己需要自己调整
-            navigationItem.leftBarButtonItems = [nagetiveSpacer, leftBarButtonItem]
-        }
-        if (navigationController?.viewControllers.count ?? 0) > 1 {
-            navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate // 重要 自定义返回按钮恢复返回手势
-        }
-    }
-    
     @objc private func backBtnClick() {
         dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
@@ -62,6 +69,13 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wineKind.body = 0.5
+        wineKind.smoky = 0.75
+        wineKind.woody = 0.25
+        wineKind.floral = 0.5
+        wineKind.fruity = 0.25
+        wineKind.windy = 0.75
         
         self.navigationController?.navigationBar.isHidden = true
         
@@ -98,7 +112,6 @@ import UIKit
         rightButton.tintColor = UIColor.black
         
         navItem.leftBarButtonItems = [spacer,leftBarBtn]
-        // navItem.setRightBarButton(rightButton, animated: false)
         
         navigationItem.setHidesBackButton(true, animated: false)
         navBar.pushItem(navItem, animated: false)
@@ -109,29 +122,24 @@ import UIKit
         
         
         let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
-        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  400)
-//        homeHeadView!.sortMenu.options = ["2","1","3","4"]
-//        homeHeadView!.sortMenu.menuHeight = 250
-//        homeHeadView!.sortMenu.delegate = self
-//        
+        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  530)
+        
         self.view.addSubview(homeHeadView!)
         
         self.createUI()
-        
-        
         self.dataRefresh()
         
         
         let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
         darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         
-        
-        
         darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
         
         darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
         
         self.view.addSubview(darkView!)
+        
+        initSubviews()
     }
     
     @objc func showScanCode() {
@@ -139,25 +147,7 @@ import UIKit
         self.navigationController?.pushViewController(scanCodeViewController, animated: true)
     }
     
-//    func dorpClickMenu(isShow: Bool) {
-//        if (isShow) {
-//            print("true")
-//        }else{
-//            print("false")
-//        }
-//    }
-    
-//    //选择完后回调
-//    func dropDownMenu(_ menu: ZHDropDownMenu, didSelect index: Int) {
-//        print("\(menu) choosed at index \(index)")
-//    }
-//
-//    //编辑完成后回调
-//    func dropDownMenu(_ menu: ZHDropDownMenu, didEdit text: String) {
-//        print("\(menu) input text \(text)")
-//    }
-    
-    //MARK: - --- 视图即将出现
+    //MARK:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
@@ -166,49 +156,29 @@ import UIKit
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        //
-        //        let loginViewControllerStoryboard = UIStoryboard(name: "LoginViewController", bundle: nil)
-        //        let loginVC = loginViewControllerStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        
-        //        let topVC = TopViewController()
-        //        self.navigationController?.pushViewController(topVC, animated: true)
         
     }
     
- 
+    
     func createUI(){
-        
-        
-        
-        
-        //        let layout = HeadersFlowLayout()
-        //        let frame = CGRect(x: 0, y: 64, width: view.bounds.width, height:view.bounds.height - 64)
-        //        let collectionViewT = UICollectionView(frame: frame, collectionViewLayout: layout)
-        //
-        //        self.view.addSubview(collectionViewT)
         
         self.flowLayout = HomeFlowLayout()
         //let layout = UICollectionViewFlowLayout()
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 400 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 530 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = RGB16(value: 0xffffff)
         
-        // self.collectionView.insertSubview(self.view, aboveSubview: homeHeadView)
-        // self.view.insertSubview(self.collectionView, belowSubview: homeHeadView!)
-        // self.view.insertSubview(homeHeadView!, aboveSubview: self.collectionView)
         self.view.addSubview(self.collectionView)
-        //self.view.insertSubview(homeHeadView!.sortMenu, aboveSubview: collectionView)
         
-        //注册xib
         self.collectionView.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
         self.collectionView.register(UINib.init(nibName: "HomeFootView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "HomeFootView")
         self.collectionView.register(UINib.init(nibName: "HomeHeadView", bundle: nil), forCellWithReuseIdentifier: "HomeHeadView")
         self.collectionView.register(UINib.init(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
         
-        //顶部加载“菊花”
+        //
         self.topIndicator = UIActivityIndicatorView.init(frame: CGRect(x: (SCREEN_WIDTH - 50) / 2.0, y: 90, width: 50, height: 50))
         self.topIndicator?.color = .red
         //self.view.addSubview(self.topIndicator!)
@@ -219,12 +189,12 @@ import UIKit
     
     //MARK: - --- item layout
     func setHomeFlowLayouts(){
-        //通过layout的一些参数设置item的宽度
+        //item widths
         let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let minLine:CGFloat = 10.0
         self.itemWidth = (SCREEN_WIDTH - inset.left - inset.right - minLine * (CGFloat(self.columnCount - 1))) / CGFloat(self.columnCount)
         
-     
+        
         self.flowLayout.columnCount = self.columnCount
         self.flowLayout.sectionInset = inset
         self.flowLayout.minimumLineSpacing = minLine
@@ -235,14 +205,14 @@ import UIKit
         
         if self.headInfo != nil {
             if self.index > self.headInfo!.totalPage{
-                print("没有更多数据了")
+                print("nothing data")
                 self.topIndicator?.stopAnimating()
                 self.loading = false
                 return;
             }
         }
         
-        //网络请求回调
+        //network request
         JianshuRequestModel.jianshuRequestDataWithPage(self.index, Float(self.itemWidth), { (headInfo) in
             self.headInfo = headInfo
             self.flowLayout.headerH = 0 //headInfo.headerH
@@ -257,10 +227,11 @@ import UIKit
             print("pageIndex: \(self.index)")
             self.index += 1
             
-            //layout布局
+            //layout
             self.flowLayout.findList = self.dataArr
             //self.collectionView.collectionViewLayout = self.flowLayout
-            //刷新视图
+            
+            //reload
             self.collectionView?.reloadData()
         }
         
@@ -290,7 +261,7 @@ import UIKit
         
     }
     
-    //MARK: - --- 点击事件
+    //MARK: - --
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell:HomeCell = collectionView.cellForItem(at: indexPath) as! HomeCell
         let model = self.dataArr[indexPath.row]
@@ -313,25 +284,14 @@ import UIKit
         else if kind == UICollectionView.elementKindSectionHeader {
             self.collectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as? CollectionHeaderView
             
-            
-            //            self.collectionHeaderView?.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  50)
-            //            self.collectionHeaderView?.sortMenu.options = ["2","1","3","4"]
-            //            self.collectionHeaderView?.sortMenu.menuHeight = 250
-            //            self.collectionHeaderView?.sortMenu.delegate = self
-            //
-            //
-            
-            //self.collectionHeaderView?.sortMenu.insertSubview(self.collectionView, belowSubview: )
-            //self.collectionHeaderView?.sortMenu.insertSubview(self.view, aboveSubview: self.collectionView)
-            
             reusableView = self.collectionHeaderView
             self.collectionHeaderView?.setHearderInfo(self.headInfo!)
-            //点击切换布局
+            //
             self.collectionHeaderView?.switchBack = { (click) in
                 print(click)
                 self.columnCount = (click == true) ? 1 : 2
                 self.setHomeFlowLayouts()
-                //遍历数组 重新计算高度
+                //高さを計算する
                 var num = 0
                 for model in self.dataArr {
                     //计算标题和摘要的高度
@@ -356,7 +316,7 @@ import UIKit
         return reusableView!
     }
     
-    //MARK: - --- scrollViewDelegate 监听scrollView.contentOffset.y，用以刷新数据
+    //MARK:
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView.contentOffset.y < -120.0 {
@@ -385,7 +345,7 @@ import UIKit
         }
         
         if self.footerView!.frame.origin.y < (scrollView.contentOffset.y + scrollView.bounds.size.height) {
-            NSLog("开始刷新");
+            NSLog("refresh");
             self.loading = true
             self.footerView?.indicator.startAnimating()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
@@ -397,7 +357,7 @@ import UIKit
         
     }
     
-    //MARK: - --- 监听手指停止滑动
+    //MARK: - ---
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         //print(decelerate)
         if scrollView.contentOffset.y < -120.0 {
@@ -422,4 +382,30 @@ import UIKit
         return true
     }
     
+}
+
+private extension HomeVC {
+    func initSubviews() {
+      
+        radarView = RadarView(frame: CGRect(x: (UIScreen.main.bounds.width
+                    - 80 - 230), y: 64 + 150 + 40, width: 220, height: 220))
+        radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
+        radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
+        
+        radarView.setLineWidth(width: 0.5)
+        
+//        radarView.setDotRadius(radius: 3)
+//        radarView.setDrawAreaColor(color: UIColor.init(red: 113 / 255, green: 113 / 255, blue: 113 / 255, alpha: 0.6))
+//        radarView.setDotColor(color: UIColor.init(red: 143 / 255, green: 143 / 255, blue: 143 / 255, alpha: 1))
+        
+        radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
+        radarView.setDotRadiusTwo(radiusTwo: 3)
+        radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
+        
+       // radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
+        
+        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+      
+        view.addSubview(radarView)
+    }
 }

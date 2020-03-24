@@ -65,6 +65,8 @@
 		21A748352426256B003C7677 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A748022426256B003C7677 /* SDWebImageWebPCoder.m */; };
 		21A7483924276449003C7677 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A7483824276449003C7677 /* CollectionHeaderView.xib */; };
 		21A7483B24276486003C7677 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7483A24276486003C7677 /* CollectionHeaderView.swift */; };
+		21F43087242A4A3E0082FCE8 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F43085242A4A3E0082FCE8 /* RadarView.swift */; };
+		21F43088242A4A3E0082FCE8 /* RadarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F43086242A4A3E0082FCE8 /* RadarModel.swift */; };
 		21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */; };
 		21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D12427D9EB0088C4B0 /* DarkView.xib */; };
 		21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6D32427DA2B0088C4B0 /* DarkView.swift */; };
@@ -183,6 +185,8 @@
 		21A748042426256B003C7677 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		21A7483824276449003C7677 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		21A7483A24276486003C7677 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		21F43085242A4A3E0082FCE8 /* RadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
+		21F43086242A4A3E0082FCE8 /* RadarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarModel.swift; sourceTree = "<group>"; };
 		21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		21FAE6D12427D9EB0088C4B0 /* DarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DarkView.xib; sourceTree = "<group>"; };
 		21FAE6D32427DA2B0088C4B0 /* DarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkView.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		21A746FB2425D924003C7677 /* beaverage */ = {
 			isa = PBXGroup;
 			children = (
+				21F43084242A4A0C0082FCE8 /* Hexagon */,
 				21FAE6D524290AD40088C4B0 /* Scan */,
 				21A747AC2426256B003C7677 /* Menu */,
 				21A747202425DEB2003C7677 /* LoginViewController.swift */,
@@ -401,6 +406,15 @@
 				21A747D92426256B003C7677 /* FLAnimatedImageView.h */,
 			);
 			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		21F43084242A4A0C0082FCE8 /* Hexagon */ = {
+			isa = PBXGroup;
+			children = (
+				21F43086242A4A3E0082FCE8 /* RadarModel.swift */,
+				21F43085242A4A3E0082FCE8 /* RadarView.swift */,
+			);
+			path = Hexagon;
 			sourceTree = "<group>";
 		};
 		21FAE6D524290AD40088C4B0 /* Scan */ = {
@@ -622,6 +636,7 @@
 				21A7480B2426256B003C7677 /* HomeVC.swift in Sources */,
 				21A748052426256B003C7677 /* HomeFootView.swift in Sources */,
 				21A7483B24276486003C7677 /* CollectionHeaderView.swift in Sources */,
+				21F43088242A4A3E0082FCE8 /* RadarModel.swift in Sources */,
 				21A7481F2426256B003C7677 /* FLAnimatedImageView.m in Sources */,
 				21A746FD2425D924003C7677 /* AppDelegate.swift in Sources */,
 				21A748262426256B003C7677 /* SDWebImageCoder.m in Sources */,
@@ -636,6 +651,7 @@
 				21A746FF2425D924003C7677 /* SceneDelegate.swift in Sources */,
 				21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */,
 				21A748242426256B003C7677 /* SDWebImageCompat.m in Sources */,
+				21F43087242A4A3E0082FCE8 /* RadarView.swift in Sources */,
 				21A748122426256B003C7677 /* Tools.swift in Sources */,
 				21A7480C2426256B003C7677 /* HomeFlowLayout.swift in Sources */,
 				21A748292426256B003C7677 /* SDImageCache.m in Sources */,

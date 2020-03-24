@@ -11,24 +11,8 @@ import UIKit
 
 class HomeHeadView: UIView{
     
-//     //选择完后回调
-//    func dropDownMenu(_ menu: ZHDropDownMenu, didSelect index: Int) {
-//        print("\(menu) choosed at index \(index)")
-//    }
-//
-//    //编辑完成后回调
-//    func dropDownMenu(_ menu: ZHDropDownMenu, didEdit text: String) {
-//        print("\(menu) input text \(text)")
-//    }
-    
     typealias SwitchBtBlock = (_ click: Bool) -> Void
-    
-    //@IBOutlet weak var sortMenu: ZHDropDownMenu!
-    
-    
-    
- 
-    
+
     //    ///头像
 //    @IBOutlet weak var headImg: UIImageView!
 //    ///用户名

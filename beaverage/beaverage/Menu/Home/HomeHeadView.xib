@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubf-JZ-c1I" userLabel="Three View">
-                    <rect key="frame" x="0.0" y="320" width="658" height="80"/>
+                    <rect key="frame" x="0.0" y="450" width="658" height="80"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88h-i4-X03">
                             <rect key="frame" x="488" y="20" width="150" height="35"/>
@@ -150,18 +150,18 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxs-vS-dKQ" userLabel="Second View">
-                    <rect key="frame" x="0.0" y="150" width="658" height="170"/>
+                    <rect key="frame" x="0.0" y="150" width="658" height="300"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRT-Dk-O1o">
-                            <rect key="frame" x="408" y="0.0" width="170" height="170"/>
-                            <color key="backgroundColor" red="0.96633478589232036" green="1" blue="0.75660873485746638" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <rect key="frame" x="348" y="35" width="230" height="230"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="170" id="T58-Hn-xpG"/>
-                                <constraint firstAttribute="height" constant="170" id="tUj-14-gEv"/>
+                                <constraint firstAttribute="width" constant="230" id="T58-Hn-xpG"/>
+                                <constraint firstAttribute="height" constant="230" id="tUj-14-gEv"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znr-9v-KUN">
-                            <rect key="frame" x="15" y="55" width="270" height="60"/>
+                            <rect key="frame" x="15" y="120" width="270" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥1000-2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyZ-dR-RLv">
                                     <rect key="frame" x="5" y="0.0" width="100" height="30"/>
@@ -208,7 +208,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dm-Yd-Hgo" userLabel="Smoky View">
-                            <rect key="frame" x="35" y="95" width="10" height="10"/>
+                            <rect key="frame" x="35" y="160" width="10" height="10"/>
                             <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="10" id="klR-yW-vC7"/>
@@ -218,7 +218,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="170" id="CSo-gd-obg"/>
+                        <constraint firstAttribute="height" constant="300" id="CSo-gd-obg"/>
                         <constraint firstItem="0dm-Yd-Hgo" firstAttribute="leading" secondItem="bSH-pT-yfA" secondAttribute="leading" constant="15" id="Fsz-pS-KgC"/>
                         <constraint firstItem="aRT-Dk-O1o" firstAttribute="centerY" secondItem="Xxs-vS-dKQ" secondAttribute="centerY" id="SMr-vH-0xY"/>
                         <constraint firstItem="Znr-9v-KUN" firstAttribute="leading" secondItem="Xxs-vS-dKQ" secondAttribute="leading" constant="15" id="U3w-hH-Zfu"/>
