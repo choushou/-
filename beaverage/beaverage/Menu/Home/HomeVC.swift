@@ -266,7 +266,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         let cell:HomeCell = collectionView.cellForItem(at: indexPath) as! HomeCell
         let model = self.dataArr[indexPath.row]
         
-        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
+//        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
         
         let webVC = ArticleVC()
         webVC.aticleID = model.articleUrl!

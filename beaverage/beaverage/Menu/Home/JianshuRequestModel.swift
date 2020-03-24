@@ -100,7 +100,7 @@ class JianshuRequestModel: NSObject  {
                     let model = JianshuModel()
                     
                     //封面(可能有文章没有封面) 获取的图片URL最后面类似"w/300/h/240"代表长宽，修改长宽如"w/600/h/480"可得到2倍尺寸的图片，清晰度相应提高，反之亦然。假如超过原图长或宽的尺寸就会显示原图
-                    model.wrap = "testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据testwrap赋给模型数据"
+                    model.wrap = "test"
                     model.imgW = itemWith - 16
 //                    //如果长度大于0个字符
 //                    if model.wrap!.count > 0  {
@@ -116,13 +116,13 @@ class JianshuRequestModel: NSObject  {
                     
                     
                  model.imgH = 240
-                 model.abstract = "abstractTexdt文摘"
+                 model.abstract = "test12"
                  
                  
                     //文章url
                     model.articleUrl = self.regexGetSub(articleUrlRegex, item)[0]
                     //文章title
-                    model.title = "testTitle文章title文章"
+                    model.title = "testTitle"
                     //文摘
 //                    model.abstract = "abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文abstractTexdt文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘文摘"
                     
@@ -132,9 +132,9 @@ class JianshuRequestModel: NSObject  {
                     //                    let comments = redComments[1]       //评论人数
                     
                     //查看人数
-                    model.read = "readTest查看人数fuzhi"
+                    model.read = "readTestfuzhi"
                     //评论人数
-                    model.comments = self.regexGetSub(commentsRegex, item)[0]
+                    model.comments = "12"
                     //喜欢
                     model.like = self.regexGetSub(likeRegex, item)[0]
                     //发布时间
