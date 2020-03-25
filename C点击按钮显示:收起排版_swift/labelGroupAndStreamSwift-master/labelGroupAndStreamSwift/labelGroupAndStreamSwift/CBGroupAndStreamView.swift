@@ -113,6 +113,10 @@ class CBGroupAndStreamView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        view.backgroundColor = UIColor.red
+        scrollView.addSubview(view)
         
         self.addSubview(scrollView)
     }
@@ -132,7 +136,8 @@ class CBGroupAndStreamView: UIView {
         tempContentArr = contetnArr.count > 0 ? contetnArr : tempContentArr
         tempTitleArr = titleArr.count > 0 ? titleArr : tempTitleArr
 
-        frameRect = .zero
+        frameRect = CGRect(x: 0, y: 0, width: 0, height: 100)
+        //frameRect = .zero
         dataSourceArr.removeAll()
         dataSourceArr.append(contentsOf: tempContentArr)
 
@@ -159,6 +164,11 @@ class CBGroupAndStreamView: UIView {
         viewGroup.backgroundColor = UIColor.red
         viewGroup.frame = CGRect(x: 15, y: currFrame.size.height + currFrame.origin.y + 20, width: 10, height: 10)
         
+           let view = UIView()
+                view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+                view.backgroundColor = UIColor.red
+                scrollView.addSubview(view)
+              
         scrollView.addSubview(groupTitleLab)
         scrollView.addSubview(viewGroup)
         
@@ -225,9 +235,17 @@ class CBGroupAndStreamView: UIView {
             
             viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
             
+            let testView = UIView()
+            testView.backgroundColor = UIColor.blue
+            //print(tempTitleArr.count)
+            //print(groupId)
+            if (tempTitleArr.count - 1 == groupId) && (content.count == index + 1) {
+                 testView.frame = CGRect(x:0, y: content_totalHeight + 50, width: 500, height: 100)
+                scrollView.addSubview(testView)
+            }
+           
             
-         
-            
+      
             //[btn addSubview:subView];
             scrollView.addSubview(sender)
             

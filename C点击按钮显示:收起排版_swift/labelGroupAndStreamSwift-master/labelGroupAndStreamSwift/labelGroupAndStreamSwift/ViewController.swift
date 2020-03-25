@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         contentArrayDa.remove(at: 0)
         
         contentArray = contentArr
+        
         labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         labGroup.titleTextFont = .systemFont(ofSize: 14)
         labGroup.titleLabHeight = 30;
@@ -122,9 +123,9 @@ extension ViewController : CBGroupAndStreamViewDelegate{
         
        
         
-        print(selectArray[groupId])
-        print(index)
-        print(contentArray[groupId].count - 1)
+//        print(selectArray[groupId])
+//        print(index)
+//        print(contentArray[groupId].count - 1)
         
         if ((selectArray[groupId] == "true") && (index == contentArray[groupId].count - 1)) || ((selectArray[groupId] != "true") && (index == 3)) {
             
