@@ -69,6 +69,7 @@
 		21F43088242A4A3E0082FCE8 /* RadarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F43086242A4A3E0082FCE8 /* RadarModel.swift */; };
 		21F4308B242B8C250082FCE8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4308A242B8C250082FCE8 /* SearchView.swift */; };
 		21F4308D242B8C490082FCE8 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F4308C242B8C490082FCE8 /* SearchView.xib */; };
+		21F4308F242BB1B90082FCE8 /* CBGroupAndStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */; };
 		21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */; };
 		21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D12427D9EB0088C4B0 /* DarkView.xib */; };
 		21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6D32427DA2B0088C4B0 /* DarkView.swift */; };
@@ -191,6 +192,7 @@
 		21F43086242A4A3E0082FCE8 /* RadarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarModel.swift; sourceTree = "<group>"; };
 		21F4308A242B8C250082FCE8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		21F4308C242B8C490082FCE8 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBGroupAndStreamView.swift; sourceTree = "<group>"; };
 		21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		21FAE6D12427D9EB0088C4B0 /* DarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DarkView.xib; sourceTree = "<group>"; };
 		21FAE6D32427DA2B0088C4B0 /* DarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkView.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		21F43089242B8B670082FCE8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */,
 				21F4308A242B8C250082FCE8 /* SearchView.swift */,
 				21F4308C242B8C490082FCE8 /* SearchView.xib */,
 			);
@@ -629,6 +632,7 @@
 				21A748302426256B003C7677 /* SDImageCacheConfig.m in Sources */,
 				21FAE6E224290B1D0088C4B0 /* ScanCodeController.swift in Sources */,
 				21A748212426256B003C7677 /* UIImage+GIF.m in Sources */,
+				21F4308F242BB1B90082FCE8 /* CBGroupAndStreamView.swift in Sources */,
 				21A748192426256B003C7677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
 				21A7481E2426256B003C7677 /* FLAnimatedImage.m in Sources */,

@@ -29,6 +29,15 @@ class WineKind: NSObject {
 
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
+    var labGroup = CBGroupAndStreamView()
+     var contentArray : [[String]] = [[]]
+     var contentArrayDa: [[String]] = [[]]
+     var titleArray : [String] = []
+     var selectedButton: String = ""
+     //定义一个数组保存是否选中的状态
+     var selectArray : [String] = ["false","false","false","false","false","false"]
+    
+    
     var radarView: RadarView!
     var radarViewTwo: RadarView!
     var pointType: PointType!
@@ -69,6 +78,70 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
+               titleArray = titleArr
+               let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","Nutty-cocountone","carameltow","Nutty-cocountone","carameltow","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","carameltow","caramelsix","Nutty-cocountserven","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
+               
+               var contentArFirst: [String] = []
+               
+               for indexGroup in 0..<6 {
+                   
+                   let indexArray = contentArr[indexGroup]
+                   
+                   if indexArray.count > 2 {
+                       for index in 0..<3 {
+                           contentArFirst.append(indexArray[index])
+                       }
+                   } else {
+                       for indexTwo in 0..<indexArray.count {
+                           contentArFirst.append(indexArray[indexTwo])
+                       }
+                   }
+                   
+                   contentArFirst.append("もっとを見る+")
+                   contentArrayDa.append(contentArFirst)
+                   contentArFirst.removeAll()
+                   
+               }
+        
+        
+        contentArrayDa.remove(at: 0)
+             
+             contentArray = contentArr
+             
+             labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 300, height: UIScreen.main.bounds.size.height - 200))
+        
+        labGroup.backgroundColor = UIColor.yellow
+        
+             labGroup.titleTextFont = .systemFont(ofSize: 14)
+             labGroup.titleLabHeight = 30;
+             labGroup.titleTextColor = .red
+             labGroup.isSingle = true
+             //        labGroup.defaultSelIndex = 1
+             //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
+             //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
+             labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
+             //分别设置每个组的单选与多选
+             labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
+             
+             labGroup.setDataSource(contetnArr: contentArrayDa, titleArr: titleArr)
+             
+             labGroup.delegate = self
+             
+           // self.view.addSubview(labGroup)
+        
+        
+             labGroup.confirmReturnValueClosure = {
+                 (selArr,groupIdArr) in
+                 //            print(selArr)
+             }
+             labGroup.currentSelValueClosure = {
+                 (valueStr,index,groupId) in
+                 //            print("\(valueStr) index = \(index), groupid = \(groupId)")
+             }
+        
         
         wineKind.body = 0.5
         wineKind.smoky = 0.75
@@ -118,9 +191,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
         self.view.addSubview(navBar)
         
-        
-        
-        
         let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
         homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  530)
         
@@ -149,21 +219,21 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                   searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
                   
                 //  searchView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
-                  
-                  self.view.addSubview(searchView!)
+             self.view.addSubview(searchView!)
+            //self.labGroup.frame = searchView?.frame ?? CGRect(x:0,y:0,width:0,height:0)
+           
+//
+//            self.labGroup.frame =  searchView?.searchCondition.frame ?? CGRect(x:0,y:0,width:0,height:0)
+            
+            
+//            self.labGroup.frame =  CGRect(x: 15, y: 100, width: self.view.bounds.width - 530, height: 564)
+//
+            //searchView?.frame = CGRect(x: 40, y: 200, width: 500, height: 500)
+            searchView?.searchCondition.addSubview(self.labGroup)
+            // searchView?.addSubview(self.labGroup)
         }
     }
     
-    func addSearchConditionView() {
-        let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
-               darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-               
-               darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-               
-//               darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
-               
-               self.view.addSubview(darkView!)
-    }
     
     @objc func showScanCode() {
         let scanCodeViewController = ScanCodeController()
@@ -193,8 +263,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = RGB16(value: 0xffffff)
-        
         self.view.addSubview(self.collectionView)
+    
         
         self.collectionView.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
         self.collectionView.register(UINib.init(nibName: "HomeFootView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "HomeFootView")
@@ -430,5 +500,82 @@ private extension HomeVC {
         radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
       
         view.addSubview(radarView)
+    }
+}
+
+extension HomeVC : CBGroupAndStreamViewDelegate{
+    
+    func currentSelValueWithDelegate(valueStr: String, index: Int, groupId: Int) {
+        print("\(valueStr) index = \(index), groupid = \(groupId)")
+        //contentArray[4].prefix(5)
+     
+        
+       
+        
+//        print(selectArray[groupId])
+//        print(index)
+//        print(contentArray[groupId].count - 1)
+        
+        if ((selectArray[groupId] == "true") && (index == contentArray[groupId].count - 1)) || ((selectArray[groupId] != "true") && (index == 3)) {
+            
+            var contentArrayTest : [[String]] = [[]]
+               
+               for indexAppend in 0..<6 {
+                   
+                   if indexAppend == groupId {
+                       
+                       contentArrayDa.remove(at: groupId)
+                    
+                    
+                       
+                       if selectArray[groupId] == "true" {
+                           
+                           var conArr: [String] = []
+                           
+                           let indexArr = contentArray[groupId]
+                           
+                           if indexArr.count > 2 {
+                               for index in 0..<3 {
+                                   conArr.append(indexArr[index])
+                               }
+                           } else {
+                               for indexTwo in 0..<indexArr.count {
+                                   conArr.append(indexArr[indexTwo])
+                               }
+                           }
+                           
+                           conArr.append("もっとを見る+")
+                           
+                           contentArrayDa.insert(conArr, at: groupId)
+                           
+                           selectedButton = ""
+                        
+                        selectArray.remove(at: groupId)
+                        selectArray.insert("false", at: groupId)
+                        
+                       } else {
+                        selectArray.remove(at: groupId)
+                        selectArray.insert("true", at: groupId)
+                        
+                           selectedButton = "selected"
+                           contentArrayDa.insert(contentArray[groupId], at: groupId)
+                       }
+                    
+                   }
+               }
+            
+
+            contentArrayTest.remove(at: 0)
+            
+            labGroup.setDataSource(contetnArr: contentArrayDa , titleArr: titleArray)
+            labGroup.reload()
+     
+        }
+    
+
+    }
+    
+    func confimrReturnAllSelValueWithDelegate(selArr: Array<Any>, groupArr: Array<Any>) {
+        print(selArr)
     }
 }

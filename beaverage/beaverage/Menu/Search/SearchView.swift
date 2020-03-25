@@ -10,6 +10,7 @@ import UIKit
 
 class SearchView: UIView {
 
+    @IBOutlet weak var searchCondition: UIView!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
