@@ -7,12 +7,22 @@
 //
 
 import UIKit
-//import ZHDropDownMenu
 
 class HomeHeadView: UIView{
     
-    typealias SwitchBtBlock = (_ click: Bool) -> Void
+     var buttonCallBack:(() -> ())?
+    
+    @IBAction func searchCondition(_ sender: Any) {
+      
+        buttonCllick(button: sender as! UIButton)
+    }
 
+     func buttonCllick(button: UIButton){
+         if buttonCallBack != nil {
+             buttonCallBack!()
+         }
+     }
+    
     //    ///头像
 //    @IBOutlet weak var headImg: UIImageView!
 //    ///用户名
@@ -32,7 +42,7 @@ class HomeHeadView: UIView{
 //    ///个人介绍
 //    @IBOutlet weak var introduce: UILabel!
     
-    var switchBack: SwitchBtBlock?
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()

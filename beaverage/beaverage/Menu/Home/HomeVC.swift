@@ -140,6 +140,29 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.view.addSubview(darkView!)
         
         initSubviews()
+        
+        
+        homeHeadView?.buttonCallBack =  { () -> () in
+              let searchView = Bundle.main.loadNibNamed("SearchView", owner: nil, options: nil)?.first as? SearchView
+                  searchView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
+                  
+                  searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
+                  
+                //  searchView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
+                  
+                  self.view.addSubview(searchView!)
+        }
+    }
+    
+    func addSearchConditionView() {
+        let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
+               darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+               
+               darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
+               
+//               darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
+               
+               self.view.addSubview(darkView!)
     }
     
     @objc func showScanCode() {
