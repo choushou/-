@@ -22,7 +22,41 @@ import UIKit
     @objc optional func currentSelValueWithDelegate(valueStr : String, index : Int, groupId : Int)
 }
 
+
+  func initSubviewsTwo() -> RadarView {
+       var radarView: RadarView!
+    var wineKind: WineKind = WineKind()
+    wineKind.body = 0.5
+        wineKind.smoky = 0.75
+        wineKind.woody = 0.25
+        wineKind.floral = 0.5
+        wineKind.fruity = 0.25
+        wineKind.windy = 0.75
+        radarView = RadarView(frame: CGRect(x: 110, y: 150, width: UIScreen.main.bounds.size.width - 250, height: UIScreen.main.bounds.size.width - 220))
+        radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
+        radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
+        
+        radarView.setLineWidth(width: 0.5)
+        
+//        radarView.setDotRadius(radius: 3)
+//        radarView.setDrawAreaColor(color: UIColor.init(red: 113 / 255, green: 113 / 255, blue: 113 / 255, alpha: 0.6))
+//        radarView.setDotColor(color: UIColor.init(red: 143 / 255, green: 143 / 255, blue: 143 / 255, alpha: 1))
+        
+        radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
+        radarView.setDotRadiusTwo(radiusTwo: 3)
+        radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
+        
+       // radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
+        
+        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+      return radarView
+        //view.addSubview(radarView)
+    }
+
+
 class CBGroupAndStreamView: UIView {
+     var radarView: RadarView!
+    
     //MARK:----publish
     /// 组高度
     public var titleLabHeight = 30
@@ -92,7 +126,9 @@ class CBGroupAndStreamView: UIView {
     private let scrollView : UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.backgroundColor = UIColor.purple
-        scrollview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 300, height: UIScreen.main.bounds.size.height - 300)
+        
+        scrollview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 64 - 110 - 100)
+        
         scrollview.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
@@ -108,12 +144,11 @@ class CBGroupAndStreamView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        view.backgroundColor = UIColor.red
-        scrollView.addSubview(view)
+
+        let searchHeaderView = Bundle.main.loadNibNamed("SearchHeaderView", owner: nil, options: nil)?.first as? SearchHeaderView
+                        searchHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 250)
         
-        self.backgroundColor = UIColor.red
+        scrollView.addSubview(searchHeaderView!)
         self.addSubview(scrollView)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -132,7 +167,7 @@ class CBGroupAndStreamView: UIView {
         tempContentArr = contetnArr.count > 0 ? contetnArr : tempContentArr
         tempTitleArr = titleArr.count > 0 ? titleArr : tempTitleArr
 
-        frameRect = CGRect(x: 0, y: 0, width: 0, height: 100)
+        frameRect = CGRect(x: 0, y: 0, width: 0, height: 250)
         //frameRect = .zero
         dataSourceArr.removeAll()
         dataSourceArr.append(contentsOf: tempContentArr)
@@ -148,7 +183,7 @@ class CBGroupAndStreamView: UIView {
 //        print(frameRect.height)
 //        print(frameRect.width)
         print(UIScreen.main.bounds.height)
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 100)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height + 600)
         
     }
     //MARK:----设置数据源，创建
@@ -165,11 +200,6 @@ class CBGroupAndStreamView: UIView {
         let viewGroup =  UIView()
         viewGroup.backgroundColor = UIColor.red
         viewGroup.frame = CGRect(x: 15, y: currFrame.size.height + currFrame.origin.y + 20, width: 10, height: 10)
-        
-           let view = UIView()
-                view.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-                view.backgroundColor = UIColor.red
-                scrollView.addSubview(view)
               
         scrollView.addSubview(groupTitleLab)
         scrollView.addSubview(viewGroup)
@@ -232,18 +262,23 @@ class CBGroupAndStreamView: UIView {
                 alineButWidth = margin_x + but_width
                 content_totalHeight = current_rect.size.height + current_rect.origin.y + CGFloat(content_x)
             }
-//            print("margin_x = \(margin_x)")
+
+            
             sender.frame = CGRect(x: margin_x, y: content_totalHeight, width: but_width, height: CGFloat(content_height))
             
             viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
             
             let testView = UIView()
             testView.backgroundColor = UIColor.blue
-            //print(tempTitleArr.count)
-            //print(groupId)
+          
+            let searchFooterView = Bundle.main.loadNibNamed("SearchFooterView", owner: nil, options: nil)?.first as? SearchFooterView
+            
             if (tempTitleArr.count - 1 == groupId) && (content.count == index + 1) {
-                 testView.frame = CGRect(x:0, y: content_totalHeight + 50, width: 500, height: 100)
-                scrollView.addSubview(testView)
+                 searchFooterView?.frame = CGRect(x: 0, y: content_totalHeight + 50, width: UIScreen.main.bounds.size.width, height: 800)
+
+                radarView = initSubviewsTwo()
+                searchFooterView!.addSubview(radarView)
+                scrollView.addSubview(searchFooterView!)
             }
            
             
@@ -415,7 +450,6 @@ class CBGroupAndStreamView: UIView {
         
               let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","caramelsix","Nutty-cocountserven","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
         
-//        setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
          setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
         
         

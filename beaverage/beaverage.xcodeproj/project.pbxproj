@@ -70,6 +70,10 @@
 		21F4308B242B8C250082FCE8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4308A242B8C250082FCE8 /* SearchView.swift */; };
 		21F4308D242B8C490082FCE8 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F4308C242B8C490082FCE8 /* SearchView.xib */; };
 		21F4308F242BB1B90082FCE8 /* CBGroupAndStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */; };
+		21F43091242CE3BE0082FCE8 /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F43090242CE3BD0082FCE8 /* SearchHeaderView.swift */; };
+		21F43093242CE3D70082FCE8 /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F43092242CE3D70082FCE8 /* SearchHeaderView.xib */; };
+		21F43095242CF9EB0082FCE8 /* SearchFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F43094242CF9EB0082FCE8 /* SearchFooterView.swift */; };
+		21F43097242CFA060082FCE8 /* SearchFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F43096242CFA060082FCE8 /* SearchFooterView.xib */; };
 		21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */; };
 		21FAE6D22427D9EB0088C4B0 /* DarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FAE6D12427D9EB0088C4B0 /* DarkView.xib */; };
 		21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FAE6D32427DA2B0088C4B0 /* DarkView.swift */; };
@@ -193,6 +197,10 @@
 		21F4308A242B8C250082FCE8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		21F4308C242B8C490082FCE8 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBGroupAndStreamView.swift; sourceTree = "<group>"; };
+		21F43090242CE3BD0082FCE8 /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		21F43092242CE3D70082FCE8 /* SearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
+		21F43094242CF9EB0082FCE8 /* SearchFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooterView.swift; sourceTree = "<group>"; };
+		21F43096242CFA060082FCE8 /* SearchFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFooterView.xib; sourceTree = "<group>"; };
 		21FAE6CD2427D5A60088C4B0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		21FAE6D12427D9EB0088C4B0 /* DarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DarkView.xib; sourceTree = "<group>"; };
 		21FAE6D32427DA2B0088C4B0 /* DarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkView.swift; sourceTree = "<group>"; };
@@ -430,6 +438,10 @@
 				21F4308E242BB1B90082FCE8 /* CBGroupAndStreamView.swift */,
 				21F4308A242B8C250082FCE8 /* SearchView.swift */,
 				21F4308C242B8C490082FCE8 /* SearchView.xib */,
+				21F43090242CE3BD0082FCE8 /* SearchHeaderView.swift */,
+				21F43092242CE3D70082FCE8 /* SearchHeaderView.xib */,
+				21F43094242CF9EB0082FCE8 /* SearchFooterView.swift */,
+				21F43096242CFA060082FCE8 /* SearchFooterView.xib */,
 			);
 			name = Search;
 			path = Menu/Search;
@@ -564,7 +576,9 @@
 				21A747042425D924003C7677 /* Main.storyboard in Resources */,
 				21A7480F2426256B003C7677 /* HomeCell.xib in Resources */,
 				21A748082426256B003C7677 /* HomeFootView.xib in Resources */,
+				21F43097242CFA060082FCE8 /* SearchFooterView.xib in Resources */,
 				21FAE6E024290B1D0088C4B0 /* sweep_kuangdownleft@2x.png in Resources */,
+				21F43093242CE3D70082FCE8 /* SearchHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +650,7 @@
 				21A748192426256B003C7677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
 				21A7481E2426256B003C7677 /* FLAnimatedImage.m in Sources */,
+				21F43091242CE3BE0082FCE8 /* SearchHeaderView.swift in Sources */,
 				21A7482B2426256B003C7677 /* SDWebImageTransition.m in Sources */,
 				21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */,
 				21A7482E2426256B003C7677 /* NSImage+WebCache.m in Sources */,
@@ -669,6 +684,7 @@
 				21A748062426256B003C7677 /* HomeCell.swift in Sources */,
 				21A7481D2426256B003C7677 /* FLAnimatedImageView+WebCache.m in Sources */,
 				21A748252426256B003C7677 /* SDWebImagePrefetcher.m in Sources */,
+				21F43095242CF9EB0082FCE8 /* SearchFooterView.swift in Sources */,
 				21A746FF2425D924003C7677 /* SceneDelegate.swift in Sources */,
 				21FAE6CE2427D5A60088C4B0 /* TopViewController.swift in Sources */,
 				21A748242426256B003C7677 /* SDWebImageCompat.m in Sources */,

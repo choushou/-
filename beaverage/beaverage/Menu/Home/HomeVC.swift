@@ -111,7 +111,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
              
              contentArray = contentArr
              
-             labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 300, height: UIScreen.main.bounds.size.height - 200))
+             labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 15, y: 164, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 300))
         
         labGroup.backgroundColor = UIColor.yellow
         
@@ -217,20 +217,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                   searchView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
                   
                   searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-                  
-                //  searchView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
+            
              self.view.addSubview(searchView!)
-            //self.labGroup.frame = searchView?.frame ?? CGRect(x:0,y:0,width:0,height:0)
-           
-//
-//            self.labGroup.frame =  searchView?.searchCondition.frame ?? CGRect(x:0,y:0,width:0,height:0)
             
+            self.view.addSubview(self.labGroup)
             
-//            self.labGroup.frame =  CGRect(x: 15, y: 100, width: self.view.bounds.width - 530, height: 564)
-//
-            //searchView?.frame = CGRect(x: 40, y: 200, width: 500, height: 500)
-            searchView?.searchCondition.addSubview(self.labGroup)
-            // searchView?.addSubview(self.labGroup)
+
         }
     }
     
