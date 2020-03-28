@@ -125,9 +125,9 @@
                         <constraint firstAttribute="width" constant="200" id="xNy-qc-BF3"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-Mt-TA2">
-                    <rect key="frame" x="15" y="248" width="940" height="5"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-Mt-TA2" customClass="SolidView" customModule="beaverage" customModuleProvider="target">
+                    <rect key="frame" x="15" y="253" width="940" height="22"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="5" id="gHZ-Db-abH"/>
                     </constraints>
@@ -224,6 +224,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="headerSolidView" destination="IDd-Mt-TA2" id="oZp-sm-zgb"/>
                 <outlet property="priceFirst" destination="dTq-IA-Y7h" id="aPR-Cz-hi3"/>
                 <outlet property="priceFive" destination="LNN-Lj-ph2" id="XYO-eS-CYf"/>
                 <outlet property="priceFour" destination="zwE-VY-qgJ" id="PMy-Jb-hdK"/>

@@ -18,6 +18,8 @@ class SearchHeaderView: UIView {
     @IBOutlet weak var priceSix: UIButton!
     @IBOutlet weak var priceSeven: UIButton!
     
+    @IBOutlet weak var headerSolidView: UIView!
+    
     public var button_backSelColor : UIColor = UIColor(red: 181/255, green: 21/255, blue: 8/255, alpha: 1)
     
     override func awakeFromNib() {
