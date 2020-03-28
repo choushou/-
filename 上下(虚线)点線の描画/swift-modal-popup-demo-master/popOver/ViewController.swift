@@ -12,7 +12,7 @@ class ViewController: UIViewController {
         
                 let sanjiao =  TestSanJiao()
         
-                sanjiao.frame = CGRect(x: 100, y: 230, width: 30, height: 30)
+                sanjiao.frame = CGRect(x: 100, y: 230, width: 130, height: 130)
                 self.view.backgroundColor = UIColor.white
                 sanjiao.backgroundColor = UIColor.white
         
