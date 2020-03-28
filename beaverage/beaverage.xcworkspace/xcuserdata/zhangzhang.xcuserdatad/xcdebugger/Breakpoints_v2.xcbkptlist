@@ -78,8 +78,8 @@
             filePath = "beaverage/Menu/Search/CBGroupAndStreamView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "setDataSource(contetnArr:titleArr:)"
             landmarkType = "7">
          </BreakpointContent>
