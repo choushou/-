@@ -59,7 +59,7 @@ class CBGroupAndStreamView: UIView {
     ///
     public var titleTextColor : UIColor = .black
     ///
-    public var content_height = 30
+    public var content_height = 60
     /// botton margin
     public var content_y = 10
     /// left right margin
@@ -73,7 +73,7 @@ class CBGroupAndStreamView: UIView {
     /// 背景选中颜色
     public var content_backSelColor : UIColor = UIColor(red: 181/255, green: 21/255, blue: 8/255, alpha: 1)
     /// 字体大小
-    public var content_titleFont : UIFont = .systemFont(ofSize: 12)
+    public var content_titleFont : UIFont = .systemFont(ofSize: 18)
     /// 圆角
     public var content_radius : Int = 8
     /// 是否单选，默认 true 是单选
@@ -119,6 +119,7 @@ class CBGroupAndStreamView: UIView {
     //MARK:----private
     private let scrollView : UIScrollView = {
         let scrollview = UIScrollView()
+        //content_totalHeight
         
         scrollview.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 64 - 110 - 100)
         
@@ -138,10 +139,6 @@ class CBGroupAndStreamView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let searchHeaderView = Bundle.main.loadNibNamed("SearchHeaderView", owner: nil, options: nil)?.first as? SearchHeaderView
-                        searchHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: 250)
-        
-        scrollView.addSubview(searchHeaderView!)
         self.addSubview(scrollView)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -172,13 +169,8 @@ class CBGroupAndStreamView: UIView {
             frameRect = setupGroupAndStream(content: contetnArr[index] as! Array<Any>, titleStr: title, currFrame: frameRect, groupId: index)
         }
         //设置滚动范围
-//        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: frameRect.size.height + frameRect.origin.y + 20)
         
-//        print(frameRect.height)
-//        print(frameRect.width)
-        print(UIScreen.main.bounds.height)
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width - 60, height: UIScreen.main.bounds.height + 600)
-        
+         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width - 60, height: frameRect.size.height + frameRect.origin.y + 20 + 900)
     }
     //MARK:----设置数据源，创建
     func setupGroupAndStream(content : Array<Any>, titleStr : String, currFrame : CGRect, groupId : Int) -> CGRect{
@@ -239,7 +231,7 @@ class CBGroupAndStreamView: UIView {
                             sender.layer.cornerRadius = CGFloat(content_radius)
                 let subview = UIView()
                          subview.backgroundColor = UIColor.red
-                         subview.frame = CGRect(x: 10, y: 10, width: 10, height: 10)
+                         subview.frame = CGRect(x: 10, y: 25, width: 10, height: 10)
                          sender.addSubview(subview)
             }
 
@@ -261,14 +253,18 @@ class CBGroupAndStreamView: UIView {
             sender.frame = CGRect(x: margin_x, y: content_totalHeight, width: but_width, height: CGFloat(content_height))
             
             viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-            
-            let testView = UIView()
-            testView.backgroundColor = UIColor.blue
+       
           
             let searchFooterView = Bundle.main.loadNibNamed("SearchFooterView", owner: nil, options: nil)?.first as? SearchFooterView
             
+
+            let searchHeaderView = Bundle.main.loadNibNamed("SearchHeaderView", owner: nil, options: nil)?.first as? SearchHeaderView
+                            searchHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: 250)
+            
+            scrollView.addSubview(searchHeaderView!)
+            
             if (tempTitleArr.count - 1 == groupId) && (content.count == index + 1) {
-                 searchFooterView?.frame = CGRect(x: 0, y: content_totalHeight + 50, width: UIScreen.main.bounds.size.width, height: 800)
+                 searchFooterView?.frame = CGRect(x: 0, y: content_totalHeight + 80, width: UIScreen.main.bounds.size.width - 30, height: 900)
 
                 radarView = initSubviewsTwo()
                 searchFooterView!.addSubview(radarView)

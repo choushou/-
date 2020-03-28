@@ -16,17 +16,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KS0-MZ-JW2">
                     <rect key="frame" x="15" y="20" width="200" height="50"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doru" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-DS-0Lr">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="six" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-DS-0Lr">
                             <rect key="frame" x="-3" y="0.0" width="50" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="or4-AO-e0o"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="価格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heK-HJ-0lY">
-                            <rect key="frame" x="57" y="2" width="80" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="フレーバードラム検索" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heK-HJ-0lY">
+                            <rect key="frame" x="57" y="2" width="350" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="915-qs-Zr1"/>
-                                <constraint firstAttribute="width" constant="80" id="Vog-qY-ymR"/>
+                                <constraint firstAttribute="width" constant="350" id="Vog-qY-ymR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="29"/>
                             <nil key="textColor"/>
@@ -44,17 +44,35 @@
                         <constraint firstAttribute="bottom" secondItem="heK-HJ-0lY" secondAttribute="bottom" constant="8" id="hSf-bS-v1B"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7Y-He-Ujt">
+                    <rect key="frame" x="644" y="10" width="160" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="F7y-Bo-Bzv"/>
+                        <constraint firstAttribute="width" constant="160" id="fgf-JL-RBa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                    <state key="normal" title="全ての選択を解除">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a7Y-He-Ujt" secondAttribute="trailing" constant="30" id="OSV-bf-OcP"/>
                 <constraint firstItem="KS0-MZ-JW2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="YEk-ft-kCa"/>
+                <constraint firstItem="a7Y-He-Ujt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="YPx-tu-Opp"/>
                 <constraint firstItem="KS0-MZ-JW2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="qau-kB-PR9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="110"/>
+            <point key="canvasLocation" x="138.84892086330936" y="109.54773869346734"/>
         </view>
     </objects>
     <resources>
-        <image name="doru" width="16" height="28"/>
+        <image name="six" width="25.333333969116211" height="24"/>
     </resources>
 </document>
