@@ -16,8 +16,10 @@ class SKButton: UIButton {
            clipsToBounds = true
            setTitleColor(UIColor.black, for: .normal)
            //setTitleColor(UIColor.init(rgb: 0x555555), for: .highlighted)
-           backgroundColor =  UIColor(red: 181/255, green: 21/255, blue: 8/255, alpha: 1)
+//           backgroundColor =  UIColor(red: 181/255, green: 21/255, blue: 8/255, alpha: 1)
 
+    backgroundColor = UIColor.red
+    
 //           setBackgroundColor(color: UIColor.init(rgb: 0xbe4e46), forState: .highlighted)
        }
     
