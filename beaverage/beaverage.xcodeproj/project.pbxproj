@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061968CCD1FF6E1798E2A685 /* Pods_beaverageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEC2E1CD78E67F1163316AA /* Pods_beaverageTests.framework */; };
+		215C8C4F242F07720076E47C /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215C8C4E242F07720076E47C /* SKButton.swift */; };
 		21A746FD2425D924003C7677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A746FC2425D924003C7677 /* AppDelegate.swift */; };
 		21A746FF2425D924003C7677 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A746FE2425D924003C7677 /* SceneDelegate.swift */; };
 		21A747012425D924003C7677 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A747002425D924003C7677 /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		215C8C4E242F07720076E47C /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		21A746F92425D924003C7677 /* beaverage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaverage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A746FC2425D924003C7677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21A746FE2425D924003C7677 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		215C8C4D242F07210076E47C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				215C8C4E242F07720076E47C /* SKButton.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		21A746F02425D924003C7677 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +283,7 @@
 		21A746FB2425D924003C7677 /* beaverage */ = {
 			isa = PBXGroup;
 			children = (
+				215C8C4D242F07210076E47C /* Utils */,
 				21F43089242B8B670082FCE8 /* Search */,
 				21F43084242A4A0C0082FCE8 /* Hexagon */,
 				21FAE6D524290AD40088C4B0 /* Scan */,
@@ -650,6 +661,7 @@
 				21A748192426256B003C7677 /* UIImageView+HighlightedWebCache.m in Sources */,
 				21A747212425DEB2003C7677 /* LoginViewController.swift in Sources */,
 				21A7481E2426256B003C7677 /* FLAnimatedImage.m in Sources */,
+				215C8C4F242F07720076E47C /* SKButton.swift in Sources */,
 				21F43091242CE3BE0082FCE8 /* SearchHeaderView.swift in Sources */,
 				21A7482B2426256B003C7677 /* SDWebImageTransition.m in Sources */,
 				21FAE6D42427DA2B0088C4B0 /* DarkView.swift in Sources */,
