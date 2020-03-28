@@ -76,120 +76,22 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         navigationController?.popViewController(animated: true)
     }
     
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
-               titleArray = titleArr
-               let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","Nutty-cocountone","carameltow","Nutty-cocountone","carameltow","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","carameltow","caramelsix","Nutty-cocountserven","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
-               
-               var contentArFirst: [String] = []
-               
-               for indexGroup in 0..<6 {
-                   
-                   let indexArray = contentArr[indexGroup]
-                   
-                   if indexArray.count > 2 {
-                       for index in 0..<3 {
-                           contentArFirst.append(indexArray[index])
-                       }
-                   } else {
-                       for indexTwo in 0..<indexArray.count {
-                           contentArFirst.append(indexArray[indexTwo])
-                       }
-                   }
-                   
-                   contentArFirst.append("もっとを見る+")
-                   contentArrayDa.append(contentArFirst)
-                   contentArFirst.removeAll()
-                   
-               }
-        
-        
-        contentArrayDa.remove(at: 0)
-             
-             contentArray = contentArr
-             
-             labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 15, y: 164, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 300))
-        
-        labGroup.backgroundColor = UIColor.yellow
-        
-             labGroup.titleTextFont = .systemFont(ofSize: 14)
-             labGroup.titleLabHeight = 30;
-             labGroup.titleTextColor = .red
-             labGroup.isSingle = true
-             //        labGroup.defaultSelIndex = 1
-             //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
-             //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
-             labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
-             //分别设置每个组的单选与多选
-             labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
-             
-             labGroup.setDataSource(contetnArr: contentArrayDa, titleArr: titleArr)
-             
-             labGroup.delegate = self
-             
-           // self.view.addSubview(labGroup)
-        
-        
-             labGroup.confirmReturnValueClosure = {
-                 (selArr,groupIdArr) in
-                 //            print(selArr)
-             }
-             labGroup.currentSelValueClosure = {
-                 (valueStr,index,groupId) in
-                 //            print("\(valueStr) index = \(index), groupid = \(groupId)")
-             }
-        
-        
+        //絞り込み画面の中部を表示
+        searchBeaverageData()
+
         wineKind.body = 0.5
         wineKind.smoky = 0.75
         wineKind.woody = 0.25
         wineKind.floral = 0.5
         wineKind.fruity = 0.25
         wineKind.windy = 0.75
+      
         
-        self.navigationController?.navigationBar.isHidden = true
-        
-        let navBar = UINavigationBar(frame: CGRect(x:0, y:20, width:self.view.frame.size.width, height:64))
-        
-        navBar.backgroundColor = UIColor.white
-        
-        
-        let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
-        titleLabel.text = "メニューリスト"
-        titleLabel.textColor = UIColor.black
-        
-        let navItem = UINavigationItem()
-        
-        navItem.titleView = titleLabel
-        
-        
-        
-        let button =   UIButton(type: .system)
-        button.frame = CGRect(x:0, y:0, width:65, height:30)
-        button.setImage(UIImage(named:"left_back"), for: .normal)
-        button.setTitle("戻る", for: .normal)
-        button.addTarget(self, action: #selector(backBtnClick), for: .touchUpInside)
-        button.tintColor = UIColor.black
-        let leftBarBtn = UIBarButtonItem(customView: button)
-        
-        //スペースが必要です。じゃないと、前に置けない
-        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil,
-                                     action: nil)
-        spacer.width = -10;
-        
-        
-        let rightButton = UIBarButtonItem(title: "rightButton", style: .plain, target: self, action: nil)
-        rightButton.tintColor = UIColor.black
-        
-        navItem.leftBarButtonItems = [spacer,leftBarBtn]
-        
-        navigationItem.setHidesBackButton(true, animated: false)
-        navBar.pushItem(navItem, animated: false)
-        
-        self.view.addSubview(navBar)
+        setNavigationBar()
         
         let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
         homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  530)
@@ -198,16 +100,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
         self.createUI()
         self.dataRefresh()
-        
-        
-        let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
-        darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        
-        darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-        
-        darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
-        
-        self.view.addSubview(darkView!)
+ 
+        //半透明のview
+        darkViewMenu()
         
         initSubviews()
         
@@ -225,7 +120,63 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 
         }
     }
+ 
+    func setNavigationBar() {
+        
+              self.navigationController?.navigationBar.isHidden = true
+              
+              let navBar = UINavigationBar(frame: CGRect(x:0, y:20, width:self.view.frame.size.width, height:64))
+              
+              navBar.backgroundColor = UIColor.white
+              
+              
+              let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
+              titleLabel.text = "メニューリスト"
+              titleLabel.textColor = UIColor.black
+              
+              let navItem = UINavigationItem()
+              
+              navItem.titleView = titleLabel
+              
+              
+              
+              let button =   UIButton(type: .system)
+              button.frame = CGRect(x:0, y:0, width:65, height:30)
+              button.setImage(UIImage(named:"left_back"), for: .normal)
+              button.setTitle("戻る", for: .normal)
+              button.addTarget(self, action: #selector(backBtnClick), for: .touchUpInside)
+              button.tintColor = UIColor.black
+              let leftBarBtn = UIBarButtonItem(customView: button)
+              
+              //スペースが必要です。じゃないと、前に置けない
+              let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil,
+                                           action: nil)
+              spacer.width = -10;
+              
+              
+              let rightButton = UIBarButtonItem(title: "rightButton", style: .plain, target: self, action: nil)
+              rightButton.tintColor = UIColor.black
+              
+              navItem.leftBarButtonItems = [spacer,leftBarBtn]
+              
+              navigationItem.setHidesBackButton(true, animated: false)
+              navBar.pushItem(navItem, animated: false)
+              
+              self.view.addSubview(navBar)
+              
+    }
     
+    func darkViewMenu() {
+        
+         let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
+         darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+         
+         darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
+         
+         darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
+         
+         self.view.addSubview(darkView!)
+    }
     
     @objc func showScanCode() {
         let scanCodeViewController = ScanCodeController()
@@ -271,6 +222,72 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.setHomeFlowLayouts()
         
     }
+    
+    func searchBeaverageData() {
+          let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
+                       titleArray = titleArr
+                       let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","Nutty-cocountone","carameltow","Nutty-cocountone","carameltow","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","carameltow","caramelsix","Nutty-cocountserven","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
+                       
+                       var contentArFirst: [String] = []
+                       
+                       for indexGroup in 0..<6 {
+                           
+                           let indexArray = contentArr[indexGroup]
+                           
+                           if indexArray.count > 2 {
+                               for index in 0..<3 {
+                                   contentArFirst.append(indexArray[index])
+                               }
+                           } else {
+                               for indexTwo in 0..<indexArray.count {
+                                   contentArFirst.append(indexArray[indexTwo])
+                               }
+                           }
+                           
+                           contentArFirst.append("もっとを見る+")
+                           contentArrayDa.append(contentArFirst)
+                           contentArFirst.removeAll()
+                           
+                       }
+                
+                
+                contentArrayDa.remove(at: 0)
+                     
+                     contentArray = contentArr
+                     
+                     labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 15, y: 164, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 300))
+                
+                labGroup.backgroundColor = UIColor.yellow
+                
+                     labGroup.titleTextFont = .systemFont(ofSize: 14)
+                     labGroup.titleLabHeight = 30;
+                     labGroup.titleTextColor = .red
+                     labGroup.isSingle = true
+                     //        labGroup.defaultSelIndex = 1
+                     //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
+                     //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
+                     labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
+                     //分别设置每个组的单选与多选
+                     labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
+                     
+                     labGroup.setDataSource(contetnArr: contentArrayDa, titleArr: titleArr)
+                     
+                     labGroup.delegate = self
+                     
+                   // self.view.addSubview(labGroup)
+                
+                
+                     labGroup.confirmReturnValueClosure = {
+                         (selArr,groupIdArr) in
+                         //            print(selArr)
+                     }
+                     labGroup.currentSelValueClosure = {
+                         (valueStr,index,groupId) in
+                         //            print("\(valueStr) index = \(index), groupid = \(groupId)")
+                     }
+                
+      }
+    
     
     //MARK: - --- item layout
     func setHomeFlowLayouts(){

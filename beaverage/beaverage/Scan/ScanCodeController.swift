@@ -144,7 +144,6 @@ class ScanCodeController: UIViewController {
         scanView?.addSubview(bottomRight)
     }
     
-    
     /// スキャン開始
     fileprivate func scaning() {
         
