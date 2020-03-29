@@ -46,34 +46,7 @@ class HomeHeadView: UIView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        var  isShow:Bool?{
-            
-            willSet{
-                   print(isShow)
-                   
-               }
-               //属性已经改变时进行监听
-               didSet{
-                   print(isShow)
-                  
-       
-        }
-        }
-//        if (sortMenu.isShown) {
-//            print("444")
-//        } else {
-//            print("555")
-//        }
-        // Initialization code
-//
-//        sortMenu.options = ["2","1","3","4"]
-//               sortMenu.menuHeight = 250
-//                sortMenu.delegate = self
-               
-        
-//        sortMenu.options = ["1","2","3","4"]
-//        sortMenu.menuHeight = 250
-//        sortMenu.delegate = self
+
         
 //        self.userName.font = UIFont(name: "DINPro-Regular", size: 10)
 //        self.focus.font = UIFont(name: "DINPro-Regular", size: 10)

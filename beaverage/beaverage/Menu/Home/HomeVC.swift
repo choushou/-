@@ -369,11 +369,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         let model = self.dataArr[indexPath.row]
         
 //        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
-        
-//
-//        let webVC = ArticleVC()
-//        webVC.aticleID = model.articleUrl!
-//        self.navigationController?.pushViewController(webVC, animated: true)
+
         
                 let menuDetailViewController = MenuDetailViewController()
                  self.navigationController?.pushViewController(menuDetailViewController, animated: true)

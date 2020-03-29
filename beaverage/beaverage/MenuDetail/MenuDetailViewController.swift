@@ -29,7 +29,7 @@ class DetailWineKind: NSObject {
 
 class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
-    var labGroup = CBGroupAndStreamView()
+    //var labGroup = CBGroupAndStreamView()
      var contentArray : [[String]] = [[]]
      var contentArrayDa: [[String]] = [[]]
      var titleArray : [String] = []
@@ -59,7 +59,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     var itemWidth:CGFloat = 0
     
     var collectionView: UICollectionView!
-    var headerView: HomeHeadView?
+    var menuDetailHeaderView: MenuDetailViewController?
     var collectionHeaderView: CollectionHeaderView?
     var footerView: HomeFootView?
     
@@ -79,9 +79,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //絞り込み画面の中部を表示
-        searchBeaverageData()
+    
 
         detailWineKind.body = 0.5
         detailWineKind.smoky = 0.75
@@ -93,32 +91,16 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         
         setNavigationBar()
         
-        let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
-        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  600)
+        let menuDetailHeaderView = Bundle.main.loadNibNamed("MenuDetailHeaderView", owner: nil, options: nil)?.first as? MenuDetailHeaderView
+        menuDetailHeaderView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  600)
         
-        self.view.addSubview(homeHeadView!)
+        self.view.addSubview(menuDetailHeaderView!)
         
         self.createUI()
         self.dataRefresh()
- 
-        //半透明のview
-      //  darkViewMenu()
         
         initSubviews()
         
-        
-//        homeHeadView?.buttonCallBack =  { () -> () in
-//              let searchView = Bundle.main.loadNibNamed("SearchView", owner: nil, options: nil)?.first as? SearchView
-//                  searchView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
-//
-//                  searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-//
-//             self.view.addSubview(searchView!)
-//
-//            self.view.addSubview(self.labGroup)
-//
-//
-//        }
     }
  
     func setNavigationBar() {
@@ -211,7 +193,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         
         self.collectionView.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
         self.collectionView.register(UINib.init(nibName: "HomeFootView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "HomeFootView")
-        self.collectionView.register(UINib.init(nibName: "HomeHeadView", bundle: nil), forCellWithReuseIdentifier: "HomeHeadView")
+        self.collectionView.register(UINib.init(nibName: "MenuDetailHeaderView", bundle: nil), forCellWithReuseIdentifier: "MenuDetailHeaderView")
         self.collectionView.register(UINib.init(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
         
         //
@@ -222,71 +204,6 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         self.setHomeFlowLayouts()
         
     }
-    
-    func searchBeaverageData() {
-          let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
-                       titleArray = titleArr
-                       let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","Nutty-cocountone","carameltow","Nutty-cocountone","carameltow","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","carameltow","caramelsix","Nutty-cocountserven","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
-                       
-                       var contentArFirst: [String] = []
-                       
-                       for indexGroup in 0..<6 {
-                           
-                           let indexArray = contentArr[indexGroup]
-                           
-                           if indexArray.count > 2 {
-                               for index in 0..<3 {
-                                   contentArFirst.append(indexArray[index])
-                               }
-                           } else {
-                               for indexTwo in 0..<indexArray.count {
-                                   contentArFirst.append(indexArray[indexTwo])
-                               }
-                           }
-                           
-                           contentArFirst.append("もっとを見る+")
-                           contentArrayDa.append(contentArFirst)
-                           contentArFirst.removeAll()
-                           
-                       }
-                
-                
-                contentArrayDa.remove(at: 0)
-                     
-                     contentArray = contentArr
-                     
-                     labGroup = CBGroupAndStreamView.init(frame: CGRect(x: 15, y: 164, width: UIScreen.main.bounds.size.width - 30, height: UIScreen.main.bounds.size.height - 300))
-                
-                labGroup.backgroundColor = UIColor.yellow
-                
-                     labGroup.titleTextFont = .systemFont(ofSize: 14)
-                     labGroup.titleLabHeight = 30;
-                     labGroup.titleTextColor = .red
-                     labGroup.isSingle = true
-                     //        labGroup.defaultSelIndex = 1
-                     //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
-                     //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
-                     labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
-                     //分别设置每个组的单选与多选
-                     labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
-                     
-                     labGroup.setDataSource(contetnArr: contentArrayDa, titleArr: titleArr)
-                     
-                     labGroup.delegate = self
-                     
-                   // self.view.addSubview(labGroup)
-                
-                
-                     labGroup.confirmReturnValueClosure = {
-                         (selArr,groupIdArr) in
-                         //            print(selArr)
-                     }
-                     labGroup.currentSelValueClosure = {
-                         (valueStr,index,groupId) in
-                         //            print("\(valueStr) index = \(index), groupid = \(groupId)")
-                     }
-                
-      }
     
     
     //MARK: - --- item layout
@@ -422,47 +339,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         return reusableView!
     }
-    
-    //MARK:
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if scrollView.contentOffset.y < -120.0 {
-            if self.loading == true {
-                return;
-            }
-            self.topIndicator?.startAnimating()
-            self.loading = true
-            self.collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
-                
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                }, completion: { (finished) in
-                    self.topIndicator?.stopAnimating()
-                    self.loading = false
-                })
-                self.index = 1
-                self.dataRefresh()
-                
-            })
-        }
-        
-        if self.footerView == nil || self.loading == true {
-            return
-        }
-        
-        if self.footerView!.frame.origin.y < (scrollView.contentOffset.y + scrollView.bounds.size.height) {
-            NSLog("refresh");
-            self.loading = true
-            self.footerView?.indicator.startAnimating()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
-                self.footerView = nil
-                self.dataRefresh()
-                self.loading = false
-            })
-        }
-        
-    }
+
     
     //MARK: - ---
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -517,79 +394,3 @@ private extension MenuDetailViewController {
     }
 }
 
-extension MenuDetailViewController : CBGroupAndStreamViewDelegate{
-    
-    func currentSelValueWithDelegate(valueStr: String, index: Int, groupId: Int) {
-        print("\(valueStr) index = \(index), groupid = \(groupId)")
-        //contentArray[4].prefix(5)
-     
-        
-       
-        
-//        print(selectArray[groupId])
-//        print(index)
-//        print(contentArray[groupId].count - 1)
-        
-        if ((selectArray[groupId] == "true") && (index == contentArray[groupId].count - 1)) || ((selectArray[groupId] != "true") && (index == 3)) {
-            
-            var contentArrayTest : [[String]] = [[]]
-               
-               for indexAppend in 0..<6 {
-                   
-                   if indexAppend == groupId {
-                       
-                       contentArrayDa.remove(at: groupId)
-                    
-                    
-                       
-                       if selectArray[groupId] == "true" {
-                           
-                           var conArr: [String] = []
-                           
-                           let indexArr = contentArray[groupId]
-                           
-                           if indexArr.count > 2 {
-                               for index in 0..<3 {
-                                   conArr.append(indexArr[index])
-                               }
-                           } else {
-                               for indexTwo in 0..<indexArr.count {
-                                   conArr.append(indexArr[indexTwo])
-                               }
-                           }
-                           
-                           conArr.append("もっとを見る+")
-                           
-                           contentArrayDa.insert(conArr, at: groupId)
-                           
-                           selectedButton = ""
-                        
-                        selectArray.remove(at: groupId)
-                        selectArray.insert("false", at: groupId)
-                        
-                       } else {
-                        selectArray.remove(at: groupId)
-                        selectArray.insert("true", at: groupId)
-                        
-                           selectedButton = "selected"
-                           contentArrayDa.insert(contentArray[groupId], at: groupId)
-                       }
-                    
-                   }
-               }
-            
-
-            contentArrayTest.remove(at: 0)
-            
-            labGroup.setDataSource(contetnArr: contentArrayDa , titleArr: titleArray)
-            labGroup.reload()
-     
-        }
-    
-
-    }
-    
-    func confimrReturnAllSelValueWithDelegate(selArr: Array<Any>, groupArr: Array<Any>) {
-        print(selArr)
-    }
-}
