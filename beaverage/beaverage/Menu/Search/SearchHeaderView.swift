@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchHeaderView: UIView {
-
+    
     @IBOutlet weak var priceFirst: UIButton!
     @IBOutlet weak var priceTwo: UIButton!
     @IBOutlet weak var priceThree: UIButton!
@@ -24,12 +24,12 @@ class SearchHeaderView: UIView {
     
     override func awakeFromNib() {
         priceFirst.addTarget(self, action: #selector(priceFirstTap), for: .touchUpInside)
-          priceTwo.addTarget(self, action: #selector(priceTwoTap), for: .touchUpInside)
-          priceThree.addTarget(self, action: #selector(priceThreeTap), for: .touchUpInside)
-          priceFour.addTarget(self, action: #selector(priceFourTap), for: .touchUpInside)
-          priceFive.addTarget(self, action: #selector(priceFiveTap), for: .touchUpInside)
-          priceSix.addTarget(self, action: #selector(priceSixTap), for: .touchUpInside)
-          priceSeven.addTarget(self, action: #selector(priceSevenTap), for: .touchUpInside)
+        priceTwo.addTarget(self, action: #selector(priceTwoTap), for: .touchUpInside)
+        priceThree.addTarget(self, action: #selector(priceThreeTap), for: .touchUpInside)
+        priceFour.addTarget(self, action: #selector(priceFourTap), for: .touchUpInside)
+        priceFive.addTarget(self, action: #selector(priceFiveTap), for: .touchUpInside)
+        priceSix.addTarget(self, action: #selector(priceSixTap), for: .touchUpInside)
+        priceSeven.addTarget(self, action: #selector(priceSevenTap), for: .touchUpInside)
     }
     
     @objc func priceFirstTap() {
@@ -41,16 +41,16 @@ class SearchHeaderView: UIView {
         priceFive.backgroundColor = UIColor.white
         priceSix.backgroundColor = UIColor.white
         priceSeven.backgroundColor = UIColor.white
-       
-         priceFirst.isSelected = true
-       
-              priceThree.isSelected = false
-                    priceFour.isSelected = false
-                    priceFive.isSelected = false
-                    priceSix.isSelected = false
-                    priceSeven.isSelected = false
-
-         priceTwo.isSelected = false
+        
+        priceFirst.isSelected = true
+        
+        priceThree.isSelected = false
+        priceFour.isSelected = false
+        priceFive.isSelected = false
+        priceSix.isSelected = false
+        priceSeven.isSelected = false
+        
+        priceTwo.isSelected = false
         priceFirst.setTitleColor(UIColor.white, for: .selected)
         priceFirst.setTitleColor(UIColor.black, for: .normal)
         
@@ -64,16 +64,16 @@ class SearchHeaderView: UIView {
         priceFive.backgroundColor = UIColor.white
         priceSix.backgroundColor = UIColor.white
         priceSeven.backgroundColor = UIColor.white
-      
-                    priceThree.isSelected = false
-                    priceFour.isSelected = false
-                    priceFive.isSelected = false
-                    priceSix.isSelected = false
-                    priceSeven.isSelected = false
-        priceFirst.isSelected = false
-         priceTwo.isSelected = true
         
-    priceTwo.setTitleColor(UIColor.white, for: .selected)
+        priceThree.isSelected = false
+        priceFour.isSelected = false
+        priceFive.isSelected = false
+        priceSix.isSelected = false
+        priceSeven.isSelected = false
+        priceFirst.isSelected = false
+        priceTwo.isSelected = true
+        
+        priceTwo.setTitleColor(UIColor.white, for: .selected)
     }
     @objc func priceThreeTap() {
         priceThree.backgroundColor = button_backSelColor
@@ -85,14 +85,14 @@ class SearchHeaderView: UIView {
         priceFive.backgroundColor = UIColor.white
         priceSix.backgroundColor = UIColor.white
         priceSeven.backgroundColor = UIColor.white
-         priceThree.isSelected = true
-         priceFirst.isSelected = false
-                     priceTwo.isSelected = false
-                    
-                     priceFour.isSelected = false
-                     priceFive.isSelected = false
-                     priceSix.isSelected = false
-                     priceSeven.isSelected = false
+        priceThree.isSelected = true
+        priceFirst.isSelected = false
+        priceTwo.isSelected = false
+        
+        priceFour.isSelected = false
+        priceFive.isSelected = false
+        priceSix.isSelected = false
+        priceSeven.isSelected = false
         priceThree.setTitleColor(UIColor.white, for: .selected)
     }
     @objc func priceFourTap() {
@@ -105,15 +105,15 @@ class SearchHeaderView: UIView {
         priceFive.backgroundColor = UIColor.white
         priceSix.backgroundColor = UIColor.white
         priceSeven.backgroundColor = UIColor.white
-         priceFour.isSelected = true
+        priceFour.isSelected = true
         priceFirst.isSelected = false
-                    priceTwo.isSelected = false
-                    priceThree.isSelected = false
-                  
-                    priceFive.isSelected = false
-                    priceSix.isSelected = false
-                    priceSeven.isSelected = false
-         priceFour.setTitleColor(UIColor.white, for: .selected)
+        priceTwo.isSelected = false
+        priceThree.isSelected = false
+        
+        priceFive.isSelected = false
+        priceSix.isSelected = false
+        priceSeven.isSelected = false
+        priceFour.setTitleColor(UIColor.white, for: .selected)
         priceFour.setTitleColor(UIColor.black, for: .normal)
     }
     @objc func priceFiveTap() {
@@ -128,37 +128,37 @@ class SearchHeaderView: UIView {
         priceSeven.backgroundColor = UIColor.white
         
         priceFirst.isSelected = false
-               priceTwo.isSelected = false
-               priceThree.isSelected = false
-               priceFour.isSelected = false
-
-               priceSix.isSelected = false
-               priceSeven.isSelected = false
+        priceTwo.isSelected = false
+        priceThree.isSelected = false
+        priceFour.isSelected = false
         
-         priceFive.isSelected = true
-         priceFive.setTitleColor(UIColor.white, for: .selected)
+        priceSix.isSelected = false
+        priceSeven.isSelected = false
+        
+        priceFive.isSelected = true
+        priceFive.setTitleColor(UIColor.white, for: .selected)
         priceFive.setTitleColor(UIColor.black, for: .normal)
     }
     @objc func priceSixTap() {
         priceSix.backgroundColor = button_backSelColor
         
-         priceFirst.backgroundColor = UIColor.white
+        priceFirst.backgroundColor = UIColor.white
         priceTwo.backgroundColor = UIColor.white
         priceThree.backgroundColor = UIColor.white
         priceFour.backgroundColor = UIColor.white
         priceFive.backgroundColor = UIColor.white
-       
+        
         priceSeven.backgroundColor = UIColor.white
         
         priceFirst.isSelected = false
-               priceTwo.isSelected = false
-               priceThree.isSelected = false
-               priceFour.isSelected = false
-               priceFive.isSelected = false
-              
-               priceSeven.isSelected = false
+        priceTwo.isSelected = false
+        priceThree.isSelected = false
+        priceFour.isSelected = false
+        priceFive.isSelected = false
         
-         priceSix.isSelected = true
+        priceSeven.isSelected = false
+        
+        priceSix.isSelected = true
         priceSix.setTitleColor(UIColor.white, for: .selected)
         priceSix.setTitleColor(UIColor.black, for: .normal)
     }
@@ -179,9 +179,9 @@ class SearchHeaderView: UIView {
         priceFive.isSelected = false
         priceSix.isSelected = false
         priceSeven.isSelected = true
-     
+        
         priceSeven.setTitleColor(UIColor.white, for: .selected)
-         priceSeven.setTitleColor(UIColor.black, for: .normal)
+        priceSeven.setTitleColor(UIColor.black, for: .normal)
         
     }
     

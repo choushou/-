@@ -101,5 +101,5 @@ class HomeFlowLayout: UICollectionViewFlowLayout {
             self.collectionViewContentSize = newValue
         }
     }
-
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
-
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var shopIdentifierTextField: UITextField!
     
@@ -17,10 +17,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor.black.cgColor
         loginButton.layer.cornerRadius = 5
@@ -30,9 +30,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         passwordTextField.isSecureTextEntry = true
     }
- 
+    
     @IBAction func loginAction(_ sender: Any) {
-         
+        
         shopIdentifierTextField.resignFirstResponder()
         identifierTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -40,21 +40,21 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         let homeVC = HomeVC()
         self.navigationController?.pushViewController(homeVC, animated: true)
         
-//        //ログイン画面へ遷移する
-//        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
-     }
-
+        //        //ログイン画面へ遷移する
+        //        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-       }
-       
-       func textFieldDidEndEditing(_ textField: UITextField) {
-          
-       }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      
+        
         return false
-     }
+    }
     
 }

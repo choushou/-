@@ -9,39 +9,15 @@
 import UIKit
 import AudioToolbox
 
-enum DetailPointType {
-    case body
-    case smoky
-    case woody
-    case floral
-    case fruity
-    case winey
-}
-
-class DetailWineKind: NSObject {
-    var body: Float = 0.0
-    var smoky: Float = 0.0
-    var woody: Float = 0.0
-    var floral: Float = 0.0
-    var fruity: Float = 0.0
-    var windy: Float = 0.0
-}
-
 class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     //var labGroup = CBGroupAndStreamView()
-     var contentArray : [[String]] = [[]]
-     var contentArrayDa: [[String]] = [[]]
-     var titleArray : [String] = []
-     var selectedButton: String = ""
-     //定义一个数组保存是否选中的状态
-     var selectArray : [String] = ["false","false","false","false","false","false"]
-    
-    
-    var radarView: RadarView!
-    var radarViewTwo: RadarView!
-    var detailPointType: DetailPointType!
-    var detailWineKind: DetailWineKind = DetailWineKind()
+    var contentArray : [[String]] = [[]]
+    var contentArrayDa: [[String]] = [[]]
+    var titleArray : [String] = []
+    var selectedButton: String = ""
+    //定义一个数组保存是否选中的状态
+    var selectArray : [String] = ["false","false","false","false","false","false"]
     
     // data source
     var dataArr = [JianshuModel]()
@@ -76,89 +52,67 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         navigationController?.popViewController(animated: true)
     }
     
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-
-        detailWineKind.body = 0.5
-        detailWineKind.smoky = 0.75
-        detailWineKind.woody = 0.25
-        detailWineKind.floral = 0.5
-        detailWineKind.fruity = 0.25
-        detailWineKind.windy = 0.75
-      
         
         setNavigationBar()
         
         let menuDetailHeaderView = Bundle.main.loadNibNamed("MenuDetailHeaderView", owner: nil, options: nil)?.first as? MenuDetailHeaderView
-        menuDetailHeaderView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  600)
+        menuDetailHeaderView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  850)
         
         self.view.addSubview(menuDetailHeaderView!)
         
         self.createUI()
         self.dataRefresh()
         
-        initSubviews()
-        
     }
- 
+    
     func setNavigationBar() {
         
-              self.navigationController?.navigationBar.isHidden = true
-              
-              let navBar = UINavigationBar(frame: CGRect(x:0, y:20, width:self.view.frame.size.width, height:64))
-              
-              navBar.backgroundColor = UIColor.white
-              
-              
-              let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
-              titleLabel.text = "メニューリスト"
-              titleLabel.textColor = UIColor.black
-              
-              let navItem = UINavigationItem()
-              
-              navItem.titleView = titleLabel
-              
-              
-              
-              let button =   UIButton(type: .system)
-              button.frame = CGRect(x:0, y:0, width:65, height:30)
-              button.setImage(UIImage(named:"left_back"), for: .normal)
-              button.setTitle("戻る", for: .normal)
-              button.addTarget(self, action: #selector(backBtnClick), for: .touchUpInside)
-              button.tintColor = UIColor.black
-              let leftBarBtn = UIBarButtonItem(customView: button)
-              
-              //スペースが必要です。じゃないと、前に置けない
-              let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil,
-                                           action: nil)
-              spacer.width = -10;
-              
-              
-              let rightButton = UIBarButtonItem(title: "rightButton", style: .plain, target: self, action: nil)
-              rightButton.tintColor = UIColor.black
-              
-              navItem.leftBarButtonItems = [spacer,leftBarBtn]
-              
-              navigationItem.setHidesBackButton(true, animated: false)
-              navBar.pushItem(navItem, animated: false)
-              
-              self.view.addSubview(navBar)
-              
+        self.navigationController?.navigationBar.isHidden = true
+        
+        let navBar = UINavigationBar(frame: CGRect(x:0, y:20, width:self.view.frame.size.width, height:64))
+        
+        navBar.backgroundColor = UIColor.white
+        
+        
+        let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
+        titleLabel.text = "メニューリスト"
+        titleLabel.textColor = UIColor.black
+        
+        let navItem = UINavigationItem()
+        
+        navItem.titleView = titleLabel
+        
+        
+        
+        let button =   UIButton(type: .system)
+        button.frame = CGRect(x:0, y:0, width:65, height:30)
+        button.setImage(UIImage(named:"left_back"), for: .normal)
+        button.setTitle("戻る", for: .normal)
+        button.addTarget(self, action: #selector(backBtnClick), for: .touchUpInside)
+        button.tintColor = UIColor.black
+        let leftBarBtn = UIBarButtonItem(customView: button)
+        
+        //スペースが必要です。じゃないと、前に置けない
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil,
+                                     action: nil)
+        spacer.width = -10;
+        
+        
+        let rightButton = UIBarButtonItem(title: "rightButton", style: .plain, target: self, action: nil)
+        rightButton.tintColor = UIColor.black
+        
+        navItem.leftBarButtonItems = [spacer,leftBarBtn]
+        
+        navigationItem.setHidesBackButton(true, animated: false)
+        navBar.pushItem(navItem, animated: false)
+        
+        self.view.addSubview(navBar)
+        
     }
-//
-//    func darkViewMenu() {
-//
-//         let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
-//         darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-//
-//         darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-//
-//         darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
-//
-//        // self.view.addSubview(darkView!)
-//    }
+    
     
     @objc func showScanCode() {
         let scanCodeViewController = ScanCodeController()
@@ -183,13 +137,13 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         self.flowLayout = HomeFlowLayout()
         //let layout = UICollectionViewFlowLayout()
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 600 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 850 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = RGB16(value: 0xffffff)
         self.view.addSubview(self.collectionView)
-    
+        
         
         self.collectionView.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
         self.collectionView.register(UINib.init(nibName: "HomeFootView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "HomeFootView")
@@ -285,15 +239,15 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         let cell:HomeCell = collectionView.cellForItem(at: indexPath) as! HomeCell
         let model = self.dataArr[indexPath.row]
         
-//        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
+        //        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
         
-
+        
         let webVC = ArticleVC()
         webVC.aticleID = model.articleUrl!
         self.navigationController?.pushViewController(webVC, animated: true)
         
-//        let menuDetailViewController = MenuDetailViewController()
-//         self.navigationController?.pushViewController(menuDetailViewController, animated: true)
+        //        let menuDetailViewController = MenuDetailViewController()
+        //         self.navigationController?.pushViewController(menuDetailViewController, animated: true)
         
     }
     
@@ -339,7 +293,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         return reusableView!
     }
-
+    
     
     //MARK: - ---
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -368,29 +322,4 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     
 }
 
-private extension MenuDetailViewController {
-    func initSubviews() {
-      
-        radarView = RadarView(frame: CGRect(x: (UIScreen.main.bounds.width
-                    - 80 - 230), y: 64 + 150 + 40, width: 220, height: 220))
-        radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
-        radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
-        
-        radarView.setLineWidth(width: 0.5)
-        
-//        radarView.setDotRadius(radius: 3)
-//        radarView.setDrawAreaColor(color: UIColor.init(red: 113 / 255, green: 113 / 255, blue: 113 / 255, alpha: 0.6))
-//        radarView.setDotColor(color: UIColor.init(red: 143 / 255, green: 143 / 255, blue: 143 / 255, alpha: 1))
-        
-        radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
-        radarView.setDotRadiusTwo(radiusTwo: 3)
-        radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
-        
-       // radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
-        
-        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(detailWineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(detailWineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(detailWineKind.body)), RadarModel(title: "Winey", percent: CGFloat(detailWineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(detailWineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(detailWineKind.floral))])
-      
-        view.addSubview(radarView)
-    }
-}
 

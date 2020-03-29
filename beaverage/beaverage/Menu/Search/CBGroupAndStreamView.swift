@@ -3,16 +3,16 @@
 import UIKit
 
 @objc protocol CBGroupAndStreamViewDelegate : NSObjectProtocol {
-
-
+    
+    
     /// 選択された値を渡す
     ///
     /// - Parameters:
     ///   - selArr: 選択された値
     ///   - groupArr: gtoupIdArr
-
+    
     @objc optional func confimrReturnAllSelValueWithDelegate(selArr : Array<Any>, groupArr : Array<Any>)
-
+    
     /// 現在選択された値
     ///
     /// - Parameters:
@@ -23,33 +23,33 @@ import UIKit
 }
 
 
-  func initSubviewsTwo() -> RadarView {
-       var radarView: RadarView!
+func initSubviewsTwo() -> RadarView {
+    var radarView: RadarView!
     var wineKind: WineKind = WineKind()
     wineKind.body = 0.5
-        wineKind.smoky = 0.75
-        wineKind.woody = 0.25
-        wineKind.floral = 0.5
-        wineKind.fruity = 0.25
-        wineKind.windy = 0.75
-        radarView = RadarView(frame: CGRect(x: 110, y: 150, width: UIScreen.main.bounds.size.width - 250, height: UIScreen.main.bounds.size.width - 220))
-        radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
-        radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
-        
-        radarView.setLineWidth(width: 0.5)
-
-        radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
-        radarView.setDotRadiusTwo(radiusTwo: 3)
-        radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
-   
-        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
-      return radarView
-        //view.addSubview(radarView)
-    }
+    wineKind.smoky = 0.75
+    wineKind.woody = 0.25
+    wineKind.floral = 0.5
+    wineKind.fruity = 0.25
+    wineKind.windy = 0.75
+    radarView = RadarView(frame: CGRect(x: 110, y: 150, width: UIScreen.main.bounds.size.width - 250, height: UIScreen.main.bounds.size.width - 220))
+    radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
+    radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
+    
+    radarView.setLineWidth(width: 0.5)
+    
+    radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
+    radarView.setDotRadiusTwo(radiusTwo: 3)
+    radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
+    
+    radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+    return radarView
+    //view.addSubview(radarView)
+}
 
 
 class CBGroupAndStreamView: UIView {
-     var radarView: RadarView!
+    var radarView: RadarView!
     
     //MARK:----publish
     /// group height
@@ -115,7 +115,7 @@ class CBGroupAndStreamView: UIView {
     public var currentSelValueClosure : ((String,Int,Int) -> Void)?
     /// 代理
     public weak var delegate : CBGroupAndStreamViewDelegate?
-
+    
     //MARK:----private
     private let scrollView : UIScrollView = {
         let scrollview = UIScrollView()
@@ -134,35 +134,35 @@ class CBGroupAndStreamView: UIView {
     private var dataSourceArr : Array = Array<Any>()
     private var saveSelButValueArr : Array = Array<Any>()
     private var saveSelGroupIndexeArr : Array = Array<Any>()
-
-
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         self.addSubview(scrollView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     func setDataSource(contetnArr : Array<Any>, titleArr : Array<String>){
         saveSelButValueArr.removeAll()
         saveSelGroupIndexeArr.removeAll()
-
+        
         if defaultGroupSingleArr.count != titleArr.count && !defaultGroupSingleArr.isEmpty{
             assert(defaultGroupSingleArr.count == titleArr.count, "默认选择的defaultGroupSingleArr.count 要 与titleArr.count一至")
             return
         }
-
+        
         tempContentArr = contetnArr.count > 0 ? contetnArr : tempContentArr
         tempTitleArr = titleArr.count > 0 ? titleArr : tempTitleArr
-
+        
         //2番目のコンポーネントの開始位置
         frameRect = CGRect(x: 0, y: 0, width: 0, height: 385)
         //frameRect = .zero
         dataSourceArr.removeAll()
         dataSourceArr.append(contentsOf: tempContentArr)
-
+        
         for (index,title) in titleArr.enumerated() {
             saveSelButValueArr.append("")
             saveSelGroupIndexeArr.append("")
@@ -170,11 +170,11 @@ class CBGroupAndStreamView: UIView {
         }
         //设置滚动范围
         
-         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width - 60, height: frameRect.size.height + frameRect.origin.y + 20 + 900)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width - 60, height: frameRect.size.height + frameRect.origin.y + 20 + 900)
     }
     //MARK:----设置数据源，创建
     func setupGroupAndStream(content : Array<Any>, titleStr : String, currFrame : CGRect, groupId : Int) -> CGRect{
-
+        
         //组标题
         let groupTitleLab = UILabel.init(frame: CGRect(x: 30, y: currFrame.size.height + currFrame.origin.y + 10, width: 0, height: CGFloat(titleLabHeight)))
         
@@ -186,7 +186,7 @@ class CBGroupAndStreamView: UIView {
         let viewGroup =  UIView()
         viewGroup.backgroundColor = UIColor.red
         viewGroup.frame = CGRect(x: 15, y: currFrame.size.height + currFrame.origin.y + 20, width: 10, height: 10)
-              
+        
         scrollView.addSubview(groupTitleLab)
         scrollView.addSubview(viewGroup)
         
@@ -198,43 +198,43 @@ class CBGroupAndStreamView: UIView {
         var margin_x = CGFloat(content_x)
         //建立个临时数组,保存默认选中的index
         var tempSaveSelIndexArr = Array<Any>()
-
+        
         for (index,value) in content.enumerated() {
             
             
             let sender = UIButton.init(type: .custom)
             let viewButton =  UIView()
-         
+            
             if (content.count == index + 1) {
-                        // print("最后一个了")
+                // print("最后一个了")
                 
-                     sender.setTitle(value as? String, for: .normal)
-                            sender.tag = index + groupId * 100 + 1
-                            sender.titleLabel?.font = content_titleFont
-                            sender.backgroundColor = UIColor(red: 201/255, green: 201/255, blue: 201/255, alpha: 1)
-                            sender.setTitleColor(content_norTitleColor, for: .normal)
-                            sender.setTitleColor(content_selTitleColor, for: .selected)
-                            sender.layer.cornerRadius = CGFloat(content_radius)
+                sender.setTitle(value as? String, for: .normal)
+                sender.tag = index + groupId * 100 + 1
+                sender.titleLabel?.font = content_titleFont
+                sender.backgroundColor = UIColor(red: 201/255, green: 201/255, blue: 201/255, alpha: 1)
+                sender.setTitleColor(content_norTitleColor, for: .normal)
+                sender.setTitleColor(content_selTitleColor, for: .selected)
+                sender.layer.cornerRadius = CGFloat(content_radius)
             } else {
                 
-            
-                viewGroup.backgroundColor = UIColor.red
-              
                 
-                     sender.setTitle(value as? String, for: .normal)
+                viewGroup.backgroundColor = UIColor.red
+                
+                
+                sender.setTitle(value as? String, for: .normal)
                 sender.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
-                            sender.tag = index + groupId * 100 + 1
-                            sender.titleLabel?.font = content_titleFont
-                            sender.backgroundColor = content_backNorColor
-                            sender.setTitleColor(content_norTitleColor, for: .normal)
-                            sender.setTitleColor(content_selTitleColor, for: .selected)
-                            sender.layer.cornerRadius = CGFloat(content_radius)
+                sender.tag = index + groupId * 100 + 1
+                sender.titleLabel?.font = content_titleFont
+                sender.backgroundColor = content_backNorColor
+                sender.setTitleColor(content_norTitleColor, for: .normal)
+                sender.setTitleColor(content_selTitleColor, for: .selected)
+                sender.layer.cornerRadius = CGFloat(content_radius)
                 let subview = UIView()
-                         subview.backgroundColor = UIColor.red
-                         subview.frame = CGRect(x: 10, y: 25, width: 10, height: 10)
-                         sender.addSubview(subview)
+                subview.backgroundColor = UIColor.red
+                subview.frame = CGRect(x: 10, y: 25, width: 10, height: 10)
+                sender.addSubview(subview)
             }
-
+            
             sender.addTarget(self, action: #selector(senderEvent), for: .touchUpInside)
             //标签流
             let but_width = calcuateLabSizeWidth(str: value as! String, font:content_titleFont, maxHeight: CGFloat(content_height)) + 20 + 20
@@ -248,31 +248,31 @@ class CBGroupAndStreamView: UIView {
                 alineButWidth = margin_x + but_width
                 content_totalHeight = current_rect.size.height + current_rect.origin.y + CGFloat(content_x)
             }
-
+            
             
             sender.frame = CGRect(x: margin_x, y: content_totalHeight, width: but_width, height: CGFloat(content_height))
             
             viewButton.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-       
-          
+            
+            
             let searchFooterView = Bundle.main.loadNibNamed("SearchFooterView", owner: nil, options: nil)?.first as? SearchFooterView
             
-
+            
             let searchHeaderView = Bundle.main.loadNibNamed("SearchHeaderView", owner: nil, options: nil)?.first as? SearchHeaderView
-                            searchHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: 250)
+            searchHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 30, height: 250)
             
             scrollView.addSubview(searchHeaderView!)
             
             if (tempTitleArr.count - 1 == groupId) && (content.count == index + 1) {
-                 searchFooterView?.frame = CGRect(x: 0, y: content_totalHeight + 80, width: UIScreen.main.bounds.size.width - 30, height: 900)
-
+                searchFooterView?.frame = CGRect(x: 0, y: content_totalHeight + 80, width: UIScreen.main.bounds.size.width - 30, height: 900)
+                
                 radarView = initSubviewsTwo()
                 searchFooterView!.addSubview(radarView)
                 scrollView.addSubview(searchFooterView!)
             }
-           
             
-      
+            
+            
             //[btn addSubview:subView];
             scrollView.addSubview(sender)
             
@@ -285,7 +285,7 @@ class CBGroupAndStreamView: UIView {
                 if defaultSelIndexArr.isEmpty{//单选
                     setDefaultSingleSelect(index: index, groupId: groupId, value: value as! String, sender: sender, content: content)
                 }else{//多选
-                  let arr =  setDefaultMultipleSelect(index: index, groupId: groupId, value: value as! String, sender: sender, content: content)
+                    let arr =  setDefaultMultipleSelect(index: index, groupId: groupId, value: value as! String, sender: sender, content: content)
                     tempSaveSelIndexArr.append(contentsOf: arr)
                 }
             }
@@ -344,9 +344,9 @@ class CBGroupAndStreamView: UIView {
         saveSelGroupIndexeArr[groupId] = String(groupId)
         return tempSaveSelIndexArr
     }
-
+    
     @objc private func senderEvent(sender : UIButton){
-//        print("----\(sender/.tag)")
+        //        print("----\(sender/.tag)")
         sender.isSelected = !sender.isSelected
         if defaultGroupSingleArr.isEmpty{
             //统一设置单选或多选
@@ -356,7 +356,7 @@ class CBGroupAndStreamView: UIView {
         //为每个组设置单选和多选
         defaultGroupSingleArr[sender.tag / 100] == 0 ? multipleSelectEvent(sender: sender) : singalSelectEvent(sender: sender)
     }
-
+    
     //MARK:---单选
     private func singalSelectEvent(sender : UIButton){
         var valueStr : String = ""
@@ -386,9 +386,9 @@ class CBGroupAndStreamView: UIView {
         saveSelButValueArr[sender.tag / 100] = valueStr
         //保存groupId
         saveSelButValueArr[sender.tag / 100] as! String == "" ? (saveSelGroupIndexeArr[sender.tag / 100] = "") : (saveSelGroupIndexeArr[sender.tag / 100] = String(sender.tag / 100))
-
+        
     }
-
+    
     //MARK:---多选
     private func multipleSelectEvent(sender : UIButton){
         var valueStr = ""
@@ -398,7 +398,7 @@ class CBGroupAndStreamView: UIView {
         }else{
             tempSaveArr.append(saveSelButValueArr[sender.tag / 100])
         }
-
+        
         let tempDetailArr = dataSourceArr[sender.tag / 100] as! Array<Any>
         valueStr = "\(sender.tag % 100 - 1)/\(tempDetailArr[sender.tag % 100 - 1])"
         if sender.isSelected {
@@ -414,23 +414,23 @@ class CBGroupAndStreamView: UIView {
         }else{
             sender.backgroundColor = content_backNorColor
             //获取元素的下标
-//            let index : Int = tempSaveArr.index(where: {$0 as! String == valueStr})!
-//            tempSaveArr.remove(at: index)
+            //            let index : Int = tempSaveArr.index(where: {$0 as! String == valueStr})!
+            //            tempSaveArr.remove(at: index)
         }
-
+        
         saveSelButValueArr[sender.tag / 100] = tempSaveArr
         tempSaveArr.isEmpty ? (saveSelGroupIndexeArr[sender.tag / 100] = "") : (saveSelGroupIndexeArr[sender.tag / 100] = String(sender.tag / 100))
-
+        
     }
-
+    
     //MARK:---确定
     public func comfirm(){
         if (confirmReturnValueClosure != nil) {
             confirmReturnValueClosure!(saveSelButValueArr,saveSelGroupIndexeArr)
         }
-
+        
         delegate?.confimrReturnAllSelValueWithDelegate?(selArr: saveSelButValueArr, groupArr: saveSelGroupIndexeArr)
-
+        
     }
     //MARK:---重置
     public func reload(){
@@ -438,13 +438,13 @@ class CBGroupAndStreamView: UIView {
             value.removeFromSuperview()
         }
         
-              let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","caramelsix","Nutty-cocountserven","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
+        let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","caramelsix","Nutty-cocountserven","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
         
-         setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
+        setDataSource(contetnArr: tempContentArr, titleArr: tempTitleArr as! Array<String>)
         
         
     }
-
+    
     //MARK:---计算文字宽度
     private func calcuateLabSizeWidth(str : String, font : UIFont, maxHeight : CGFloat) -> CGFloat{
         let attributes = [kCTFontAttributeName: font]
@@ -452,5 +452,5 @@ class CBGroupAndStreamView: UIView {
         let size = norStr.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: maxHeight), options: .usesLineFragmentOrigin, attributes: attributes as [NSAttributedString.Key : Any], context: nil)
         return size.width
     }
-
+    
 }

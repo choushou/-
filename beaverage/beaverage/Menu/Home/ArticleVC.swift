@@ -29,7 +29,7 @@ class ArticleVC: UIViewController,WKUIDelegate,WKNavigationDelegate,WKScriptMess
         let webView =  WKWebView.init(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)), configuration:configuration)
         return webView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置左侧返回键
@@ -76,7 +76,7 @@ class ArticleVC: UIViewController,WKUIDelegate,WKNavigationDelegate,WKScriptMess
         self.webView.configuration.userContentController.removeScriptMessageHandler(forName: "createView")
         self.webView.configuration.userContentController.removeScriptMessageHandler(forName: "hidOpenInApp")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
