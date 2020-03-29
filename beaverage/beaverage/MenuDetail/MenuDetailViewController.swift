@@ -1,15 +1,15 @@
 //
-// HomeVC.swift
+//  MenuDetailViewController.swift
 //  beaverage
 //
-//  Created by 張璋 on 2020/03/23.
+//  Created by 張璋 on 2020/03/29.
 //  Copyright © 2020 sunasterisk. All rights reserved.
 //
 
 import UIKit
 import AudioToolbox
 
-enum PointType {
+enum DetailPointType {
     case body
     case smoky
     case woody
@@ -18,7 +18,7 @@ enum PointType {
     case winey
 }
 
-class WineKind: NSObject {
+class DetailWineKind: NSObject {
     var body: Float = 0.0
     var smoky: Float = 0.0
     var woody: Float = 0.0
@@ -27,7 +27,7 @@ class WineKind: NSObject {
     var windy: Float = 0.0
 }
 
-class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     var labGroup = CBGroupAndStreamView()
      var contentArray : [[String]] = [[]]
@@ -40,8 +40,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     var radarView: RadarView!
     var radarViewTwo: RadarView!
-    var pointType: PointType!
-    var wineKind: WineKind = WineKind()
+    var detailPointType: DetailPointType!
+    var detailWineKind: DetailWineKind = DetailWineKind()
     
     // data source
     var dataArr = [JianshuModel]()
@@ -83,12 +83,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         //絞り込み画面の中部を表示
         searchBeaverageData()
 
-        wineKind.body = 0.5
-        wineKind.smoky = 0.75
-        wineKind.woody = 0.25
-        wineKind.floral = 0.5
-        wineKind.fruity = 0.25
-        wineKind.windy = 0.75
+        detailWineKind.body = 0.5
+        detailWineKind.smoky = 0.75
+        detailWineKind.woody = 0.25
+        detailWineKind.floral = 0.5
+        detailWineKind.fruity = 0.25
+        detailWineKind.windy = 0.75
       
         
         setNavigationBar()
@@ -102,23 +102,23 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.dataRefresh()
  
         //半透明のview
-        darkViewMenu()
+      //  darkViewMenu()
         
         initSubviews()
         
         
-        homeHeadView?.buttonCallBack =  { () -> () in
-              let searchView = Bundle.main.loadNibNamed("SearchView", owner: nil, options: nil)?.first as? SearchView
-                  searchView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
-                  
-                  searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-            
-             self.view.addSubview(searchView!)
-            
-            self.view.addSubview(self.labGroup)
-            
-
-        }
+//        homeHeadView?.buttonCallBack =  { () -> () in
+//              let searchView = Bundle.main.loadNibNamed("SearchView", owner: nil, options: nil)?.first as? SearchView
+//                  searchView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
+//
+//                  searchView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
+//
+//             self.view.addSubview(searchView!)
+//
+//            self.view.addSubview(self.labGroup)
+//
+//
+//        }
     }
  
     func setNavigationBar() {
@@ -165,18 +165,18 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
               self.view.addSubview(navBar)
               
     }
-    
-    func darkViewMenu() {
-        
-         let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
-         darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-         
-         darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
-         
-         darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
-         
-         self.view.addSubview(darkView!)
-    }
+//
+//    func darkViewMenu() {
+//
+//         let darkView = Bundle.main.loadNibNamed("DarkView", owner: nil, options: nil)?.first as? DarkView
+//         darkView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+//
+//         darkView?.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 0.8)
+//
+//         darkView?.showScanCodeBtn.addTarget(self, action: #selector(showScanCode), for: .touchUpInside)
+//
+//        // self.view.addSubview(darkView!)
+//    }
     
     @objc func showScanCode() {
         let scanCodeViewController = ScanCodeController()
@@ -370,13 +370,14 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
 //        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
         
-//
-//        let webVC = ArticleVC()
-//        webVC.aticleID = model.articleUrl!
-//        self.navigationController?.pushViewController(webVC, animated: true)
+
+        let webVC = ArticleVC()
+        webVC.aticleID = model.articleUrl!
+        self.navigationController?.pushViewController(webVC, animated: true)
         
-                let menuDetailViewController = MenuDetailViewController()
-                 self.navigationController?.pushViewController(menuDetailViewController, animated: true)
+//        let menuDetailViewController = MenuDetailViewController()
+//         self.navigationController?.pushViewController(menuDetailViewController, animated: true)
+        
     }
     
     //MARK: - --- HeaderView  FooterView
@@ -490,7 +491,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
 }
 
-private extension HomeVC {
+private extension MenuDetailViewController {
     func initSubviews() {
       
         radarView = RadarView(frame: CGRect(x: (UIScreen.main.bounds.width
@@ -510,13 +511,13 @@ private extension HomeVC {
         
        // radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
         
-        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+        radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(detailWineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(detailWineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(detailWineKind.body)), RadarModel(title: "Winey", percent: CGFloat(detailWineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(detailWineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(detailWineKind.floral))])
       
         view.addSubview(radarView)
     }
 }
 
-extension HomeVC : CBGroupAndStreamViewDelegate{
+extension MenuDetailViewController : CBGroupAndStreamViewDelegate{
     
     func currentSelValueWithDelegate(valueStr: String, index: Int, groupId: Int) {
         print("\(valueStr) index = \(index), groupid = \(groupId)")
