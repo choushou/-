@@ -10,17 +10,267 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MenuDetailHeaderView" customModule="beaverage" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+            <rect key="frame" x="0.0" y="0.0" width="1152" height="1113"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hih-tO-rRw">
-                    <rect key="frame" x="373" y="810" width="49" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </switch>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZc-se-134">
+                    <rect key="frame" x="0.0" y="0.0" width="1152" height="250"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="火樽 バーンザバレル BURN THE BARREL Y’sカスク 43度 700ml 本坊酒造 信州 マルス蒸溜所 ブレンデッドウイスキー 長S" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSN-x0-0z5">
+                            <rect key="frame" x="15" y="10" width="1122" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥5,580" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKd-X0-x1p">
+                            <rect key="frame" x="15" y="80" width="90" height="32.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkt-yp-1MG">
+                            <rect key="frame" x="15" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="5aU-tr-myC"/>
+                                <constraint firstAttribute="width" constant="120" id="WSj-Oe-CN1"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6v-hE-hLT">
+                            <rect key="frame" x="145" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Vfi-bH-Yfz"/>
+                                <constraint firstAttribute="width" constant="120" id="b1g-0A-4vP"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-6H-bqu">
+                            <rect key="frame" x="665" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="AED-Ga-b8p"/>
+                                <constraint firstAttribute="width" constant="120" id="abq-Zj-79g"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLp-ZP-NlL">
+                            <rect key="frame" x="275" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="gLR-gs-7jV"/>
+                                <constraint firstAttribute="width" constant="120" id="uHe-NY-Oxj"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryF-vt-iiS">
+                            <rect key="frame" x="405" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Eub-N0-t4i"/>
+                                <constraint firstAttribute="width" constant="120" id="z6G-ds-MKs"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hi2-WK-fvp">
+                            <rect key="frame" x="535" y="122.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="80n-Ed-6ze"/>
+                                <constraint firstAttribute="width" constant="120" id="ivV-94-FKz"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brQ-5D-fT3">
+                            <rect key="frame" x="15" y="182.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="2jZ-Jq-K8G"/>
+                                <constraint firstAttribute="height" constant="50" id="QEu-aY-tky"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWs-Ep-0yn">
+                            <rect key="frame" x="145" y="182.5" width="120" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="Jxw-oU-k0Z"/>
+                                <constraint firstAttribute="height" constant="50" id="set-hK-Kv4"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="smoky">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="brQ-5D-fT3" firstAttribute="leading" secondItem="FZc-se-134" secondAttribute="leading" constant="15" id="0Yr-jv-mFs"/>
+                        <constraint firstItem="brQ-5D-fT3" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="bottom" constant="10" id="4fO-1h-57l"/>
+                        <constraint firstItem="gkt-yp-1MG" firstAttribute="top" secondItem="qKd-X0-x1p" secondAttribute="bottom" constant="10" id="9ys-Rg-3d7"/>
+                        <constraint firstItem="ryF-vt-iiS" firstAttribute="leading" secondItem="JLp-ZP-NlL" secondAttribute="trailing" constant="10" id="ICs-kK-H6X"/>
+                        <constraint firstItem="Hi2-WK-fvp" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="top" id="Jlb-QY-0rB"/>
+                        <constraint firstItem="Y6v-hE-hLT" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="top" id="LyF-Ez-sZl"/>
+                        <constraint firstItem="ryF-vt-iiS" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="top" id="MiO-Ro-10G"/>
+                        <constraint firstItem="JLp-ZP-NlL" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="top" id="Ntl-bS-K0V"/>
+                        <constraint firstItem="qKd-X0-x1p" firstAttribute="top" secondItem="PSN-x0-0z5" secondAttribute="bottom" constant="10" id="R9m-Fo-ipy"/>
+                        <constraint firstItem="PSN-x0-0z5" firstAttribute="leading" secondItem="FZc-se-134" secondAttribute="leading" constant="15" id="TDh-qo-4g0"/>
+                        <constraint firstItem="Hi2-WK-fvp" firstAttribute="leading" secondItem="ryF-vt-iiS" secondAttribute="trailing" constant="10" id="TcT-ty-s8O"/>
+                        <constraint firstItem="qKd-X0-x1p" firstAttribute="leading" secondItem="FZc-se-134" secondAttribute="leading" constant="15" id="UtA-As-al8"/>
+                        <constraint firstItem="yWs-Ep-0yn" firstAttribute="leading" secondItem="brQ-5D-fT3" secondAttribute="trailing" constant="10" id="V4g-8i-kfz"/>
+                        <constraint firstItem="bFn-6H-bqu" firstAttribute="top" secondItem="gkt-yp-1MG" secondAttribute="top" id="VgZ-Cm-cNL"/>
+                        <constraint firstItem="yWs-Ep-0yn" firstAttribute="top" secondItem="brQ-5D-fT3" secondAttribute="top" id="eyt-Qx-gju"/>
+                        <constraint firstAttribute="trailing" secondItem="PSN-x0-0z5" secondAttribute="trailing" constant="15" id="f4K-Qp-Os2"/>
+                        <constraint firstItem="JLp-ZP-NlL" firstAttribute="leading" secondItem="Y6v-hE-hLT" secondAttribute="trailing" constant="10" id="jnp-lB-8xk"/>
+                        <constraint firstItem="PSN-x0-0z5" firstAttribute="top" secondItem="FZc-se-134" secondAttribute="top" constant="10" id="k5X-Qu-LhZ"/>
+                        <constraint firstItem="gkt-yp-1MG" firstAttribute="leading" secondItem="FZc-se-134" secondAttribute="leading" constant="15" id="lxI-4F-KEI"/>
+                        <constraint firstItem="bFn-6H-bqu" firstAttribute="leading" secondItem="Hi2-WK-fvp" secondAttribute="trailing" constant="10" id="nTk-DO-mry"/>
+                        <constraint firstAttribute="height" constant="250" id="olX-p4-QtV"/>
+                        <constraint firstItem="Y6v-hE-hLT" firstAttribute="leading" secondItem="gkt-yp-1MG" secondAttribute="trailing" constant="10" id="wzh-dz-bmm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hW-1s-bcb">
+                    <rect key="frame" x="0.0" y="250" width="1152" height="300"/>
+                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Tiw-Hx-TD9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gef-ze-Ly8">
+                    <rect key="frame" x="0.0" y="550" width="1152" height="200"/>
+                    <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="P3Y-io-bDR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-uC-pb8">
+                    <rect key="frame" x="0.0" y="750" width="1152" height="100"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="snr-Jq-TR5"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3hW-1s-bcb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2Z9-xI-4Zr"/>
+                <constraint firstItem="VH7-uC-pb8" firstAttribute="top" secondItem="Gef-ze-Ly8" secondAttribute="bottom" id="605-Sw-pL5"/>
+                <constraint firstItem="3hW-1s-bcb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="DYt-vD-xQM"/>
+                <constraint firstItem="FZc-se-134" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Gqk-cz-rO2"/>
+                <constraint firstItem="VH7-uC-pb8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MlH-ID-jrQ"/>
+                <constraint firstItem="Gef-ze-Ly8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OYW-mV-i5Q"/>
+                <constraint firstItem="FZc-se-134" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="XaI-Cq-Snd"/>
+                <constraint firstItem="Gef-ze-Ly8" firstAttribute="top" secondItem="3hW-1s-bcb" secondAttribute="bottom" id="amu-Dk-Bn8"/>
+                <constraint firstItem="3hW-1s-bcb" firstAttribute="top" secondItem="FZc-se-134" secondAttribute="bottom" id="cjo-sk-Bcz"/>
+                <constraint firstItem="VH7-uC-pb8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="eLF-IF-0fX"/>
+                <constraint firstItem="Gef-ze-Ly8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="k9E-qo-BL7"/>
+                <constraint firstItem="FZc-se-134" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="zAX-4j-yf5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="100"/>
+            <point key="canvasLocation" x="114.3884892086331" y="121.6726618705036"/>
         </view>
     </objects>
 </document>

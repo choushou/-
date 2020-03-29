@@ -8,9 +8,35 @@
 
 import UIKit
 
+
+enum PointType {
+    case body
+    case smoky
+    case woody
+    case floral
+    case fruity
+    case winey
+}
+
+class WineKind: NSObject {
+    var body: Float = 0.0
+    var smoky: Float = 0.0
+    var woody: Float = 0.0
+    var floral: Float = 0.0
+    var fruity: Float = 0.0
+    var windy: Float = 0.0
+}
+
 class HomeHeadView: UIView{
+
     
-     var buttonCallBack:(() -> ())?
+    @IBOutlet weak var hexagonView: UIView!
+    
+    var pointType: PointType!
+    var wineKind: WineKind = WineKind()
+    
+    var buttonCallBack:(() -> ())?
+    var radarView: RadarView!
     
     @IBAction func searchCondition(_ sender: Any) {
       
@@ -46,7 +72,15 @@ class HomeHeadView: UIView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
+         wineKind.body = 0.5
+         wineKind.smoky = 0.75
+         wineKind.woody = 0.25
+         wineKind.floral = 0.5
+         wineKind.fruity = 0.25
+         wineKind.windy = 0.75
+        
+         initSubviews()
         
 //        self.userName.font = UIFont(name: "DINPro-Regular", size: 10)
 //        self.focus.font = UIFont(name: "DINPro-Regular", size: 10)
@@ -55,6 +89,32 @@ class HomeHeadView: UIView{
 //        self.number.font = self.focus.font;
 //        self.totalLike.font = self.focus.font;
     }
+    
+       func initSubviews() {
+          
+        print(SCREEN_WIDTH)
+        radarView = RadarView(frame: CGRect(x: SCREEN_WIDTH - 280, y: 240, width: 220, height: 220))
+//        radarView = RadarView()
+//        radarView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+            radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))
+            radarView.setTextColor(color: UIColor.init(red: 128 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1))
+            
+            radarView.setLineWidth(width: 0.5)
+            
+    //        radarView.setDotRadius(radius: 3)
+    //        radarView.setDrawAreaColor(color: UIColor.init(red: 113 / 255, green: 113 / 255, blue: 113 / 255, alpha: 0.6))
+    //        radarView.setDotColor(color: UIColor.init(red: 143 / 255, green: 143 / 255, blue: 143 / 255, alpha: 1))
+            
+            radarView.setDrawAreaColorTwo(color: UIColor.init(red: 202 / 255, green: 148 / 255, blue: 195 / 255, alpha: 0.8))
+            radarView.setDotRadiusTwo(radiusTwo: 3)
+            radarView.setDotColorTwo(colorTwo: UIColor.init(red: 237 / 255, green: 94 / 255, blue: 219 / 255, alpha: 1))
+            
+           // radarView.setData(data: [RadarModel(title: "Woody", percent: 0.75), RadarModel(title: "Smoky", percent: 0.25), RadarModel(title: "Body", percent: 0.75), RadarModel(title: "Winey", percent: 0.25), RadarModel(title: "Fruity", percent: 0.75), RadarModel(title: "Floral", percent: 0.75)])
+            
+            radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
+          
+            self.addSubview(radarView)
+        }
  
     func setHearderInfo(_ headInfo: Yuanzu) {
        

@@ -505,6 +505,9 @@
                 <constraint firstItem="ubf-JZ-c1I" firstAttribute="top" secondItem="Xxs-vS-dKQ" secondAttribute="bottom" id="qAc-X5-AKU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="hexagonView" destination="aRT-Dk-O1o" id="Gao-0J-esf"/>
+            </connections>
             <point key="canvasLocation" x="149.609375" y="300.29296875"/>
         </collectionReusableView>
     </objects>
