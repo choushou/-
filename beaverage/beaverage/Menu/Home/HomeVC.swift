@@ -94,7 +94,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         setNavigationBar()
         
         let homeHeadView = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.first as? HomeHeadView
-        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  530)
+        homeHeadView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  600)
         
         self.view.addSubview(homeHeadView!)
         
@@ -201,7 +201,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.flowLayout = HomeFlowLayout()
         //let layout = UICollectionViewFlowLayout()
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 530 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 600 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
