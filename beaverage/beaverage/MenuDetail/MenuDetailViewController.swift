@@ -78,15 +78,14 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         
         
         let titleLabel = UILabel(frame: CGRect(x:0,y:20,width:50,height:64))
-        titleLabel.text = "メニューリスト"
+        titleLabel.text = "詳細"
         titleLabel.textColor = UIColor.black
         
         let navItem = UINavigationItem()
         
         navItem.titleView = titleLabel
         
-        
-        
+
         let button =   UIButton(type: .system)
         button.frame = CGRect(x:0, y:0, width:65, height:30)
         button.setImage(UIImage(named:"left_back"), for: .normal)
