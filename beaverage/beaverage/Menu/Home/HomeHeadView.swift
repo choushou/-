@@ -49,23 +49,23 @@ class HomeHeadView: UIView{
         }
     }
     
-    //    ///头像
+
     //    @IBOutlet weak var headImg: UIImageView!
-    //    ///用户名
+
     //    @IBOutlet weak var userName: UILabel!
-    //    ///性别
+
     //    @IBOutlet weak var sexIcon: UIImageView!
-    //    ///关注
+
     //    @IBOutlet weak var focus: UILabel!
-    //    ///粉丝
+
     //    @IBOutlet weak var fans: UILabel!
-    //    ///文章
+
     //    @IBOutlet weak var article: UILabel!
-    //    ///字数
+
     //    @IBOutlet weak var number: UILabel!
-    //    ///收获喜欢
+
     //    @IBOutlet weak var totalLike: UILabel!
-    //    ///个人介绍
+
     //    @IBOutlet weak var introduce: UILabel!
     
     

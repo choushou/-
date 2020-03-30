@@ -16,7 +16,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     var contentArrayDa: [[String]] = [[]]
     var titleArray : [String] = []
     var selectedButton: String = ""
-    //定义一个数组保存是否选中的状态
+  
     var selectArray : [String] = ["false","false","false","false","false","false"]
     
     // data source
@@ -267,7 +267,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
                 //高さを計算する
                 var num = 0
                 for model in self.dataArr {
-                    //计算标题和摘要的高度
+                   
                     model.imgW = Float(self.itemWidth - 16)
                     model.imgH = model.wrap!.count > 0 ? model.imgW! * 120 / 150 : nil
                     model.titleH = GETSTRHEIGHT(fontSize: 20, width: CGFloat(model.imgW!) , words: model.title!) + 1
@@ -275,7 +275,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
                     
                     //item高度
                     var computeH:CGFloat = 8 + 25 + 3 + 10 + 8 + (model.imgH != nil ? CGFloat(model.imgH!) : 0) + 8 + model.titleH! + 8 + model.abstractH! + 8 + 10 + 8
-                    //如果没有图片减去一个间隙8
+                   
                     computeH = computeH - (model.wrap!.count > 0 ? 0 : 8)
                     model.itemHeight = String(format: "%.f", computeH)
                     self.dataArr[num] = model;
