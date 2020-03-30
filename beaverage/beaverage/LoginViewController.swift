@@ -37,8 +37,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         identifierTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
-        let homeVC = HomeVC()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        if (self.shopIdentifierTextField.text == "111") && (self.identifierTextField.text == "111") && (self.passwordTextField.text == "111") {
+            
+            let homeVC = HomeVC()
+                self.navigationController?.pushViewController(homeVC, animated: true)
+        }
+        
+    
         
         //        //ログイン画面へ遷移する
         //        self.window?.rootViewController = UINavigationController.init(rootViewController: loginVC)
