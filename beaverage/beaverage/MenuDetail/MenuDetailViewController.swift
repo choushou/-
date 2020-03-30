@@ -59,7 +59,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         setNavigationBar()
         
         let menuDetailHeaderView = Bundle.main.loadNibNamed("MenuDetailHeaderView", owner: nil, options: nil)?.first as? MenuDetailHeaderView
-        menuDetailHeaderView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  850)
+        menuDetailHeaderView!.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height:  680)
         
         self.view.addSubview(menuDetailHeaderView!)
         
@@ -137,7 +137,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         self.flowLayout = HomeFlowLayout()
         //let layout = UICollectionViewFlowLayout()
         
-        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 850 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
+        let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 680 + 64), size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 49 - (IsFullScreen ? 34 : 0)))
         self.collectionView = UICollectionView.init(frame: rect, collectionViewLayout:self.flowLayout)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -240,11 +240,7 @@ class MenuDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         let model = self.dataArr[indexPath.row]
         
         //        print("{\n第\(indexPath.row)个item\ntitle: \(cell.titleLb.text!)\nabstract: \(model.abstract!)\narticleUrl: https://www.jianshu.com\(model.articleUrl!)\n}")
-        
-        
-        let webVC = ArticleVC()
-        webVC.aticleID = model.articleUrl!
-        self.navigationController?.pushViewController(webVC, animated: true)
+    
         
         //        let menuDetailViewController = MenuDetailViewController()
         //         self.navigationController?.pushViewController(menuDetailViewController, animated: true)

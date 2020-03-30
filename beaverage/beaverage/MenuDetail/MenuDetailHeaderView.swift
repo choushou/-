@@ -51,7 +51,7 @@ class MenuDetailHeaderView: UIView {
     func initSubviews() {
         
         
-        radarView = RadarView(frame: CGRect(x: SCREEN_WIDTH - 280, y: 290, width: 220, height: 220))
+        radarView = RadarView(frame: CGRect(x: SCREEN_WIDTH - 320, y: 250, width: 180, height: 180))
         //        radarView = RadarView()
         //        radarView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         radarView.setLineColor(color: UIColor.init(red: 136 / 255, green: 136 / 255, blue: 136 / 255, alpha: 1))

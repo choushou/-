@@ -56,7 +56,7 @@ class HomeCell: UICollectionViewCell {
         //        self.wrapImg.layer.masksToBounds = true
     }
     
-    //MARK: - --- 设置头像
+    //MARK: - --- 
     func setHeadInfo(_ headInfo:Yuanzu){
         let headArr = headInfo.headImge.components(separatedBy: "?")
         //        self.headImage.sd_setImage(with: URL(string: "https:" + headArr[0])) { (image, error, type, url) in
@@ -65,7 +65,7 @@ class HomeCell: UICollectionViewCell {
         // self.userName.text = headInfo.name
     }
     
-    //MARK: - --- 模型赋值
+    //MARK: - ---
     func setModel(_ model:JianshuModel){
         self.model = model
         if self.model == nil {return}
