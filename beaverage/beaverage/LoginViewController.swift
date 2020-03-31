@@ -62,6 +62,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             
             let homeVC = HomeVC()
             self.navigationController?.pushViewController(homeVC, animated: true)
+        } else {
+            errorLabel.isHidden = false
         }
         
     }

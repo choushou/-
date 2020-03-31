@@ -60,13 +60,21 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="8"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="フレーバードラムから検索ができます。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-xo-J2Z">
+                    <rect key="frame" x="60" y="75" width="330.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vqZ-xo-J2Z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="4Rt-GN-NYd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a7Y-He-Ujt" secondAttribute="trailing" constant="30" id="OSV-bf-OcP"/>
                 <constraint firstItem="KS0-MZ-JW2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="YEk-ft-kCa"/>
                 <constraint firstItem="a7Y-He-Ujt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="YPx-tu-Opp"/>
                 <constraint firstItem="KS0-MZ-JW2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="qau-kB-PR9"/>
+                <constraint firstItem="vqZ-xo-J2Z" firstAttribute="top" secondItem="KS0-MZ-JW2" secondAttribute="bottom" constant="5" id="zkV-CD-ltZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.84892086330936" y="109.54773869346734"/>
