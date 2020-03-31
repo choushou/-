@@ -122,6 +122,7 @@
                         <viewLayoutGuide key="safeArea" id="EUv-Fl-7wm"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="Suw-EZ-x9e" id="xK8-Py-RsX"/>
                         <outlet property="identifierTextField" destination="GU7-am-LF3" id="kl1-aX-xvp"/>
                         <outlet property="loginButton" destination="uWh-eh-exq" id="BJp-L3-u4r"/>
                         <outlet property="passwordTextField" destination="g6A-og-bKB" id="mmY-GQ-LP3"/>

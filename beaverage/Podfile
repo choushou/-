@@ -9,10 +9,16 @@ target 'beaverage' do
 
  # pod 'ZHDropDownMenu'
   #ZHDropDownMenu (1.0.0)
+  pod 'SwiftyJSON'
+  pod 'Alamofire', '~> 4.8.2'
   
   target 'beaverageTests' do
     inherit! :search_paths
     # Pods for testing
+    
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+    
   end
 
 end

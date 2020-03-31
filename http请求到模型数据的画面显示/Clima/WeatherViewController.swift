@@ -97,8 +97,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 print("Success! Got the weather data")
                 let weatherJSON : JSON = JSON(response.result.value!)
                 
-                
-                //print(weatherJSON)
+         
                 
                 self.updateWeatherData(json: weatherJSON)
                 
@@ -218,7 +217,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             
             let params : [String : String] = ["lat" : latitude, "lon" : longitude, "appid" : APP_ID]
             
-            getWeatherData(url: WEATHER_URL, parameters: params)
+           // getWeatherData(url: WEATHER_URL, parameters: params)
         }
     }
     
@@ -240,7 +239,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
         let params : [String : String] = ["q" : city, "appid" : APP_ID]
         
-        getWeatherData(url: WEATHER_URL, parameters: params)
+       // getWeatherData(url: WEATHER_URL, parameters: params)
         
     }
 
