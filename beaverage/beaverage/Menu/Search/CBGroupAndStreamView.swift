@@ -44,7 +44,6 @@ func initSubviewsTwo() -> RadarView {
     
     radarView.setDataTwo(dataTwo: [RadarModel(title: "Woody", percent: CGFloat(wineKind.woody)), RadarModel(title: "Smoky", percent: CGFloat(wineKind.smoky)), RadarModel(title: "Body", percent: CGFloat(wineKind.body)), RadarModel(title: "Winey", percent: CGFloat(wineKind.windy)), RadarModel(title: "Fruity", percent: CGFloat(wineKind.fruity)), RadarModel(title: "Floral", percent: CGFloat(wineKind.floral))])
     return radarView
-    //view.addSubview(radarView)
 }
 
 
@@ -104,7 +103,7 @@ class CBGroupAndStreamView: UIView {
                         //Value 是数组，并 defaultGroupSingleArr 不为空
                         defaultGroupSingleArr[index] = 0
                     }
-                    isSingle = false
+                    isSingle = true
                 }
             }
         }
@@ -150,7 +149,7 @@ class CBGroupAndStreamView: UIView {
         saveSelGroupIndexeArr.removeAll()
         
         if defaultGroupSingleArr.count != titleArr.count && !defaultGroupSingleArr.isEmpty{
-            assert(defaultGroupSingleArr.count == titleArr.count, "默认选择的defaultGroupSingleArr.count 要 与titleArr.count一至")
+          
             return
         }
         
@@ -219,8 +218,7 @@ class CBGroupAndStreamView: UIView {
                 
                 
                 viewGroup.backgroundColor = UIColor.red
-                
-                
+                        
                 sender.setTitle(value as? String, for: .normal)
                 sender.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0);
                 sender.tag = index + groupId * 100 + 1
@@ -284,7 +282,8 @@ class CBGroupAndStreamView: UIView {
                 //设置默认选中
                 if defaultSelIndexArr.isEmpty{//单选
                     setDefaultSingleSelect(index: index, groupId: groupId, value: value as! String, sender: sender, content: content)
-                }else{//多选
+                }
+                else{//多选
                     let arr =  setDefaultMultipleSelect(index: index, groupId: groupId, value: value as! String, sender: sender, content: content)
                     tempSaveSelIndexArr.append(contentsOf: arr)
                 }
@@ -306,14 +305,14 @@ class CBGroupAndStreamView: UIView {
         if defaultSelSingleIndeArr.isEmpty{
             assert( !(defaultSelIndex  > content.count - 1), "在groupId = \(groupId) 设置默认选中项不能超过\(content.count - 1)")
             if index == defaultSelIndex{
-                sender.isSelected = true
+                //sender.isSelected = true
                 sender.backgroundColor = content_backSelColor
                 saveSelButValueArr[groupId] = valueStr
             }
         }else{
             assert(!((defaultSelSingleIndeArr[groupId] as? Int)! > content.count - 1), "在groupId = \(groupId) 设置默认选中项不能超过\(content.count - 1)")
             if index == defaultSelSingleIndeArr[groupId] as? Int{
-                sender.isSelected = true
+                //sender.isSelected = true
                 sender.backgroundColor = content_backSelColor
                 saveSelButValueArr[groupId] = valueStr
             }
@@ -344,17 +343,22 @@ class CBGroupAndStreamView: UIView {
         saveSelGroupIndexeArr[groupId] = String(groupId)
         return tempSaveSelIndexArr
     }
-    
+    //                self.defaultSelIndexArr = [0,0,0,0,0,1]
+
     @objc private func senderEvent(sender : UIButton){
         //        print("----\(sender/.tag)")
         sender.isSelected = !sender.isSelected
-        if defaultGroupSingleArr.isEmpty{
-            //统一设置单选或多选
-            isSingle ? singalSelectEvent(sender: sender) : multipleSelectEvent(sender: sender)
-            return
-        }
+  //      print(defaultGroupSingleArr)
+//        if defaultGroupSingleArr.isEmpty{
+//            //singalSelectEvent(sender: sender)
+//            //统一设置单选或多选
+//            singalSelectEvent(sender: sender)
+//           // isSingle ? singalSelectEvent(sender: sender) : multipleSelectEvent(sender: sender)
+//            return
+//        }
+        singalSelectEvent(sender: sender)
         //为每个组设置单选和多选
-        defaultGroupSingleArr[sender.tag / 100] == 0 ? multipleSelectEvent(sender: sender) : singalSelectEvent(sender: sender)
+       // defaultGroupSingleArr[sender.tag / 100] != 0 ? multipleSelectEvent(sender: sender) : singalSelectEvent(sender: sender)
     }
     
     //MARK:---单选
@@ -364,7 +368,7 @@ class CBGroupAndStreamView: UIView {
         if sender.isSelected {
             for (index, _) in tempDetailArr.enumerated(){
                 if index + 1 == sender.tag % 100{
-                    sender.isSelected = true
+                   // sender.isSelected = true
                     sender.backgroundColor = content_backSelColor
                     continue
                 }
@@ -387,41 +391,43 @@ class CBGroupAndStreamView: UIView {
         //保存groupId
         saveSelButValueArr[sender.tag / 100] as! String == "" ? (saveSelGroupIndexeArr[sender.tag / 100] = "") : (saveSelGroupIndexeArr[sender.tag / 100] = String(sender.tag / 100))
         
+        self.defaultSelIndexArr = [2,3,4,4,1,1]
+        
     }
     
-    //MARK:---多选
-    private func multipleSelectEvent(sender : UIButton){
-        var valueStr = ""
-        var tempSaveArr = Array<Any>()
-        if ((saveSelButValueArr[sender.tag / 100]) is Array<Any>){
-            tempSaveArr = saveSelButValueArr[sender.tag / 100] as! Array<Any>
-        }else{
-            tempSaveArr.append(saveSelButValueArr[sender.tag / 100])
-        }
-        
-        let tempDetailArr = dataSourceArr[sender.tag / 100] as! Array<Any>
-        valueStr = "\(sender.tag % 100 - 1)/\(tempDetailArr[sender.tag % 100 - 1])"
-        if sender.isSelected {
-            sender.backgroundColor = content_backSelColor
-            //不存在相同的元素
-            tempSaveArr.append(valueStr)
-            //闭包传值
-            if currentSelValueClosure != nil {
-                currentSelValueClosure!(valueStr,sender.tag % 100 - 1,sender.tag / 100)
-            }
-            //代理传值
-            delegate?.currentSelValueWithDelegate?(valueStr: valueStr, index: sender.tag % 100 - 1, groupId: sender.tag / 100)
-        }else{
-            sender.backgroundColor = content_backNorColor
-            //获取元素的下标
-            //            let index : Int = tempSaveArr.index(where: {$0 as! String == valueStr})!
-            //            tempSaveArr.remove(at: index)
-        }
-        
-        saveSelButValueArr[sender.tag / 100] = tempSaveArr
-        tempSaveArr.isEmpty ? (saveSelGroupIndexeArr[sender.tag / 100] = "") : (saveSelGroupIndexeArr[sender.tag / 100] = String(sender.tag / 100))
-        
-    }
+//    //MARK:---多选
+//    private func multipleSelectEvent(sender : UIButton){
+//        var valueStr = ""
+//        var tempSaveArr = Array<Any>()
+//        if ((saveSelButValueArr[sender.tag / 100]) is Array<Any>){
+//            tempSaveArr = saveSelButValueArr[sender.tag / 100] as! Array<Any>
+//        }else{
+//            tempSaveArr.append(saveSelButValueArr[sender.tag / 100])
+//        }
+//
+//        let tempDetailArr = dataSourceArr[sender.tag / 100] as! Array<Any>
+//        valueStr = "\(sender.tag % 100 - 1)/\(tempDetailArr[sender.tag % 100 - 1])"
+//        if sender.isSelected {
+//            sender.backgroundColor = content_backSelColor
+//            //不存在相同的元素
+//            tempSaveArr.append(valueStr)
+//            //闭包传值
+//            if currentSelValueClosure != nil {
+//                currentSelValueClosure!(valueStr,sender.tag % 100 - 1,sender.tag / 100)
+//            }
+//            //代理传值
+//            delegate?.currentSelValueWithDelegate?(valueStr: valueStr, index: sender.tag % 100 - 1, groupId: sender.tag / 100)
+//        }else{
+//            sender.backgroundColor = content_backNorColor
+//            //获取元素的下标
+//            //            let index : Int = tempSaveArr.index(where: {$0 as! String == valueStr})!
+//            //            tempSaveArr.remove(at: index)
+//        }
+//
+//        saveSelButValueArr[sender.tag / 100] = tempSaveArr
+//        tempSaveArr.isEmpty ? (saveSelGroupIndexeArr[sender.tag / 100] = "") : (saveSelGroupIndexeArr[sender.tag / 100] = String(sender.tag / 100))
+//
+//    }
     
     //MARK:---确定
     public func comfirm(){

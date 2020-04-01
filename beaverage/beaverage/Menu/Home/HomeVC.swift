@@ -195,7 +195,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     func searchBeaverageData() {
         let titleArr = ["Woody","Winey","Fruity","Floral","Malty","Smokey"]
         titleArray = titleArr
-        let contentArr = [["vanilla","honey","caramel","Nutty-cocount","caramel","Nutty-cocount","caramel","Nutty-cocountone","carameltow","Nutty-cocountthree","caramelforu","Nutty-cocountfive","Nutty-cocountone","carameltow","Nutty-cocountone","carameltow","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","Nutty-cocountone","carameltow","caramelsix","Nutty-cocountserven","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry5","sherry6","sherry7","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
+        let contentArr = [["vanilla","honey","caramel","caramel","Nutty-cocount","honey","caramel","Nutty-cocount","収まる１"],["sherryone","sherrytwo","sherrythree","sherryfour","sherry8","sherr9y","sherry1010101","sherry1111111","sherry1212121","sherry1313131","収まる２"],["wax","wax2","wax3","wax4","wax5","wax6","wax7","収まる３"],["rose","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","lavender","収まる４"],["potato","potato2","potato3","potato4","potato5","potato6","potato7","potato8","potato9","potato10","potato11","収まる5"],["seaweed1","seaweed2","seaweed3","seaweed4","seaweed5","seaweed6","seaweed7","seaweed8","seaweed9","収まる6"]]
         
         var contentArFirst: [String] = []
         
@@ -235,17 +235,15 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         //        labGroup.defaultSelIndex = 1
         //        labGroup.defaultSelSingleIndeArr = [1,1,0,0]
         //使用该参数则默认为多选 isSingle 无效 defaultSelSingleIndeArr 设置无效
-        labGroup.defaultSelIndexArr = [[0,5,8,3,2],1,0,3,1,1]
+        labGroup.defaultSelIndexArr = [1,1,1,1,1,1]
         //分别设置每个组的单选与多选
-        labGroup.defaultGroupSingleArr = [0,1,1,0,1,1]
+        labGroup.defaultGroupSingleArr = [1,1,1,1,1,1]
         
         labGroup.setDataSource(contetnArr: contentArrayDa, titleArr: titleArr)
+        //setDefaultMultipleSelect
         
         labGroup.delegate = self
-        
-        // self.view.addSubview(labGroup)
-        
-        
+    
         labGroup.confirmReturnValueClosure = {
             (selArr,groupIdArr) in
             //            print(selArr)
